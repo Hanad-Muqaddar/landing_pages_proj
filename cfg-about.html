@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Cebron Financial Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --navy:#0C1C2E;
+  --navy-deep:#070F1A;
+  --navy-mid:#112236;
+  --gold:#A8822E;
+  --white:#FFFFFF;
+  --off:#F5F5F3;
+  --rule:#E2E2DE;
+  --text:#0D0D0D;
+  --body:#3A3A3A;
+  --mid:#6B6B6B;
+}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:17px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:64px;display:flex;align-items:center;transition:all 0.3s}
+nav.dark{background:rgba(7,15,26,0.95);border-bottom:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(12px)}
+nav.light{background:rgba(255,255,255,0.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(12px)}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 48px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:0.02em;transition:color 0.3s}
+nav.dark .nav-logo{color:var(--white)}
+nav.light .nav-logo{color:var(--navy)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;letter-spacing:0.01em;transition:color 0.2s}
+nav.dark .nav-links a{color:rgba(255,255,255,0.72)}
+nav.dark .nav-links a:hover{color:var(--white)}
+nav.light .nav-links a{color:var(--mid)}
+nav.light .nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--gold);color:var(--white)!important;padding:8px 20px;font-size:13px;font-weight:600;transition:opacity 0.2s!important}
+nav.light .nav-cta{background:var(--navy)}
+.nav-cta:hover{opacity:0.88!important}
+
+/* PAGE HERO */
+.page-hero{background:var(--navy-deep);padding:140px 48px 96px;position:relative;overflow:hidden}
+.page-hero-accent{position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.page-hero-grid{position:absolute;inset:0;opacity:0.04;background-image:linear-gradient(rgba(255,255,255,0.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.8) 1px,transparent 1px);background-size:80px 80px}
+.page-hero-inner{max-width:1320px;margin:0 auto;position:relative;z-index:2}
+.breadcrumb{display:flex;align-items:center;gap:10px;margin-bottom:40px}
+.breadcrumb a{font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);transition:color 0.2s}
+.breadcrumb a:hover{color:var(--gold)}
+.bc-sep{color:rgba(255,255,255,0.2)}
+.bc-cur{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.page-hero-h1{font-size:clamp(48px,5.5vw,80px);font-weight:800;color:var(--white);line-height:1.02;letter-spacing:-0.03em;max-width:900px;margin-bottom:28px}
+.page-hero-h1 span{color:var(--gold)}
+.page-hero-deck{font-size:19px;font-weight:400;line-height:1.65;color:rgba(255,255,255,0.68);max-width:620px}
+
+/* SHARED SECTION UTILITIES */
+.section-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.section-h{font-size:clamp(36px,3.8vw,58px);font-weight:800;line-height:1.06;letter-spacing:-0.03em}
+.section-h em{font-style:normal;color:var(--gold)}
+.section-wrap{max-width:1320px;margin:0 auto;padding:0 48px}
+
+/* ORIGIN */
+.origin{background:var(--white);padding:120px 0;border-bottom:1px solid var(--rule)}
+.origin-grid{display:grid;grid-template-columns:420px 1fr;gap:96px;align-items:start}
+.origin-left{}
+.origin-h{font-size:clamp(36px,3.8vw,58px);font-weight:800;color:var(--text);line-height:1.06;letter-spacing:-0.03em;margin-bottom:0}
+.origin-h em{font-style:normal;color:var(--gold)}
+.origin-body{font-size:17px;font-weight:400;line-height:1.7;color:var(--body);margin-bottom:22px}
+.origin-pull{font-size:22px;font-weight:600;color:var(--text);line-height:1.45;border-left:3px solid var(--gold);padding-left:24px;margin:40px 0}
+.origin-link{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(168,130,46,0.35);padding-bottom:4px;transition:border-color 0.2s}
+.origin-link:hover{border-color:var(--gold)}
+
+/* PRINCIPLES */
+.principles{background:var(--navy-deep);padding:120px 0}
+.principles-header{display:grid;grid-template-columns:560px 1fr;gap:80px;align-items:start;margin-bottom:72px}
+.principles-h{color:var(--white)}
+.principles-intro{font-size:17px;font-weight:400;color:rgba(255,255,255,0.68);line-height:1.7;padding-top:8px}
+.principles-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.principle{background:rgba(255,255,255,0.03);padding:52px 48px;border:1px solid rgba(255,255,255,0.06);transition:background 0.25s}
+.principle:hover{background:rgba(255,255,255,0.06)}
+.principle-n{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.principle-title{font-size:21px;font-weight:700;color:var(--white);margin-bottom:14px;line-height:1.2;letter-spacing:-0.01em}
+.principle-body{font-size:15px;font-weight:400;color:rgba(255,255,255,0.62);line-height:1.7}
+
+/* MODEL */
+.model{background:var(--off);padding:120px 0;border-top:1px solid var(--rule)}
+.model-header{margin-bottom:72px}
+.model-sub{font-size:18px;font-weight:400;color:var(--body);line-height:1.65;max-width:600px;margin-top:20px}
+.model-steps{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--rule);background:var(--white)}
+.model-step{padding:44px 36px 48px;border-right:1px solid var(--rule);position:relative;transition:background 0.2s}
+.model-step:last-child{border-right:none}
+.model-step:hover{background:var(--off)}
+.step-progress{height:2px;background:var(--rule);margin-bottom:40px;position:relative;overflow:hidden}
+.step-progress::after{content:'';position:absolute;left:0;top:0;height:100%;background:var(--gold)}
+.model-step:nth-child(1) .step-progress::after{width:25%}
+.model-step:nth-child(2) .step-progress::after{width:50%}
+.model-step:nth-child(3) .step-progress::after{width:75%}
+.model-step:nth-child(4) .step-progress::after{width:100%}
+.step-n{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.step-title{font-size:19px;font-weight:700;color:var(--text);margin-bottom:14px;line-height:1.2;letter-spacing:-0.01em}
+.step-body{font-size:14px;font-weight:400;line-height:1.7;color:var(--body)}
+
+/* COS */
+.cos{background:var(--white);padding:0 0 120px}
+.cos-inner{max-width:1320px;margin:0 auto;padding:0 48px}
+.cos-block{display:grid;grid-template-columns:380px 1fr;border:1px solid var(--rule);overflow:hidden}
+.cos-left{background:var(--navy);padding:56px 48px;display:flex;flex-direction:column;justify-content:space-between}
+.cos-left-label{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.cos-left-title{font-size:26px;font-weight:800;color:var(--white);letter-spacing:-0.02em;line-height:1.2;margin-bottom:16px}
+.cos-left-sub{font-size:15px;font-weight:400;color:rgba(255,255,255,0.6);line-height:1.7}
+.cos-left-meta{font-size:13px;font-weight:400;color:rgba(255,255,255,0.3);margin-top:32px;line-height:1.6}
+.cos-right{padding:56px 48px}
+.cos-right-intro{font-size:16px;font-weight:400;color:var(--body);line-height:1.75;margin-bottom:40px}
+.cos-pillars{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.cos-pillar{background:var(--off);padding:24px;border:1px solid var(--rule)}
+.cos-pillar-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px}
+.cos-pillar-body{font-size:14px;font-weight:400;color:var(--body);line-height:1.65}
+
+/* PLATFORMS */
+.platforms{background:var(--off);padding:120px 0;border-top:1px solid var(--rule)}
+.platforms-header{display:grid;grid-template-columns:520px 1fr;gap:80px;align-items:start;margin-bottom:72px}
+.platforms-intro{font-size:17px;font-weight:400;color:var(--body);line-height:1.7;padding-top:8px}
+.platforms-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:3px solid var(--text)}
+.platform-card{background:var(--white);padding:40px 32px 44px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);transition:background 0.2s}
+.platform-card:last-child{border-right:none}
+.platform-card:hover{background:#FAFAF8}
+.platform-tag{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.platform-name{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:8px;letter-spacing:-0.02em}
+.platform-sector{font-size:12px;font-weight:600;color:var(--mid);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px}
+.platform-body{font-size:14px;font-weight:400;color:var(--body);line-height:1.7}
+
+/* FAMILY WEALTH */
+.family{background:var(--navy-deep);padding:120px 0}
+.family-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.family-block{padding:64px 56px;border:1px solid rgba(255,255,255,0.06)}
+.family-block.left{background:rgba(255,255,255,0.03)}
+.family-block.right{background:rgba(168,130,46,0.06);border-color:rgba(168,130,46,0.12)}
+.family-block-eyebrow{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.family-block-h{font-size:26px;font-weight:800;color:var(--white);line-height:1.2;margin-bottom:20px;letter-spacing:-0.02em}
+.family-block-h em{font-style:normal;color:var(--gold)}
+.family-block-body{font-size:15px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:24px}
+.family-list{border-top:1px solid rgba(255,255,255,0.08)}
+.family-item{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.family-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;margin-top:8px;flex-shrink:0}
+.family-text{font-size:14px;font-weight:400;color:rgba(255,255,255,0.62);line-height:1.65}
+.family-text strong{font-weight:600;color:rgba(255,255,255,0.88)}
+
+/* GLOBAL */
+.global{background:var(--white);padding:120px 0;border-bottom:1px solid var(--rule)}
+.global-header{display:grid;grid-template-columns:520px 1fr;gap:80px;align-items:start;margin-bottom:72px}
+.global-h{color:var(--text)}
+.global-right-body{font-size:17px;font-weight:400;color:var(--body);line-height:1.7;padding-top:8px}
+.global-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule)}
+.global-card{padding:44px 36px;border-right:1px solid var(--rule);transition:background 0.2s}
+.global-card:last-child{border-right:none}
+.global-card:hover{background:var(--off)}
+.global-region{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.global-title{font-size:19px;font-weight:700;color:var(--text);margin-bottom:14px;line-height:1.2;letter-spacing:-0.01em}
+.global-body{font-size:14px;font-weight:400;color:var(--body);line-height:1.7}
+.global-reg{margin-top:48px;background:var(--navy);padding:44px 52px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.global-reg-text{font-size:14px;font-weight:400;color:rgba(255,255,255,0.62);line-height:1.7}
+.global-reg-text strong{font-weight:600;color:rgba(255,255,255,0.9)}
+.btn-gold{display:inline-block;background:var(--gold);color:var(--white);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 28px;white-space:nowrap;flex-shrink:0;transition:opacity 0.2s}
+.btn-gold:hover{opacity:0.88}
+
+/* STRUCTURE */
+.structure{background:var(--off);padding:120px 0;border-top:1px solid var(--rule)}
+.structure-grid{display:grid;grid-template-columns:460px 1fr;gap:96px;align-items:start}
+.structure-h{color:var(--text)}
+.structure-body{font-size:17px;font-weight:400;color:var(--body);line-height:1.7;margin-bottom:20px}
+.struct-items{border-top:1px solid var(--rule)}
+.struct-item{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid var(--rule);padding:22px 0}
+.struct-label{font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--mid);padding-right:24px;padding-top:2px}
+.struct-val{font-size:15px;font-weight:400;color:var(--text);line-height:1.6}
+
+/* CTA BAND */
+.cta-band{background:var(--gold);padding:96px 0}
+.cta-band-inner{max-width:1320px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr auto;gap:64px;align-items:center}
+.cta-band-h{font-size:clamp(32px,3.2vw,50px);font-weight:800;color:var(--white);line-height:1.1;letter-spacing:-0.03em;margin-bottom:14px}
+.cta-band-body{font-size:17px;font-weight:400;color:rgba(255,255,255,0.78);line-height:1.65;max-width:520px}
+.cta-band-actions{display:flex;flex-direction:column;gap:12px;align-items:flex-end;flex-shrink:0}
+.btn-white{display:inline-block;background:var(--white);color:var(--navy);font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:14px 32px;white-space:nowrap;transition:opacity 0.2s}
+.btn-white:hover{opacity:0.9}
+.btn-ghost-white{display:inline-block;border:1px solid rgba(255,255,255,0.4);color:rgba(255,255,255,0.88);font-size:13px;font-weight:500;padding:13px 28px;white-space:nowrap;transition:all 0.2s}
+.btn-ghost-white:hover{border-color:var(--white);color:var(--white)}
+
+/* FOOTER */
+footer{background:#04090F;padding:72px 48px 40px}
+.footer-inner{max-width:1320px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:300px repeat(4,1fr);gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:40px}
+.footer-brand-name{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
+.footer-brand-sub{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.footer-brand-desc{font-size:14px;font-weight:400;line-height:1.7;color:rgba(255,255,255,0.5)}
+.footer-col-head{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:20px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
+.footer-links a{font-size:14px;font-weight:400;color:rgba(255,255,255,0.62);transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{display:flex;gap:48px;justify-content:space-between;align-items:flex-start}
+.footer-legal{font-size:12px;font-weight:400;line-height:1.7;color:rgba(255,255,255,0.35);max-width:800px}
+.footer-entity{font-size:12px;font-weight:400;color:rgba(255,255,255,0.35);text-align:right;white-space:nowrap;flex-shrink:0}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}
+</style>
+</head>
+<body>
+
+<nav class="dark" id="mainnav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Cebron Financial Group</a>
+    <ul class="nav-links">
+      <li><a href="cfg-private-markets.html">Private Markets</a></li>
+      <li><a href="cfg-about.html" style="color:white;font-weight:700">About CFG</a></li>
+      <li><a href="index.html#pma">Private Market Alpha</a></li>
+      <li><a href="cfg-invest.html">Invest</a></li>
+      <li><a href="https://cebroncapital.com" target="_blank" class="nav-cta">Investor Portal</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-accent"></div>
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-cur">About CFG</span>
+    </div>
+    <div class="eyebrow">About Cebron Financial Group</div>
+    <h1 class="page-hero-h1">We don't invest in platforms.<br><span>We build them.</span></h1>
+    <p class="page-hero-deck">Cebron Financial Group is a Delaware holding company that conceives, designs, builds, and scales acquisition platforms in sectors where consolidation creates lasting value — and opens that strategy to accredited individual investors.</p>
+  </div>
+</div>
+
+<!-- ORIGIN -->
+<section class="origin">
+  <div class="section-wrap">
+    <div class="origin-grid reveal">
+      <div class="origin-left">
+        <div class="section-eyebrow">Our Origin</div>
+        <h2 class="origin-h">A different answer to where <em>real value gets created.</em></h2>
+      </div>
+      <div class="reveal d1">
+        <p class="origin-body">Not in public markets, where every piece of information is simultaneously available to every participant and prices reflect consensus rather than insight. Not in venture capital, where a small number of outlier outcomes mask the structural loss of capital across the majority of bets.</p>
+        <p class="origin-body">Real, durable value is created through a specific and repeatable mechanism: identifying fragmented industries where dozens of high-quality, founder-owned businesses operate independently — each too small for institutional attention — and consolidating them into professionally managed platforms with standardized operations, expanded margins, and the scale to attract institutional capital at exit multiples far above their acquisition multiples.</p>
+        <div class="origin-pull">This is how the most durable industrial compounders of the last half century were built — through a repeatable operating system applied consistently across dozens of acquisitions, in sectors where fragmentation made the strategy available and where operational improvement made it work.</div>
+        <p class="origin-body">The difference is access. Historically, this strategy was available only to institutional investors — large PE funds with the capital and infrastructure to execute it. CFG was built to change that. Through Cebron Capital, LLC, we offer accredited individual investors structured access to the same acquisition compounding model that institutions have used to generate private market alpha.</p>
+        <a href="cfg-invest.html" class="origin-link">Explore Investment Opportunities →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="principles">
+  <div class="section-wrap">
+    <div class="principles-header reveal">
+      <div>
+        <div class="section-eyebrow">Our Principles</div>
+        <h2 class="section-h principles-h">The operating beliefs that govern <em>every decision we make.</em></h2>
+      </div>
+      <p class="principles-intro">These are not values statements. They are operating beliefs — positions that materially affect how we evaluate businesses, structure investments, build teams, and respond when things do not go as planned. Every significant CFG decision can be traced back to one of them.</p>
+    </div>
+    <div class="principles-grid reveal d1">
+      <div class="principle">
+        <div class="principle-n">01</div>
+        <div class="principle-title">Permanent Capital is a Genuine Competitive Advantage</div>
+        <p class="principle-body">Private equity's structural flaw is its exit requirement. Funds must sell — at a time the fund's calendar dictates, not when value maximization dictates. CFG holds without that pressure. We are consistently the preferred acquirer for founders who have spent decades building a business and want a steward, not a clock.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-n">02</div>
+        <div class="principle-title">The Operating System Matters More Than the Acquisition</div>
+        <p class="principle-body">Acquiring a business at a fair multiple is table stakes. The value is created in what comes after — the systematic improvement of operations, margins, culture, and capability. The Cebron Operating System is not a checklist. It is the mechanism through which fragmented businesses are transformed into institutional platforms.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-n">03</div>
+        <div class="principle-title">Prove Before You Scale</div>
+        <p class="principle-body">The highest-failure path in acquisition compounding is building organizational infrastructure before demonstrating a single successful integration. CFG sequences deliberately: the first acquisition establishes proof of concept; institutional capital scales from there. Sequence matters more than speed.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-n">04</div>
+        <div class="principle-title">Right-Size Talent to the Stage</div>
+        <p class="principle-body">Expensive executives who cannot function as operators are appropriate for scaled platforms — not for early-stage integration work. CFG deploys player-coaches: operators who can lead strategy and execute simultaneously. Deferred compensation linked to platform performance self-selects for builders rather than credential-holders.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-n">05</div>
+        <div class="principle-title">The Multiple Arbitrage is Earned, Not Assumed</div>
+        <p class="principle-body">Buying at 5–7× and targeting exit at 10–12× only works if the platform has genuinely compounded. That means acquisitions made at discipline, integrations executed completely, margins expanded measurably, and a management team capable of institutional scrutiny. The arbitrage reflects real operational improvement or it does not exist.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-n">06</div>
+        <div class="principle-title">The Holding Company Must Justify Its Own Existence</div>
+        <p class="principle-body">A holding company structure that merely owns platforms without generating independent value creates a conglomerate discount. CFG justifies its structure through proprietary deal sourcing, shared operating infrastructure, and — ultimately — the COS capability that no individual platform could develop alone at its stage of development.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODEL -->
+<section class="model" id="model">
+  <div class="section-wrap">
+    <div class="model-header reveal">
+      <div class="section-eyebrow">The CFG Model</div>
+      <h2 class="section-h" style="color:var(--text)">How we build platforms <em>that compound.</em></h2>
+      <p class="model-sub">Every CFG platform follows the same four-stage architecture — designed before the first acquisition and executed with the same operating system across every transaction.</p>
+    </div>
+    <div class="model-steps reveal d1">
+      <div class="model-step">
+        <div class="step-progress"></div>
+        <div class="step-n">Step I</div>
+        <div class="step-title">Originate the Thesis</div>
+        <p class="step-body">We identify fragmented industries where consolidation is structurally underway or overdue — mission-critical services, specialized equipment, essential professional services. We design the platform thesis before any capital is committed: which businesses to acquire, in which sequence, at what valuation discipline, and how they will be integrated.</p>
+      </div>
+      <div class="model-step">
+        <div class="step-progress"></div>
+        <div class="step-n">Step II</div>
+        <div class="step-title">Build the Infrastructure</div>
+        <p class="step-body">Each platform launches with a dedicated executive team, M&A team, and corporate development function. The Cebron Operating System is configured for the platform's sector before the first acquisition — so integration begins from a designed position, not an improvised one.</p>
+      </div>
+      <div class="model-step">
+        <div class="step-progress"></div>
+        <div class="step-n">Step III</div>
+        <div class="step-title">Acquire and Integrate</div>
+        <p class="step-body">Acquisitions are made at 5–7× EBITDA — disciplined entry multiples available in fragmented lower-middle markets. Post-acquisition, the COS is deployed with a 36-month integration roadmap targeting 500–1,500 basis points of margin expansion through operational standardization, procurement leverage, and management development.</p>
+      </div>
+      <div class="model-step">
+        <div class="step-progress"></div>
+        <div class="step-n">Step IV</div>
+        <div class="step-title">Scale to an Institutional Event</div>
+        <p class="step-body">As the platform demonstrates compounding acquisitions and expanding margins, it attracts institutional co-investment, strategic acquirer interest, or a public market path. The platform's demonstrated ability to replicate its model commands a valuation multiple — 10–12× — that reflects institutional confidence in the system, not just the individual assets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COS -->
+<section class="cos">
+  <div class="cos-inner">
+    <div class="cos-block reveal">
+      <div class="cos-left">
+        <div>
+          <div class="cos-left-label">The Operating System</div>
+          <div class="cos-left-title">The Cebron Operating System</div>
+          <p class="cos-left-sub">A standardized post-acquisition integration framework deployed across every platform and every transaction — designed to transform fragmented founder-owned businesses into professionally managed, institutionally scalable platforms.</p>
+        </div>
+        <div class="cos-left-meta">Deployed at every acquisition · Across all four CFG platforms · Refined continuously at scale</div>
+      </div>
+      <div class="cos-right">
+        <p class="cos-right-intro">The COS is not a generic integration checklist. It is a sector-configured operating framework that covers four domains of post-acquisition value creation — deployed in the same sequence at every acquisition, measured against the same performance standards, and refined continuously as CFG scales.</p>
+        <div class="cos-pillars">
+          <div class="cos-pillar">
+            <div class="cos-pillar-title">Operational Standardization</div>
+            <p class="cos-pillar-body">Unified reporting, KPI cadence, financial controls, and management operating rhythms across all acquisitions within a platform.</p>
+          </div>
+          <div class="cos-pillar">
+            <div class="cos-pillar-title">Margin Expansion</div>
+            <p class="cos-pillar-body">Procurement consolidation, indirect cost reduction, labor model optimization, and pricing discipline targeted at 500–1,500 bps improvement.</p>
+          </div>
+          <div class="cos-pillar">
+            <div class="cos-pillar-title">Management Development</div>
+            <p class="cos-pillar-body">Operator identification, deferred compensation structuring, accountability frameworks, and succession planning at the acquired-company level.</p>
+          </div>
+          <div class="cos-pillar">
+            <div class="cos-pillar-title">Platform Cohesion</div>
+            <p class="cos-pillar-body">Cross-selling architecture, shared service development, brand rationalization, and the cultural integration that turns acquisitions into a platform.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="platforms">
+  <div class="section-wrap">
+    <div class="platforms-header reveal">
+      <div>
+        <div class="section-eyebrow">Our Platforms</div>
+        <h2 class="section-h" style="color:var(--text)">Four platforms. <em>One operating system.</em></h2>
+      </div>
+      <p class="platforms-intro">Each CFG acquisition platform was originated by Cebron Financial Group around a specific industry consolidation thesis. Each has an independent executive team, M&A function, and corporate development office. Each deploys the Cebron Operating System at every acquisition.</p>
+    </div>
+    <div class="platforms-grid reveal d1">
+      <div class="platform-card">
+        <div class="platform-tag">Platform I</div>
+        <div class="platform-name">SensQor</div>
+        <div class="platform-sector">Environmental &amp; Geotechnical Engineering</div>
+        <p class="platform-body">Acquiring founder-owned environmental and geotechnical engineering firms serving infrastructure, energy, and industrial clients — a highly fragmented sector with strong recurring revenue, mission-critical service profiles, and minimal technology displacement risk.</p>
+      </div>
+      <div class="platform-card">
+        <div class="platform-tag">Platform II</div>
+        <div class="platform-name">Cenovix</div>
+        <div class="platform-sector">Biotech &amp; Laboratory Services</div>
+        <p class="platform-body">Consolidating specialized laboratory and biotech services businesses serving pharmaceutical, research, and clinical clients. A sector with high client retention, regulatory moats, and meaningful barriers to entry that protect margin profiles post-acquisition.</p>
+      </div>
+      <div class="platform-card">
+        <div class="platform-tag">Platform III</div>
+        <div class="platform-name">EntelMed</div>
+        <div class="platform-sector">Orthopedic Devices &amp; Surgical Instruments</div>
+        <p class="platform-body">Building a platform in the orthopedic device and surgical instrument market — acquiring manufacturers and distributors in a sector characterized by long product cycles, deep surgeon relationships, and high switching costs that create durable competitive advantages.</p>
+      </div>
+      <div class="platform-card">
+        <div class="platform-tag">Platform IV</div>
+        <div class="platform-name">Seqara</div>
+        <div class="platform-sector">NDT &amp; Industrial Inspection Services</div>
+        <p class="platform-body">Consolidating non-destructive testing and industrial inspection services firms serving energy, aerospace, and infrastructure clients. A safety-critical, regulatory-driven sector where service quality, certification depth, and geographic coverage drive competitive position.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAMILY WEALTH -->
+<section class="family">
+  <div class="section-wrap">
+    <div class="family-grid reveal">
+      <div class="family-block left">
+        <div class="family-block-eyebrow">Family Wealth &amp; Individual Investors</div>
+        <h2 class="family-block-h">Built for investors who think in decades, <em>not quarters.</em></h2>
+        <p class="family-block-body">The CFG investment model is structurally aligned with how serious family wealth is built and preserved — through patient capital, operational ownership, and compounding that is not interrupted by short-term market sentiment.</p>
+        <p class="family-block-body">Accredited individuals, family offices, and multi-generational wealth vehicles are the natural investors in what CFG builds.</p>
+        <div class="family-list">
+          <div class="family-item"><div class="family-dot"></div><span class="family-text"><strong>Accredited individuals</strong> — investors who qualify under SEC Rule 501(a) income, net worth, or professional certification standards</span></div>
+          <div class="family-item"><div class="family-dot"></div><span class="family-text"><strong>Single-family offices</strong> — wealth management vehicles serving a single high-net-worth family seeking private market allocation</span></div>
+          <div class="family-item"><div class="family-dot"></div><span class="family-text"><strong>Multi-family offices</strong> — advisors managing consolidated private market allocations across multiple client families</span></div>
+          <div class="family-item"><div class="family-dot"></div><span class="family-text"><strong>Trust and estate structures</strong> — irrevocable trusts, charitable remainder trusts, and dynasty trusts with long-duration investment mandates</span></div>
+        </div>
+      </div>
+      <div class="family-block right reveal d1">
+        <div class="family-block-eyebrow">Why Family Capital &amp; CFG Are Aligned</div>
+        <h2 class="family-block-h">The same values that built family wealth are the ones <em>we invest by.</em></h2>
+        <p class="family-block-body">Great family wealth has rarely been built through passive index exposure or short-duration speculation. It has been built through the concentrated ownership of real businesses — held patiently, operated attentively, and compounded over time without the pressure to sell before the strategy matures.</p>
+        <div class="family-list">
+          <div class="family-item"><div class="family-dot"></div><span class="family-text"><strong>Long time horizons:</strong> CFG holds platforms without exit pressure — permanent capital aligned with multi-generational wealth thinking, not fund-cycle deadlines</span></div>
+          <div class="family-item"><div class="family-dot"></div><span class="family-text"><strong>Real asset ownership:</strong> Investment in operating businesses with tangible revenue, workforce, and customer relationships — not derivatives or index products</span></div>
+          <div class="family-item"><div class="family-dot"></div><span class="family-text"><strong>Active value creation:</strong> CFG does not passively hold investments — we build, integrate, and operate through the Cebron Operating System, creating value through expertise rather than leverage</span></div>
+          <div class="family-item"><div class="family-dot"></div><span class="family-text"><strong>Current income plus equity upside:</strong> CFG structured notes provide quarterly income from day one — cash flow that compounds alongside the equity appreciation of the underlying platforms</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL INVESTORS -->
+<section class="global">
+  <div class="section-wrap">
+    <div class="global-header reveal">
+      <div>
+        <div class="section-eyebrow">Global Investor Access</div>
+        <h2 class="section-h global-h">CFG is open to qualified investors <em>around the world.</em></h2>
+      </div>
+      <p class="global-right-body">Cebron Capital's offering structure is designed from the ground up to accommodate international participation. Regulation S provides a clear legal framework for non-U.S. investor access. Whether you are a high-net-worth individual in Europe, a family office in the Gulf, a wealth management client in Asia, or a private investor in Latin America — if you qualify as a non-U.S. person under Regulation S, you can access CFG's investment opportunities through Cebron Capital without the accredited investor verification process required of U.S. participants.</p>
+    </div>
+    <div class="global-grid reveal d1">
+      <div class="global-card">
+        <div class="global-region">Europe &amp; United Kingdom</div>
+        <div class="global-title">High-Net-Worth Individuals &amp; Family Offices</div>
+        <p class="global-body">European and UK-based investors seeking U.S. private market exposure through a structured, compliant vehicle. CFG's acquisition platform strategy offers direct access to U.S. lower-middle-market businesses across four sectors — without requiring investment in a blind-pool fund or commitment to a fixed PE fund lifecycle. Available to qualifying non-U.S. persons under Regulation S.</p>
+      </div>
+      <div class="global-card">
+        <div class="global-region">Middle East &amp; Gulf Region</div>
+        <div class="global-title">Sovereign Wealth, Family Offices &amp; Private Wealth</div>
+        <p class="global-body">Gulf-region family offices and private wealth managers seeking U.S. real-economy exposure with current income. CFG's structured notes offer a defined income stream alongside the upside of acquisition platform compounding. Available to qualifying non-U.S. persons under Regulation S.</p>
+      </div>
+      <div class="global-card">
+        <div class="global-region">Asia Pacific &amp; Latin America</div>
+        <div class="global-title">International HNW &amp; Institutional-Adjacent Investors</div>
+        <p class="global-body">Asia Pacific and Latin American investors building international portfolio exposure. CFG provides access to the U.S. private market acquisition compounding model through a structured instrument with contractual income and defined participation rights. Available to qualifying non-U.S. persons under Regulation S.</p>
+      </div>
+    </div>
+    <div class="global-reg reveal d2">
+      <p class="global-reg-text">Cebron Capital's international offerings are made pursuant to <strong>Regulation S of the Securities Act of 1933</strong>, which exempts from U.S. registration requirements offers and sales of securities made outside the United States to non-U.S. persons. Non-U.S. investors are not required to meet the U.S. accredited investor standard but must qualify as non-U.S. persons under Regulation S and comply with any applicable laws in their home jurisdiction. All investors should consult with qualified legal and financial advisors in their home jurisdiction before investing.</p>
+      <a href="https://cebroncapital.com" class="btn-gold" target="_blank">Begin Investor Verification →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STRUCTURE -->
+<section class="structure">
+  <div class="section-wrap">
+    <div class="structure-grid reveal">
+      <div>
+        <div class="section-eyebrow">Corporate Structure</div>
+        <h2 class="section-h structure-h">How CFG is <em>organized.</em></h2>
+        <p class="structure-body">Cebron Financial Group, Inc. is the parent holding company. Its role is to originate platforms, provide the COS infrastructure that each platform deploys, and through Cebron Capital, LLC, manage the capital-raising function that funds platform development.</p>
+        <p class="structure-body">Securities offered to accredited investors are offered through Cebron Capital, LLC, a separate affiliated entity operating under Regulation D, Rule 506(c) and Regulation S.</p>
+      </div>
+      <div class="reveal d1">
+        <div class="struct-items">
+          <div class="struct-item">
+            <span class="struct-label">Parent Entity</span>
+            <span class="struct-val">Cebron Financial Group, Inc. — Delaware corporation; holding company and platform originator</span>
+          </div>
+          <div class="struct-item">
+            <span class="struct-label">Capital Entity</span>
+            <span class="struct-val">Cebron Capital, LLC — affiliated entity; manages investor portal, SPVs, and Reg D 506(c) offerings</span>
+          </div>
+          <div class="struct-item">
+            <span class="struct-label">Offering Exemption</span>
+            <span class="struct-val">Regulation D, Rule 506(c) and Regulation S — verified accredited investors and qualified non-U.S. persons</span>
+          </div>
+          <div class="struct-item">
+            <span class="struct-label">Investor Eligibility</span>
+            <span class="struct-val">Accredited investors as defined under SEC Rule 501(a) — income, net worth, or professional certification standards</span>
+          </div>
+          <div class="struct-item">
+            <span class="struct-label">Platforms</span>
+            <span class="struct-val">SensQor · Cenovix · EntelMed · Seqara — each independently incorporated with dedicated management</span>
+          </div>
+          <div class="struct-item">
+            <span class="struct-label">Operating Framework</span>
+            <span class="struct-val">Cebron Operating System (COS) — deployed at every acquisition across all platforms</span>
+          </div>
+          <div class="struct-item">
+            <span class="struct-label">M&amp;A Advisory</span>
+            <span class="struct-val">CFG conducts sell-side M&amp;A advisory on mid-market transactions, generating fee income that supports holding company operations independent of platform performance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="cta-band-inner">
+    <div class="reveal">
+      <h2 class="cta-band-h">Ready to invest alongside CFG?</h2>
+      <p class="cta-band-body">Current investment opportunities are available exclusively through the Cebron Capital investor portal. Accredited investors can create an account, complete verification, and access offering documents in minutes.</p>
+    </div>
+    <div class="cta-band-actions reveal d1">
+      <a href="cfg-invest.html" class="btn-white">View Investment Opportunities</a>
+      <a href="cfg-private-markets.html" class="btn-ghost-white">Learn About Private Markets</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Cebron Financial Group</div>
+        <div class="footer-brand-sub">Inc. &nbsp;·&nbsp; Delaware</div>
+        <p class="footer-brand-desc">Conceives, designs, builds, and scales acquisition platforms in sectors where consolidation creates lasting value. Securities offered through Cebron Capital, LLC.</p>
+      </div>
+      <div>
+        <div class="footer-col-head">Private Markets</div>
+        <ul class="footer-links">
+          <li><a href="cfg-private-markets.html">Why Private Markets</a></li>
+          <li><a href="cfg-private-markets.html#compare">Public vs. Private</a></li>
+          <li><a href="cfg-private-markets.html#drivers">Why Now</a></li>
+          <li><a href="index.html#pma">Private Market Alpha</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Invest</div>
+        <ul class="footer-links">
+          <li><a href="https://cebroncapital.com" target="_blank">Cebron Capital Portal ↗</a></li>
+          <li><a href="#">Current Offerings</a></li>
+          <li><a href="#">Offering Documents</a></li>
+          <li><a href="#">Investor FAQ</a></li>
+          <li><a href="#">Accreditation</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Platforms</div>
+        <ul class="footer-links">
+          <li><a href="#">SensQor</a></li>
+          <li><a href="#">Cenovix</a></li>
+          <li><a href="#">EntelMed</a></li>
+          <li><a href="#">Seqara</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Company</div>
+        <ul class="footer-links">
+          <li><a href="cfg-about.html">About CFG</a></li>
+          <li><a href="#model">Investment Strategy</a></li>
+          <li><a href="#">Leadership</a></li>
+          <li><a href="#">Press &amp; Media</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-legal">© 2025 Cebron Financial Group, Inc. All rights reserved. Securities are offered through Cebron Capital, LLC, an affiliate of Cebron Financial Group, Inc., pursuant to Regulation D, Rule 506(c) and Regulation S of the Securities Act of 1933. These securities have not been registered under the Securities Act of 1933 or any state securities laws. Investment involves significant risk including the potential loss of principal. Not FDIC insured. Not bank guaranteed. This page does not constitute an offer to sell or a solicitation to buy any securities. Any such offer is made only through the official offering memorandum available to verified investors through the Cebron Capital investor portal. Past performance is not indicative of future results. All investors should consult with their own financial, legal, and tax advisors prior to investing.</p>
+      <div class="footer-entity">Cebron Financial Group, Inc.<br>Delaware Corporation<br>© 2025</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(e => {
+    e.forEach(i => { if (i.isIntersecting) { i.target.classList.add('visible'); obs.unobserve(i.target) } })
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  const nav = document.getElementById('mainnav');
+  window.addEventListener('scroll', () => { nav.className = window.scrollY > 80 ? 'light' : 'dark' });
+</script>
+</body>
+</html>

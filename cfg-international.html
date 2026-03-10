@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>International Investors — Cebron Financial Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --navy:#0C1C2E;
+  --navy-deep:#070F1A;
+  --navy-mid:#112236;
+  --gold:#A8822E;
+  --gold-lt:#C09A3A;
+  --white:#FFFFFF;
+  --off:#F5F5F3;
+  --rule:#E2E2DE;
+  --text:#0D0D0D;
+  --body:#3A3A3A;
+  --mid:#6B6B6B;
+}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:17px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:64px;display:flex;align-items:center;transition:all 0.3s}
+nav.dark{background:rgba(7,15,26,0.95);border-bottom:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(12px)}
+nav.light{background:rgba(255,255,255,0.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(12px)}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 48px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:0.02em;transition:color 0.3s}
+nav.dark .nav-logo{color:var(--white)}
+nav.light .nav-logo{color:var(--navy)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;transition:color 0.2s}
+nav.dark .nav-links a{color:rgba(255,255,255,0.72)}
+nav.dark .nav-links a:hover{color:var(--white)}
+nav.light .nav-links a{color:var(--mid)}
+nav.light .nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--gold);color:var(--white)!important;padding:8px 20px;font-size:13px;font-weight:600;transition:opacity 0.2s!important}
+nav.light .nav-cta{background:var(--navy)}
+.nav-cta:hover{opacity:0.88!important}
+
+/* ─── HERO ─── */
+.hero{position:relative;min-height:100vh;background:var(--navy-deep);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.hero-accent{position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);z-index:4}
+
+/* IMAGE PLACEHOLDER — HERO */
+.hero-img{position:absolute;inset:0;z-index:1}
+.img-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;position:relative;overflow:hidden}
+.img-placeholder.hero-ph{background:linear-gradient(150deg,#050D17 0%,#0a1828 40%,#0d2240 100%)}
+.img-ph-label{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(168,130,46,0.6);background:rgba(168,130,46,0.08);border:1px solid rgba(168,130,46,0.2);padding:8px 16px;position:absolute;bottom:24px;left:50%;transform:translateX(-50%);white-space:nowrap;z-index:10}
+.img-ph-icon{font-size:32px;opacity:0.15;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.img-ph-type{font-size:12px;font-weight:400;color:rgba(255,255,255,0.12);position:absolute;bottom:54px;left:50%;transform:translateX(-50%);white-space:nowrap;letter-spacing:0.06em;text-transform:uppercase}
+
+.hero-grid-lines{position:absolute;inset:0;z-index:2;opacity:0.04;background-image:linear-gradient(rgba(255,255,255,0.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.8) 1px,transparent 1px);background-size:80px 80px}
+.hero-overlay{position:absolute;inset:0;z-index:3;background:linear-gradient(to top,rgba(7,15,26,0.92) 0%,rgba(7,15,26,0.55) 50%,rgba(7,15,26,0.3) 100%)}
+
+.hero-content{position:relative;z-index:5;max-width:1320px;margin:0 auto;padding:0 48px 0;width:100%}
+.breadcrumb{display:flex;align-items:center;gap:10px;margin-bottom:40px}
+.breadcrumb a{font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.38);transition:color 0.2s}
+.breadcrumb a:hover{color:var(--gold)}
+.bc-sep{color:rgba(255,255,255,0.2)}
+.bc-cur{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.hero-h1{font-size:clamp(52px,6vw,92px);font-weight:800;color:var(--white);line-height:1.02;letter-spacing:-0.03em;max-width:1000px;margin-bottom:28px}
+.hero-h1 span{color:var(--gold)}
+.hero-deck{font-size:20px;font-weight:400;line-height:1.65;color:rgba(255,255,255,0.72);max-width:640px;margin-bottom:0}
+
+/* Hero stats */
+.hero-stats{position:relative;z-index:5;border-top:1px solid rgba(255,255,255,0.08);background:rgba(0,0,0,0.25);margin-top:80px}
+.hero-stats-inner{max-width:1320px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:repeat(4,1fr)}
+.hs-item{padding:36px 0;border-right:1px solid rgba(255,255,255,0.08)}
+.hs-item+.hs-item{padding-left:40px}
+.hs-item:last-child{border-right:none}
+.hs-num{font-size:48px;font-weight:800;color:var(--white);line-height:1;letter-spacing:-0.03em;margin-bottom:8px}
+.hs-desc{font-size:14px;font-weight:400;color:rgba(255,255,255,0.62);line-height:1.5;max-width:240px;margin-bottom:4px}
+.hs-src{font-size:12px;font-weight:400;color:rgba(255,255,255,0.32)}
+
+/* ─── SHARED UTILITIES ─── */
+.section-wrap{max-width:1320px;margin:0 auto;padding:0 48px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.section-h{font-size:clamp(36px,3.8vw,58px);font-weight:800;line-height:1.06;letter-spacing:-0.03em}
+.section-h em{font-style:normal;color:var(--gold)}
+
+/* ─── REG S EXPLAINER ─── */
+.regs{background:var(--white);padding:120px 0;border-bottom:1px solid var(--rule)}
+.regs-grid{display:grid;grid-template-columns:440px 1fr;gap:96px;align-items:start}
+.regs-left{}
+.regs-h{color:var(--text)}
+.regs-lead{font-size:20px;font-weight:600;color:var(--text);line-height:1.5;margin-bottom:24px;margin-top:20px}
+.regs-body{font-size:17px;font-weight:400;line-height:1.7;color:var(--body);margin-bottom:22px}
+.regs-right{}
+.regs-card{background:var(--navy);padding:52px 48px;margin-bottom:3px}
+.regs-card-eyebrow{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.regs-card-title{font-size:24px;font-weight:800;color:var(--white);margin-bottom:16px;letter-spacing:-0.02em;line-height:1.2}
+.regs-card-body{font-size:15px;font-weight:400;color:rgba(255,255,255,0.68);line-height:1.7}
+.regs-card-body strong{font-weight:600;color:var(--white)}
+.regs-facts{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:3px}
+.regs-fact{background:var(--off);border:1px solid var(--rule);padding:28px 28px}
+.regs-fact-n{font-size:36px;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-0.03em;margin-bottom:8px}
+.regs-fact-label{font-size:14px;font-weight:500;color:var(--body);line-height:1.5}
+
+/* ─── REGIONAL SECTIONS ─── */
+/* Europe */
+.region{padding:120px 0}
+.region.alt{background:var(--off)}
+.region-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+.region-grid.reverse{direction:rtl}
+.region-grid.reverse > *{direction:ltr}
+
+/* IMAGE PLACEHOLDER — REGIONAL */
+.region-img{position:relative;overflow:hidden;min-height:560px}
+.region-img .img-placeholder{position:absolute;inset:0;height:100%}
+.img-placeholder.europe-ph{background:linear-gradient(135deg,#1a2530 0%,#243040 100%)}
+.img-placeholder.gulf-ph{background:linear-gradient(135deg,#1C1608 0%,#2A210D 100%)}
+.img-placeholder.asia-ph{background:linear-gradient(135deg,#0D1820 0%,#152535 100%)}
+.img-placeholder.latam-ph{background:linear-gradient(135deg,#0F1F10 0%,#162A18 100%)}
+
+.region-content{padding:80px 72px;display:flex;flex-direction:column;justify-content:center}
+.region.alt .region-content{background:var(--white)}
+.region-flag{font-size:28px;margin-bottom:24px}
+.region-eyebrow{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.region-h{font-size:clamp(30px,3vw,44px);font-weight:800;color:var(--text);line-height:1.06;letter-spacing:-0.03em;margin-bottom:20px}
+.region-h em{font-style:normal;color:var(--gold)}
+.region-body{font-size:17px;font-weight:400;line-height:1.7;color:var(--body);margin-bottom:24px}
+.region-items{border-top:1px solid var(--rule);margin-bottom:40px}
+.region-item{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--rule)}
+.region-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;margin-top:9px;flex-shrink:0}
+.region-text{font-size:15px;font-weight:400;color:var(--body);line-height:1.65}
+.region-text strong{font-weight:600;color:var(--text)}
+.region-access-box{background:var(--off);border-left:3px solid var(--gold);padding:20px 24px}
+.region-access-label{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.region-access-text{font-size:14px;font-weight:400;color:var(--body);line-height:1.65}
+.region-access-text strong{font-weight:600;color:var(--text)}
+
+/* Dark region variant */
+.region.dark-bg{background:var(--navy-deep)}
+.region.dark-bg .region-content{background:transparent;padding:80px 72px}
+.region.dark-bg .region-h{color:var(--white)}
+.region.dark-bg .region-body{color:rgba(255,255,255,0.72)}
+.region.dark-bg .region-items{border-top:1px solid rgba(255,255,255,0.1)}
+.region.dark-bg .region-item{border-bottom:1px solid rgba(255,255,255,0.07)}
+.region.dark-bg .region-text{color:rgba(255,255,255,0.72)}
+.region.dark-bg .region-text strong{color:var(--white)}
+.region.dark-bg .region-access-box{background:rgba(168,130,46,0.07);border-left:3px solid var(--gold)}
+.region.dark-bg .region-access-text{color:rgba(255,255,255,0.65)}
+.region.dark-bg .region-access-text strong{color:rgba(255,255,255,0.9)}
+
+/* ─── HOW TO INVEST ─── */
+.process{background:var(--white);padding:120px 0;border-top:1px solid var(--rule)}
+.process-header{margin-bottom:80px}
+.process-h{color:var(--text);max-width:720px;margin-top:0}
+.process-sub{font-size:18px;font-weight:400;color:var(--body);line-height:1.65;max-width:600px;margin-top:20px}
+.process-track{position:relative}
+.process-line{position:absolute;top:32px;left:32px;right:32px;height:1px;background:var(--rule);z-index:0}
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);position:relative;z-index:1}
+.process-step{padding:0 24px;display:flex;flex-direction:column;align-items:flex-start}
+.ps-dot-row{display:flex;align-items:center;margin-bottom:28px;width:100%}
+.ps-dot{width:64px;height:64px;background:var(--white);border:2px solid var(--rule);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:2;transition:border-color 0.2s}
+.process-step:hover .ps-dot{border-color:var(--gold)}
+.ps-dot-n{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-0.02em}
+.ps-connector{flex:1;height:1px;background:var(--rule)}
+.process-step:last-child .ps-connector{display:none}
+.ps-n{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.ps-title{font-size:17px;font-weight:700;color:var(--text);margin-bottom:10px;line-height:1.25;letter-spacing:-0.01em}
+.ps-body{font-size:14px;font-weight:400;line-height:1.65;color:var(--body)}
+.process-note{margin-top:56px;background:var(--off);border:1px solid var(--rule);padding:36px 44px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.process-note-text{font-size:16px;font-weight:400;color:var(--body);line-height:1.65}
+.process-note-text strong{font-weight:600;color:var(--text)}
+.btn-navy{display:inline-block;background:var(--navy);color:var(--white);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 32px;white-space:nowrap;transition:opacity 0.2s}
+.btn-navy:hover{opacity:0.88}
+
+/* ─── JURISDICTION STRIP ─── */
+.jurisdiction{background:var(--navy-deep);padding:120px 0}
+.jurisdiction-header{display:grid;grid-template-columns:520px 1fr;gap:80px;align-items:start;margin-bottom:72px}
+.jurisdiction-h{color:var(--white)}
+.jurisdiction-intro{font-size:17px;font-weight:400;color:rgba(255,255,255,0.68);line-height:1.7;padding-top:8px}
+.jur-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.jur-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:44px 36px;transition:background 0.25s}
+.jur-card:hover{background:rgba(255,255,255,0.06)}
+.jur-icon{font-size:24px;margin-bottom:20px;opacity:0.75;display:block}
+.jur-title{font-size:20px;font-weight:700;color:var(--white);margin-bottom:14px;line-height:1.2;letter-spacing:-0.01em}
+.jur-body{font-size:15px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:20px}
+.jur-note{font-size:13px;font-weight:400;color:rgba(255,255,255,0.38);line-height:1.65;padding-top:16px;border-top:1px solid rgba(255,255,255,0.07)}
+.jur-note strong{font-weight:600;color:rgba(168,130,46,0.9)}
+.jur-disclaimer{margin-top:52px;background:rgba(168,130,46,0.07);border:1px solid rgba(168,130,46,0.18);padding:40px 52px}
+.jur-disclaimer-eyebrow{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.jur-disclaimer-text{font-size:15px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.75}
+.jur-disclaimer-text strong{font-weight:600;color:rgba(255,255,255,0.9)}
+
+/* ─── REG S ELIGIBILITY CARD ─── */
+.eligibility{background:var(--off);padding:120px 0;border-top:1px solid var(--rule)}
+.elig-layout{display:grid;grid-template-columns:1fr 520px;gap:96px;align-items:start}
+.elig-left{}
+.elig-h{color:var(--text)}
+.elig-body-text{font-size:17px;font-weight:400;color:var(--body);line-height:1.7;margin-bottom:24px;margin-top:20px}
+.elig-link{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(168,130,46,0.35);padding-bottom:4px;transition:border-color 0.2s}
+.elig-link:hover{border-color:var(--gold)}
+.elig-card{background:var(--navy);overflow:hidden}
+.elig-card-head{padding:32px 40px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.elig-card-eyebrow{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.elig-card-title{font-size:20px;font-weight:700;color:var(--white);line-height:1.3}
+.elig-card-rows{padding:0 40px}
+.elig-row{display:grid;grid-template-columns:100px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.elig-row:last-child{border-bottom:none}
+.elig-type{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);padding-top:2px}
+.elig-val{font-size:14px;font-weight:400;color:rgba(255,255,255,0.72);line-height:1.6}
+.elig-card-foot{padding:24px 40px;background:rgba(0,0,0,0.2);border-top:1px solid rgba(255,255,255,0.08)}
+.elig-fine{font-size:13px;font-weight:400;color:rgba(255,255,255,0.35);line-height:1.6}
+
+/* ─── TESTIMONIAL / QUOTE FEATURE ─── */
+.quote-feature{background:var(--gold);padding:96px 0}
+.quote-feature-inner{max-width:1320px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 480px;gap:96px;align-items:center}
+.qf-left{}
+.qf-mark{font-size:96px;font-weight:800;color:rgba(255,255,255,0.2);line-height:0.7;margin-bottom:24px}
+.qf-text{font-size:clamp(22px,2.4vw,32px);font-weight:600;color:var(--white);line-height:1.4;letter-spacing:-0.02em;margin-bottom:20px}
+.qf-attr{font-size:14px;font-weight:500;color:rgba(255,255,255,0.65)}
+
+/* IMAGE PLACEHOLDER — QUOTE SECTION */
+.qf-img{position:relative;overflow:hidden;min-height:440px}
+.img-placeholder.quote-ph{background:linear-gradient(145deg,#0a1828 0%,#0C1C2E 100%)}
+
+/* ─── FAQ ─── */
+.faq{background:var(--white);padding:120px 0;border-top:1px solid var(--rule)}
+.faq-layout{display:grid;grid-template-columns:360px 1fr;gap:80px;align-items:start}
+.faq-sidebar{}
+.faq-sticky{position:sticky;top:84px}
+.faq-sidebar-h{font-size:clamp(30px,3vw,44px);font-weight:800;color:var(--text);line-height:1.1;letter-spacing:-0.03em;margin-bottom:20px}
+.faq-sidebar-h em{font-style:normal;color:var(--gold)}
+.faq-sidebar-body{font-size:16px;font-weight:400;color:var(--body);line-height:1.7;margin-bottom:32px}
+.btn-gold{display:inline-block;background:var(--gold);color:var(--white);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 28px;transition:opacity 0.2s}
+.btn-gold:hover{opacity:0.88}
+.faq-questions{}
+.faq-item{border-bottom:1px solid var(--rule);padding:28px 0}
+.faq-item:first-child{border-top:1px solid var(--rule)}
+.faq-q{font-size:18px;font-weight:700;color:var(--text);margin-bottom:14px;line-height:1.3;letter-spacing:-0.01em}
+.faq-a{font-size:16px;font-weight:400;color:var(--body);line-height:1.7}
+.faq-a strong{font-weight:600;color:var(--text)}
+
+/* ─── CTA SPLIT ─── */
+.cta{display:grid;grid-template-columns:1fr 1fr}
+.cta-left{background:var(--navy);padding:96px 80px 96px 48px;display:flex;flex-direction:column;justify-content:center}
+.cta-left-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:20px}
+.cta-left-h{font-size:clamp(28px,2.8vw,42px);font-weight:800;color:var(--white);line-height:1.1;letter-spacing:-0.03em;margin-bottom:18px}
+.cta-left-h em{font-style:normal;color:var(--gold)}
+.cta-left-body{font-size:17px;font-weight:400;color:rgba(255,255,255,0.72);line-height:1.65;margin-bottom:44px;max-width:420px}
+.cta-btns{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.btn-gold-lg{display:inline-block;background:var(--gold);color:var(--white);font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:15px 36px;transition:opacity 0.2s}
+.btn-gold-lg:hover{opacity:0.88}
+.btn-ghost{display:inline-block;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.82);font-size:13px;font-weight:500;padding:14px 28px;transition:all 0.2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.7);color:var(--white)}
+
+/* IMAGE PLACEHOLDER — CTA */
+.cta-right{position:relative;overflow:hidden;min-height:560px}
+.img-placeholder.cta-ph{background:linear-gradient(145deg,#060E18 0%,#0D1E30 100%);position:absolute;inset:0;height:100%}
+
+/* ─── FOOTER ─── */
+footer{background:#04090F;padding:72px 48px 40px}
+.footer-inner{max-width:1320px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:300px repeat(4,1fr);gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:40px}
+.footer-brand-name{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
+.footer-brand-sub{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.footer-brand-desc{font-size:14px;font-weight:400;line-height:1.7;color:rgba(255,255,255,0.5)}
+.footer-col-head{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:20px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
+.footer-links a{font-size:14px;font-weight:400;color:rgba(255,255,255,0.62);transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{display:flex;gap:48px;justify-content:space-between;align-items:flex-start}
+.footer-legal{font-size:12px;font-weight:400;line-height:1.7;color:rgba(255,255,255,0.35);max-width:800px}
+.footer-entity{font-size:12px;font-weight:400;color:rgba(255,255,255,0.35);text-align:right;white-space:nowrap;flex-shrink:0}
+
+/* ─── ANIMATIONS ─── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}
+
+/* ─── HAMBURGER NAV ─── */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:6px 2px;background:none;border:none;flex-shrink:0}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--white);border-radius:1px;transition:all 0.3s}
+nav.light .nav-hamburger span{background:var(--navy)}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(6,12,22,0.98);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.1);flex-direction:column;gap:0;z-index:299;padding-bottom:8px}
+.nav-mobile.open{display:flex}
+.nav-mobile a{font-size:16px;font-weight:500;color:rgba(255,255,255,0.78);padding:16px 24px;border-bottom:1px solid rgba(255,255,255,0.07);display:block;transition:color 0.2s}
+.nav-mobile a:hover{color:var(--white)}
+.nav-mobile-cta{margin:12px 24px 8px;padding:14px 24px!important;background:var(--gold);color:var(--white)!important;text-align:center;font-weight:700!important;letter-spacing:0.06em;text-transform:uppercase;font-size:13px!important;border-bottom:none!important}
+
+/* ═══════════════════════════════════════════
+   TABLET — 1024px
+═══════════════════════════════════════════ */
+@media(max-width:1024px){
+  .nav-inner{padding:0 32px}
+  .nav-links{gap:22px}
+  .nav-links a{font-size:12px}
+  .section-wrap{padding:0 32px}
+
+  /* Hero */
+  .hero-content{padding:0 32px}
+  .hero-stats-inner{padding:0 32px;grid-template-columns:1fr 1fr}
+  .hs-item{padding:28px 0 28px 0}
+  .hs-item+.hs-item{padding-left:0}
+  .hs-item:nth-child(odd){padding-right:32px}
+  .hs-item:nth-child(even){padding-left:32px;border-left:1px solid rgba(255,255,255,0.08)}
+  .hs-item:nth-child(1),.hs-item:nth-child(2){border-right:none}
+  .hs-item:nth-child(3){border-right:none}
+  .hs-item:nth-child(3),.hs-item:nth-child(4){border-top:1px solid rgba(255,255,255,0.08)}
+
+  /* Reg S */
+  .regs{padding:96px 0}
+  .regs-grid{grid-template-columns:1fr;gap:56px}
+
+  /* Regions */
+  .region{padding:0}
+  .region-grid{grid-template-columns:1fr;grid-template-rows:400px auto}
+  .region-grid.reverse{direction:ltr;grid-template-rows:400px auto}
+  .region-grid.reverse .region-img{order:-1}
+  .region-img{min-height:400px}
+  .region-content{padding:56px 32px}
+  .region.dark-bg .region-content{padding:56px 32px}
+  .region.alt .region-content{background:var(--off)}
+
+  /* Process */
+  .process{padding:96px 0}
+  .process-line{display:none}
+  .process-steps{grid-template-columns:1fr 1fr;gap:48px 32px}
+  .process-step{padding:0}
+  .ps-connector{display:none}
+  .process-note{grid-template-columns:1fr auto}
+
+  /* Jurisdiction */
+  .jurisdiction{padding:96px 0}
+  .jurisdiction-header{grid-template-columns:1fr;gap:32px;margin-bottom:56px}
+  .jur-grid{grid-template-columns:1fr 1fr}
+
+  /* Eligibility */
+  .eligibility{padding:96px 0}
+  .elig-layout{grid-template-columns:1fr;gap:56px}
+
+  /* Quote */
+  .quote-feature{padding:80px 0}
+  .quote-feature-inner{grid-template-columns:1fr 380px;gap:64px;padding:0 32px}
+
+  /* FAQ */
+  .faq{padding:96px 0}
+  .faq-layout{grid-template-columns:300px 1fr;gap:56px}
+
+  /* CTA */
+  .cta{grid-template-columns:1fr}
+  .cta-left{padding:72px 32px}
+  .cta-right{min-height:360px}
+
+  /* Footer */
+  footer{padding:64px 32px 36px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
+  .footer-bottom{flex-direction:column;gap:20px}
+  .footer-entity{text-align:left;white-space:normal}
+}
+
+/* ═══════════════════════════════════════════
+   MOBILE — 768px
+═══════════════════════════════════════════ */
+@media(max-width:768px){
+  /* Nav — show hamburger, hide desktop links */
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .nav-inner{padding:0 20px}
+
+  /* Hero */
+  .hero{min-height:auto}
+  .hero-content{padding:104px 20px 52px}
+  .hero-deck{font-size:16px;max-width:100%}
+  .hero-eyebrow{font-size:11px}
+  .hero-btns{flex-direction:column;align-items:stretch;gap:12px}
+  .btn-gold-hero,.btn-ghost-hero{width:100%;text-align:center;padding:15px 20px;box-sizing:border-box}
+  .hero-stats{margin-top:40px}
+  .hero-stats-inner{padding:0;grid-template-columns:1fr 1fr;gap:0}
+  .hs-item{padding:24px 20px}
+  .hs-item:nth-child(odd){padding-right:16px;border-right:1px solid rgba(255,255,255,0.08)}
+  .hs-item:nth-child(even){padding-left:16px;border-left:none}
+  .hs-item:nth-child(3),.hs-item:nth-child(4){border-top:1px solid rgba(255,255,255,0.08)}
+  .hs-num{font-size:32px}
+  .hs-desc{font-size:13px}
+  .hs-src{font-size:11px}
+
+  /* Section wraps & global padding */
+  .section-wrap{padding:0 20px}
+
+  /* Reg S */
+  .regs{padding:72px 0}
+  .regs-grid{grid-template-columns:1fr;gap:44px}
+  .regs-card{padding:32px 24px}
+  .regs-facts{grid-template-columns:1fr 1fr;gap:2px}
+  .regs-fact{padding:22px 20px}
+  .regs-fact-n{font-size:28px}
+
+  /* Regions — always stack, image on top */
+  .region{padding:0}
+  .region-grid{grid-template-columns:1fr;grid-template-rows:280px auto;direction:ltr}
+  .region-grid.reverse{direction:ltr;grid-template-rows:280px auto}
+  .region-grid.reverse .region-img{order:-1}
+  .region-img{min-height:280px}
+  .region-content{padding:44px 20px 52px}
+  .region.dark-bg .region-content{padding:44px 20px 52px}
+  .region.alt .region-content{background:var(--off)}
+  .region-h{font-size:28px}
+  .region-body{font-size:16px}
+  .region-flag{margin-bottom:16px}
+
+  /* Process */
+  .process{padding:72px 0}
+  .process-header{margin-bottom:56px}
+  .process-line{display:none}
+  .process-steps{grid-template-columns:1fr;gap:0}
+  .process-step{padding:0 0 36px;border-bottom:1px solid var(--rule);margin-bottom:36px;align-items:flex-start}
+  .process-step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  .ps-dot-row{margin-bottom:18px}
+  .ps-dot{width:52px;height:52px}
+  .ps-connector{display:none}
+  .process-note{grid-template-columns:1fr;gap:20px;padding:28px 20px;text-align:left}
+  .btn-navy{width:100%;text-align:center;display:block}
+
+  /* Jurisdiction */
+  .jurisdiction{padding:72px 0}
+  .jurisdiction-header{grid-template-columns:1fr;gap:24px;margin-bottom:48px}
+  .jur-grid{grid-template-columns:1fr}
+  .jur-disclaimer{padding:28px 20px}
+
+  /* Eligibility */
+  .eligibility{padding:72px 0}
+  .elig-layout{grid-template-columns:1fr;gap:44px}
+  .elig-card-head{padding:24px 20px}
+  .elig-card-rows{padding:0 20px}
+  .elig-row{grid-template-columns:72px 1fr;gap:12px;padding:16px 0}
+  .elig-card-foot{padding:18px 20px}
+  .elig-link{font-size:13px}
+
+  /* Quote feature */
+  .quote-feature{padding:64px 0}
+  .quote-feature-inner{grid-template-columns:1fr;gap:0;padding:0}
+  .qf-left{padding:56px 20px}
+  .qf-img{min-height:240px;width:100%}
+  .qf-mark{font-size:64px;margin-bottom:16px}
+  .qf-text{font-size:20px}
+
+  /* FAQ */
+  .faq{padding:72px 0}
+  .faq-layout{grid-template-columns:1fr;gap:48px}
+  .faq-sticky{position:static}
+  .faq-sidebar-h{font-size:28px}
+  .faq-q{font-size:17px}
+
+  /* CTA */
+  .cta{grid-template-columns:1fr}
+  .cta-left{padding:64px 20px}
+  .cta-right{min-height:260px}
+  .cta-btns{gap:10px}
+  .btn-gold-lg{width:100%;text-align:center;display:block;padding:15px 20px}
+  .btn-ghost{width:100%;text-align:center;display:block;padding:14px 20px}
+
+  /* Footer */
+  footer{padding:56px 20px 32px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px 24px}
+  .footer-brand-name,.footer-brand-sub,.footer-brand-desc{display:block}
+  .footer-grid > div:first-child{grid-column:1/-1}
+  .footer-bottom{flex-direction:column;gap:16px}
+  .footer-entity{text-align:left;white-space:normal}
+
+  /* Image placeholder labels — prevent overflow */
+  .img-ph-label{font-size:10px;letter-spacing:0.06em;white-space:normal;text-align:center;width:calc(100% - 32px);left:16px;transform:none;bottom:14px;line-height:1.5}
+  .img-ph-type{display:none}
+}
+
+/* ═══════════════════════════════════════════
+   SMALL PHONE — 480px
+═══════════════════════════════════════════ */
+@media(max-width:480px){
+  .nav-inner{padding:0 16px}
+  .section-wrap{padding:0 16px}
+  footer{padding:48px 16px 28px}
+
+  /* Hero */
+  .hero-content{padding:92px 16px 44px}
+
+  /* Hero stats — single column */
+  .hero-stats-inner{grid-template-columns:1fr;padding:0}
+  .hs-item{padding:18px 20px;border-right:none!important;border-bottom:1px solid rgba(255,255,255,0.08)}
+  .hs-item:last-child{border-bottom:none}
+  .hs-item:nth-child(3){border-top:none}
+  .hs-item:nth-child(even){padding-left:20px;border-left:none}
+
+  /* Reg S facts — single column on very small */
+  .regs-facts{grid-template-columns:1fr}
+  .regs-card{padding:28px 16px}
+
+  /* Regions */
+  .region-content{padding:36px 16px 44px}
+  .region.dark-bg .region-content{padding:36px 16px 44px}
+  .region-img{min-height:240px}
+  .region-grid{grid-template-rows:240px auto}
+  .region-grid.reverse{grid-template-rows:240px auto}
+
+  /* Process */
+  .process-note{padding:24px 16px}
+  .process-step{padding-bottom:28px;margin-bottom:28px}
+
+  /* Jurisdiction */
+  .jur-disclaimer{padding:24px 16px}
+  .jur-card{padding:32px 20px}
+
+  /* Eligibility */
+  .elig-card-head{padding:20px 16px}
+  .elig-card-rows{padding:0 16px}
+  .elig-row{grid-template-columns:64px 1fr;gap:10px}
+  .elig-card-foot{padding:16px 16px}
+
+  /* Quote */
+  .qf-left{padding:48px 16px}
+
+  /* CTA */
+  .cta-left{padding:56px 16px}
+
+  /* FAQ */
+  .faq-item{padding:22px 0}
+  .faq-q{font-size:16px}
+
+  /* Footer — single column */
+  .footer-grid{grid-template-columns:1fr}
+  .footer-grid > div:first-child{grid-column:auto}
+}
+</style>
+</head>
+<body>
+
+<nav class="dark" id="mainnav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Cebron Financial Group</a>
+    <ul class="nav-links">
+      <li><a href="cfg-private-markets.html">Private Markets</a></li>
+      <li><a href="cfg-about.html">About CFG</a></li>
+      <li><a href="index.html#pma">Private Market Alpha</a></li>
+      <li><a href="cfg-invest.html">Invest</a></li>
+      <li><a href="https://cebroncapital.com" target="_blank" class="nav-cta">Investor Portal</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="cfg-private-markets.html">Private Markets</a>
+    <a href="cfg-about.html">About CFG</a>
+    <a href="index.html#pma">Private Market Alpha</a>
+    <a href="cfg-invest.html">Invest</a>
+    <a href="https://cebroncapital.com" target="_blank" class="nav-mobile-cta">Investor Portal →</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
+<section class="hero" id="top">
+  <div class="hero-accent"></div>
+
+  <!-- ╔══════════════════════════════════════════════════════════════╗
+       ║  IMAGE PLACEHOLDER — HERO BACKGROUND                        ║
+       ║  Recommended: Aerial/elevated nighttime cityscape showing   ║
+       ║  two or more international financial districts — Dubai,     ║
+       ║  London, Singapore, or Hong Kong skyline. Wide, horizontal  ║
+       ║  format. Dark, moody color grade. City lights should create ║
+       ║  depth. The navy overlay at bottom (~60%) is applied in CSS ║
+       ║  so the photo need not be dark — overlay handles contrast.  ║
+       ║  Size: 1920×1080 minimum. Shoot landscape orientation.      ║
+       ╚══════════════════════════════════════════════════════════════╝ -->
+  <div class="hero-img">
+    <div class="img-placeholder hero-ph">
+      <span class="img-ph-icon">🌐</span>
+      <span class="img-ph-type">Aerial · International Financial District · Night</span>
+      <span class="img-ph-label">📷 IMAGE: Aerial nighttime cityscape — Dubai / London / Singapore / Hong Kong skyline</span>
+    </div>
+  </div>
+
+  <div class="hero-grid-lines"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="cfg-invest.html">Invest</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-cur">International Investors</span>
+    </div>
+    <div class="hero-eyebrow">Global Investor Access &nbsp;·&nbsp; Regulation S</div>
+    <h1 class="hero-h1">U.S. private markets.<br><span>Open to the world.</span></h1>
+    <p class="hero-deck">Cebron Capital's offering structure is built from the ground up to accommodate international participation. Qualified non-U.S. investors across Europe, the Gulf, Asia Pacific, and Latin America can access the CFG acquisition platform strategy under Regulation S — without meeting the U.S. accredited investor standard.</p>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stats-inner">
+      <div class="hs-item">
+        <div class="hs-num">$13<sup style="font-size:26px;vertical-align:super">T</sup></div>
+        <div class="hs-desc">Global private market AUM — a market that transcends national borders</div>
+        <div class="hs-src">McKinsey Global Private Markets Review 2024</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num">24M+</div>
+        <div class="hs-desc">U.S. households qualify as accredited investors under SEC Rule 501(a)</div>
+        <div class="hs-src">SEC Accredited Investor Report 2023</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num">4</div>
+        <div class="hs-desc">Distinct acquisition platform sectors open to international investor participation</div>
+        <div class="hs-src">Cebron Financial Group</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num">Reg S</div>
+        <div class="hs-desc">The SEC exemption that opens U.S. private market investing to qualified non-U.S. persons globally</div>
+        <div class="hs-src">Securities Act of 1933</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ REG S EXPLAINER ═══════════════════════════════════════ -->
+<section class="regs" id="regs">
+  <div class="section-wrap">
+    <div class="regs-grid reveal">
+      <div class="regs-left">
+        <div class="eyebrow">Regulation S — The Legal Framework</div>
+        <h2 class="section-h regs-h">The regulation that opened U.S. private markets to the world.</h2>
+        <p class="regs-lead">You do not need to be a U.S. citizen, a U.S. resident, or a U.S. accredited investor to access Cebron Capital's investment offerings.</p>
+        <p class="regs-body">Regulation S is an exemption under the U.S. Securities Act of 1933 that permits U.S. companies to offer and sell securities to non-U.S. persons in offshore transactions without registering those securities with the SEC. This is the same legal framework used by major U.S. private equity firms, hedge funds, and institutional asset managers to raise capital from international investors.</p>
+        <p class="regs-body">Under Regulation S, the key requirement is that you qualify as a non-U.S. person — meaning you are located outside the United States and are not purchasing on behalf of a U.S. person — and that you comply with the applicable securities laws in your own jurisdiction. There is no income threshold, no net worth minimum, and no professional certification requirement equivalent to the U.S. accredited investor standard.</p>
+        <p class="regs-body">CFG has structured Cebron Capital's offering from inception to serve both U.S. accredited investors under Regulation D Rule 506(c) and international investors under Regulation S simultaneously. Both pathways lead to the same investment opportunity — the CFG acquisition platform strategy.</p>
+      </div>
+      <div class="regs-right reveal d1">
+        <div class="regs-card">
+          <div class="regs-card-eyebrow">What Regulation S Means for You</div>
+          <div class="regs-card-title">Four things international investors need to know</div>
+          <p class="regs-card-body">Regulation S allows <strong>non-U.S. persons in offshore transactions</strong> to invest in U.S. private securities without the full SEC registration process. The offering is <strong>not registered</strong> under the Securities Act of 1933. You must qualify as a non-U.S. person and comply with the laws of your home jurisdiction. <strong>U.S. tax implications</strong> differ from domestic investors — international investors should obtain qualified tax counsel. Cebron Capital will verify your status through the investor portal before providing access to offering documents.</p>
+        </div>
+        <div class="regs-facts">
+          <div class="regs-fact">
+            <div class="regs-fact-n">No</div>
+            <div class="regs-fact-label">U.S. residency required to participate</div>
+          </div>
+          <div class="regs-fact">
+            <div class="regs-fact-n">No</div>
+            <div class="regs-fact-label">U.S. accredited investor standard required</div>
+          </div>
+          <div class="regs-fact">
+            <div class="regs-fact-n">Yes</div>
+            <div class="regs-fact-label">Home-jurisdiction law compliance is required</div>
+          </div>
+          <div class="regs-fact">
+            <div class="regs-fact-n">Yes</div>
+            <div class="regs-fact-label">Independent legal and tax advice is strongly recommended</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ EUROPE / UK ═══════════════════════════════════════ -->
+<section class="region" id="europe">
+  <div class="region-grid">
+
+    <!-- ╔══════════════════════════════════════════════════════════════╗
+         ║  IMAGE PLACEHOLDER — EUROPE / UK                            ║
+         ║  Recommended: Street-level or low-aerial view of London     ║
+         ║  financial district (Canary Wharf, City of London, or       ║
+         ║  Frankfurt banking district). Daytime, overcast or golden   ║
+         ║  hour preferred. Modern glass towers, sense of scale and    ║
+         ║  institutional gravitas. Not tourist/postcard — banking     ║
+         ║  district architecture, professionals in frame optional.    ║
+         ║  Vertical crop preferred (fills tall left panel at desktop) ║
+         ╚══════════════════════════════════════════════════════════════╝ -->
+    <div class="region-img">
+      <div class="img-placeholder europe-ph">
+        <span class="img-ph-icon">🏛️</span>
+        <span class="img-ph-type">Street-level · London / Frankfurt Financial District · Day</span>
+        <span class="img-ph-label">📷 IMAGE: London Canary Wharf or City of London banking district — institutional architecture</span>
+      </div>
+    </div>
+
+    <div class="region-content">
+      <div class="region-eyebrow">Europe &amp; United Kingdom</div>
+      <h2 class="region-h">U.S. private market exposure.<br><em>Structured for European capital.</em></h2>
+      <p class="region-body">European and UK high-net-worth individuals, family offices, and institutional-adjacent investors seeking exposure to the U.S. lower-middle-market acquisition compounding strategy have historically faced a narrow set of options: large-cap PE funds with high minimums and long blind-pool commitments, or listed vehicles that trade at a discount to NAV. CFG's structured note changes that calculation.</p>
+      <p class="region-body">The Cebron Capital note provides USD-denominated quarterly income plus equity-style upside participation in four sectors of the U.S. real economy — environmental engineering, healthcare technology, laboratory services, and industrial inspection — with a defined maturity structure that fits within standard international private wealth allocation frameworks.</p>
+      <div class="region-items">
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>GDPR-compliant investor portal</strong> — all data handling meets EU and UK data protection requirements</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>USD-denominated instrument</strong> — provides direct exposure to U.S. dollar income for investors seeking currency diversification</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>Defined maturity structure</strong> — compatible with private wealth allocation frameworks that require defined holding periods and return of principal</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>Legal counsel available</strong> — CFG can assist with introductions to legal counsel in major European jurisdictions upon request</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>Family office-compatible</strong> — structuring is compatible with trust, family limited partnership, and family office investment vehicle frameworks</span></div>
+      </div>
+      <div class="region-access-box">
+        <div class="region-access-label">Access Framework</div>
+        <p class="region-access-text">Available to qualifying <strong>non-U.S. persons under Regulation S</strong> of the Securities Act of 1933. Investors must confirm they are located outside the United States and are not acting on behalf of a U.S. person. Compliance with applicable EU/UK securities laws is the investor's responsibility.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ GULF / MIDDLE EAST ═══════════════════════════════════════ -->
+<section class="region dark-bg" id="gulf">
+  <div class="region-grid reverse">
+    <div class="region-content">
+      <div class="region-eyebrow">Middle East &amp; Gulf Region</div>
+      <h2 class="region-h">Current income.<br><em>Real asset ownership. Gulf-aligned.</em></h2>
+      <p class="region-body">Gulf-region family offices, private banks, and sovereign-adjacent wealth vehicles have consistently been among the most sophisticated allocators to U.S. private markets globally. The CFG structured note offers a current income component — quarterly interest payments — that is structurally compatible with many Gulf-region wealth preservation mandates. Investors seeking to evaluate Shariah compliance should obtain independent review from qualified Islamic finance scholars.</p>
+      <p class="region-body">CFG's acquisition platforms operate in sectors with strong relevance to long-horizon Gulf-region capital: environmental and infrastructure services, healthcare, and industrial inspection are all sectors tied to the same infrastructure spending themes that Gulf sovereign wealth funds have long prioritized in their own domestic and international portfolios.</p>
+      <div class="region-items">
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>Current income focus</strong> — quarterly interest payments from day one, compatible with wealth preservation mandates requiring regular distributions</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>Infrastructure sector alignment</strong> — CFG's environmental engineering and industrial inspection platforms serve the same infrastructure economy that Gulf sovereign capital prioritizes</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>Shariah compliance review</strong> — independent Islamic finance review available; investors should consult qualified scholars for personal determinations</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>Arabic-language investor relations</strong> — available on request for qualified Gulf-region investors through the Cebron Capital portal</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>USD denomination</strong> — direct exposure to U.S. dollar income consistent with the reserve currency holdings common to Gulf-region private wealth vehicles</span></div>
+      </div>
+      <div class="region-access-box">
+        <div class="region-access-label">Access Framework</div>
+        <p class="region-access-text">Available to qualifying <strong>non-U.S. persons under Regulation S</strong>. Investors must comply with applicable securities laws in their home jurisdiction including any regulations of the relevant Gulf financial authority (DIFC, ADGM, CMA, QFC, or equivalent). Independent Shariah compliance review is the investor's responsibility.</p>
+      </div>
+    </div>
+
+    <!-- ╔══════════════════════════════════════════════════════════════╗
+         ║  IMAGE PLACEHOLDER — GULF / MIDDLE EAST                     ║
+         ║  Recommended: Dubai International Financial Centre (DIFC)   ║
+         ║  or Abu Dhabi skyline at dusk or golden hour. Modern        ║
+         ║  architectural forms, warm light, sense of scale. Or an     ║
+         ║  interior shot of a premium private banking environment —   ║
+         ║  meeting room, conversation, neutral luxury setting.        ║
+         ║  High contrast, warm tones. Avoid clichés (no camels,       ║
+         ║  no desert). Financial district architecture preferred.     ║
+         ╚══════════════════════════════════════════════════════════════╝ -->
+    <div class="region-img">
+      <div class="img-placeholder gulf-ph">
+        <span class="img-ph-icon">🏙️</span>
+        <span class="img-ph-type">Golden Hour · Dubai DIFC / Abu Dhabi Financial District</span>
+        <span class="img-ph-label">📷 IMAGE: Dubai DIFC or Abu Dhabi skyline — golden hour, modern financial architecture</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ ASIA PACIFIC ═══════════════════════════════════════ -->
+<section class="region alt" id="asia">
+  <div class="region-grid">
+
+    <!-- ╔══════════════════════════════════════════════════════════════╗
+         ║  IMAGE PLACEHOLDER — ASIA PACIFIC                           ║
+         ║  Recommended: Singapore financial district (Marina Bay      ║
+         ║  Sands area, Raffles Place, or central business district)   ║
+         ║  OR Hong Kong harbor with Central district skyline. Dawn    ║
+         ║  or early morning light preferred — creates premium mood.   ║
+         ║  Alternatively: interior of a wealth management office,     ║
+         ║  meeting between professionals, modern Asian architecture.  ║
+         ║  Cool, neutral tones. Clean and institutional.              ║
+         ╚══════════════════════════════════════════════════════════════╝ -->
+    <div class="region-img">
+      <div class="img-placeholder asia-ph">
+        <span class="img-ph-icon">🌏</span>
+        <span class="img-ph-type">Dawn · Singapore Marina Bay / Hong Kong Central · Financial District</span>
+        <span class="img-ph-label">📷 IMAGE: Singapore Marina Bay Sands or Hong Kong Central skyline — dawn/early morning</span>
+      </div>
+    </div>
+
+    <div class="region-content" style="background:var(--off)">
+      <div class="region-eyebrow">Asia Pacific</div>
+      <h2 class="region-h">U.S. real-economy access.<br><em>For Asia Pacific capital.</em></h2>
+      <p class="region-body">High-net-worth investors and family offices across Singapore, Hong Kong, Japan, South Korea, Australia, and Southeast Asia increasingly seek diversification into U.S. private markets — moving beyond domestic equity concentration, regional real estate exposure, and the limited private market access available through local banking channels.</p>
+      <p class="region-body">CFG's acquisition platform strategy offers Asia Pacific investors direct access to the U.S. lower-middle-market compounding model — a strategy that generates returns through operational improvement of real businesses, not financial leverage. The structured note format provides a defined income and maturity profile that integrates naturally into international private wealth allocations.</p>
+      <div class="region-items">
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>Diversification from domestic concentration</strong> — uncorrelated exposure to U.S. real-economy sectors for investors with concentrated Asia Pacific equity or real estate positions</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>USD income</strong> — direct USD-denominated quarterly income stream, structurally distinct from domestic currency holdings</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>Mandarin-language investor relations</strong> — available on request for qualified Chinese-speaking investors through the Cebron Capital portal</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>No blind pool</strong> — investors see the sector and platform structure before committing, unlike traditional PE funds that require capital before portfolio companies are identified</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>Singapore, Hong Kong, and Australia</strong> — investors in major Asia Pacific jurisdictions should confirm local securities law compliance before investing</span></div>
+      </div>
+      <div class="region-access-box">
+        <div class="region-access-label">Access Framework</div>
+        <p class="region-access-text">Available to qualifying <strong>non-U.S. persons under Regulation S</strong>. Investors in Singapore, Hong Kong, Australia, Japan, and other regulated jurisdictions must confirm compliance with applicable local securities laws. This does not constitute marketing in any jurisdiction where prohibited.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ LATIN AMERICA ═══════════════════════════════════════ -->
+<section class="region" id="latam">
+  <div class="region-grid reverse">
+    <div class="region-content">
+      <div class="region-eyebrow">Latin America</div>
+      <h2 class="region-h">U.S. private market stability.<br><em>For Latin American portfolios.</em></h2>
+      <p class="region-body">Latin American high-net-worth investors face a distinctive set of portfolio challenges: domestic currency volatility, concentrated real estate holdings, limited domestic private market infrastructure, and the persistent challenge of building international diversification through vehicles designed for U.S. or European investors. CFG's structured note is accessible to qualifying non-U.S. persons regardless of domicile.</p>
+      <p class="region-body">For Latin American investors with existing offshore wealth structures — trusts, holding companies, private banking accounts in Panama, the Cayman Islands, or other international jurisdictions — Cebron Capital's offering is compatible with standard offshore wealth management frameworks, subject to applicable law review.</p>
+      <div class="region-items">
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>USD-denominated protection</strong> — for investors in currencies subject to volatility, USD-denominated quarterly income provides structural insulation</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>Offshore structure compatible</strong> — investments may be made through offshore holding companies and international trusts subject to applicable law review</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>Spanish-language investor relations</strong> — available on request for qualified Latin American investors through the Cebron Capital portal</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>No domestic market correlation</strong> — U.S. lower-middle-market acquisition compounding is structurally uncorrelated to Latin American equity or fixed income markets</span></div>
+        <div class="region-item"><div class="region-dot"></div><span class="region-text"><strong>Brazil, Mexico, Colombia, Chile, Argentina</strong> — investors must confirm compliance with applicable local securities regulations; home-jurisdiction legal review is strongly recommended</span></div>
+      </div>
+      <div class="region-access-box">
+        <div class="region-access-label">Access Framework</div>
+        <p class="region-access-text">Available to qualifying <strong>non-U.S. persons under Regulation S</strong>. Latin American investors must confirm compliance with securities laws in their country of residence. This is not an offer in any jurisdiction where such offer would be unlawful. Local legal review is strongly recommended prior to investing.</p>
+      </div>
+    </div>
+
+    <!-- ╔══════════════════════════════════════════════════════════════╗
+         ║  IMAGE PLACEHOLDER — LATIN AMERICA                          ║
+         ║  Recommended: São Paulo or Mexico City financial district   ║
+         ║  from above — Faria Lima / Berrini area (São Paulo) or      ║
+         ║  Santa Fe (Mexico City). Modern glass tower architecture,   ║
+         ║  aerial perspective, evening light preferred. Alternatively ║
+         ║  a premium private banking interior, wealth management      ║
+         ║  setting, or boardroom. Warm evening tones preferred.       ║
+         ║  Avoid tourist imagery — financial capital only.            ║
+         ╚══════════════════════════════════════════════════════════════╝ -->
+    <div class="region-img">
+      <div class="img-placeholder latam-ph">
+        <span class="img-ph-icon">🌎</span>
+        <span class="img-ph-type">Aerial Evening · São Paulo Faria Lima / Mexico City Santa Fe</span>
+        <span class="img-ph-label">📷 IMAGE: São Paulo or Mexico City financial district — aerial, evening light, modern towers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ HOW TO INVEST ═══════════════════════════════════════ -->
+<section class="process" id="process">
+  <div class="section-wrap">
+    <div class="process-header reveal">
+      <div class="eyebrow">How to Invest</div>
+      <h2 class="section-h process-h" style="color:var(--text)">Five steps from inquiry to <em>first investment.</em></h2>
+      <p class="process-sub">The entire process is completed online through the Cebron Capital investor portal. No in-person meetings are required. Most international investors complete verification within 3–5 business days.</p>
+    </div>
+    <div class="process-track reveal d1">
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="ps-dot-row">
+            <div class="ps-dot"><span class="ps-dot-n">1</span></div>
+            <div class="ps-connector"></div>
+          </div>
+          <div class="ps-n">Step 01</div>
+          <div class="ps-title">Create Your Account</div>
+          <p class="ps-body">Register at the Cebron Capital investor portal. Provide your name, email, country of residence, and investor type. Takes less than five minutes. No commitment required at this stage.</p>
+        </div>
+        <div class="process-step">
+          <div class="ps-dot-row">
+            <div class="ps-dot"><span class="ps-dot-n">2</span></div>
+            <div class="ps-connector"></div>
+          </div>
+          <div class="ps-n">Step 02</div>
+          <div class="ps-title">Non-U.S. Person Verification</div>
+          <p class="ps-body">Upload your passport and confirm your status as a non-U.S. person under Regulation S. International investors are not required to meet the U.S. accredited investor income or net worth thresholds. Verification is typically completed within 24–48 hours.</p>
+        </div>
+        <div class="process-step">
+          <div class="ps-dot-row">
+            <div class="ps-dot"><span class="ps-dot-n">3</span></div>
+            <div class="ps-connector"></div>
+          </div>
+          <div class="ps-n">Step 03</div>
+          <div class="ps-title">Review Offering Documents</div>
+          <p class="ps-body">Once verified, you gain full access to the Private Placement Memorandum, subscription documents, and any supplementary disclosure materials. Take the time you need — there is no deadline pressure. Review with your own legal and financial advisors.</p>
+        </div>
+        <div class="process-step">
+          <div class="ps-dot-row">
+            <div class="ps-dot"><span class="ps-dot-n">4</span></div>
+            <div class="ps-connector"></div>
+          </div>
+          <div class="ps-n">Step 04</div>
+          <div class="ps-title">Complete Subscription</div>
+          <p class="ps-body">Execute subscription documents electronically. Wire transfer instructions are provided through the secure portal. International wire transfers are accepted from all major banking jurisdictions. Confirm with your bank regarding international transfer procedures.</p>
+        </div>
+        <div class="process-step">
+          <div class="ps-dot-row">
+            <div class="ps-dot"><span class="ps-dot-n">5</span></div>
+            <div class="ps-connector"></div>
+          </div>
+          <div class="ps-n">Step 05</div>
+          <div class="ps-title">Receive Confirmation &amp; Updates</div>
+          <p class="ps-body">Upon acceptance, you receive your investment confirmation through the portal. Quarterly interest payments are made directly to your designated bank account. Platform performance updates are provided to all investors through the portal on a regular basis.</p>
+        </div>
+      </div>
+    </div>
+    <div class="process-note reveal d2">
+      <p class="process-note-text">Questions at any stage? Cebron Capital's investor relations team provides <strong>dedicated support for international investors</strong>. Language support is available in English, Mandarin, Spanish, and Arabic. Contact us through the portal or at <strong>investors@cebroncapital.com</strong></p>
+      <a href="https://cebroncapital.com" target="_blank" class="btn-navy">Begin Verification →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ JURISDICTION ═══════════════════════════════════════ -->
+<section class="jurisdiction" id="jurisdiction">
+  <div class="section-wrap">
+    <div class="jurisdiction-header reveal">
+      <div>
+        <div class="eyebrow" style="color:var(--gold)">Jurisdiction Considerations</div>
+        <h2 class="section-h jurisdiction-h">What international investors need to know before they invest.</h2>
+      </div>
+      <p class="jurisdiction-intro">Regulation S provides the U.S. legal basis for international participation. But each investor also operates within a home-country legal environment. Understanding how these interact is essential before committing capital. The following outlines the key considerations — this is informational only and does not constitute legal advice.</p>
+    </div>
+    <div class="jur-grid reveal d1">
+      <div class="jur-card">
+        <span class="jur-icon">⚖️</span>
+        <div class="jur-title">Home-Jurisdiction Compliance</div>
+        <p class="jur-body">Regulation S exempts the offering from U.S. registration — it does not exempt the investor from the securities laws of their home country. Some jurisdictions regulate the purchase of foreign private placements by their residents even when those placements are lawful in the issuing country.</p>
+        <div class="jur-note"><strong>What to do:</strong> Before investing, consult with a qualified securities lawyer in your country of residence to confirm that your participation in this offering is lawful under local law.</div>
+      </div>
+      <div class="jur-card">
+        <span class="jur-icon">💱</span>
+        <div class="jur-title">Currency &amp; Exchange Controls</div>
+        <p class="jur-body">Certain jurisdictions maintain controls on the outbound transfer of capital to foreign investments. International investors should confirm that their country of residence does not restrict or require regulatory approval for the type of outbound investment represented by the Cebron Capital offering.</p>
+        <div class="jur-note"><strong>What to do:</strong> Review applicable foreign exchange regulations in your jurisdiction. In some countries, central bank or treasury approval may be required for international private securities investments above certain thresholds.</div>
+      </div>
+      <div class="jur-card">
+        <span class="jur-icon">🧾</span>
+        <div class="jur-title">Tax Treatment</div>
+        <p class="jur-body">U.S.-sourced income received by non-U.S. persons is generally subject to U.S. withholding tax at the rate applicable to the type of income (interest, dividends, or capital gains). Tax treaties between the U.S. and certain countries may reduce applicable withholding rates. Home-country tax treatment of foreign private market income varies significantly by jurisdiction.</p>
+        <div class="jur-note"><strong>What to do:</strong> Obtain qualified U.S. and home-country tax advice before investing. Determine whether a tax treaty applies and whether any withholding taxes can be credited against your home-country tax liability.</div>
+      </div>
+      <div class="jur-card">
+        <span class="jur-icon">🏛️</span>
+        <div class="jur-title">FATCA &amp; Reporting</div>
+        <p class="jur-body">The Foreign Account Tax Compliance Act (FATCA) requires U.S. financial institutions and certain foreign financial institutions to report on accounts held by U.S. persons or entities with substantial U.S. ownership. Non-U.S. investors will be required to certify their non-U.S. person status as part of the verification process.</p>
+        <div class="jur-note"><strong>What to do:</strong> Be prepared to provide IRS Form W-8BEN (individuals) or W-8BEN-E (entities) as part of the subscription process, certifying your non-U.S. status and applicable treaty benefits.</div>
+      </div>
+      <div class="jur-card">
+        <span class="jur-icon">🔏</span>
+        <div class="jur-title">Anti-Money Laundering (AML)</div>
+        <p class="jur-body">Cebron Capital is required by U.S. law to implement Know Your Customer (KYC) and Anti-Money Laundering procedures for all investors. International investors will be asked to provide identity documentation, source of funds confirmation, and other information standard in institutional private market transactions.</p>
+        <div class="jur-note"><strong>What to do:</strong> Prepare to provide government-issued ID, proof of address, and source of wealth documentation as part of the verification process. This is standard procedure — not unique to international investors.</div>
+      </div>
+      <div class="jur-card">
+        <span class="jur-icon">🌐</span>
+        <div class="jur-title">Restricted Jurisdictions</div>
+        <p class="jur-body">Certain jurisdictions are subject to U.S. OFAC sanctions or other restrictions that may prevent participation in U.S. private offerings. Investors from currently sanctioned countries or persons designated on OFAC lists are not eligible to participate regardless of their Regulation S status.</p>
+        <div class="jur-note"><strong>What to do:</strong> Confirm that your country of residence is not subject to comprehensive U.S. sanctions. The Cebron Capital verification process includes OFAC screening as a standard component of KYC procedures.</div>
+      </div>
+    </div>
+    <div class="jur-disclaimer reveal d2">
+      <div class="jur-disclaimer-eyebrow">Important Legal Notice</div>
+      <p class="jur-disclaimer-text">The information on this page is provided for general informational purposes only and does not constitute legal, tax, or financial advice. <strong>Cebron Capital strongly recommends that all international investors obtain independent legal advice in their home jurisdiction and qualified U.S. tax advice before investing.</strong> This page does not constitute an offer to sell or a solicitation to buy securities in any jurisdiction where such offer or solicitation would be unlawful. Cebron Capital reserves the right to decline subscriptions from any jurisdiction at its sole discretion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ ELIGIBILITY CARD ═══════════════════════════════════════ -->
+<section class="eligibility" id="eligibility">
+  <div class="section-wrap">
+    <div class="elig-layout reveal">
+      <div class="elig-left">
+        <div class="eyebrow">Who Can Participate</div>
+        <h2 class="section-h elig-h" style="color:var(--text)">Regulation S qualification: what it means to be a <em>non-U.S. person.</em></h2>
+        <p class="elig-body-text">The Regulation S definition of "non-U.S. person" is both broader and simpler than the U.S. accredited investor standard. There is no income minimum, no net worth threshold, and no professional certification requirement. The primary criteria are geographic — where you are located and whether you are acting on behalf of a U.S. person — and transactional — whether the offer and sale occur in an offshore transaction.</p>
+        <p class="elig-body-text">In practice, for individual investors: if you live outside the United States, are not a U.S. citizen investing on your own behalf, and do not have a principal place of business in the United States, you are likely a non-U.S. person for Regulation S purposes. For entities: if the entity was formed under the laws of a jurisdiction outside the United States and does not have its principal office in the United States, it is generally a non-U.S. person.</p>
+        <p class="elig-body-text">The Cebron Capital verification process will confirm your status. If you are uncertain whether you qualify, creating an account costs nothing and the portal will guide you through the determination.</p>
+        <a href="https://cebroncapital.com" target="_blank" class="elig-link">Create Your Account to Begin Verification →</a>
+      </div>
+      <div class="elig-card reveal d1">
+        <div class="elig-card-head">
+          <div class="elig-card-eyebrow">Regulation S — Non-U.S. Person Definition (General)</div>
+          <div class="elig-card-title">You may qualify if you meet any of the following</div>
+        </div>
+        <div class="elig-card-rows">
+          <div class="elig-row">
+            <span class="elig-type">Individual</span>
+            <span class="elig-val">Any natural person resident outside the United States at the time of the offer and sale, who is not acting on behalf of a U.S. person</span>
+          </div>
+          <div class="elig-row">
+            <span class="elig-type">Partnership / Corp</span>
+            <span class="elig-val">Any partnership or corporation organized or incorporated under the laws of any foreign jurisdiction, with its principal office outside the United States</span>
+          </div>
+          <div class="elig-row">
+            <span class="elig-type">Trust</span>
+            <span class="elig-val">Any trust whose trustee is a non-U.S. person and any discretionary authority over which is held by a non-U.S. person</span>
+          </div>
+          <div class="elig-row">
+            <span class="elig-type">Estate</span>
+            <span class="elig-val">Any estate whose executor or administrator is a non-U.S. person and whose income from non-U.S. sources is not subject to U.S. income tax</span>
+          </div>
+          <div class="elig-row">
+            <span class="elig-type">Family Office</span>
+            <span class="elig-val">An entity managed and controlled exclusively by non-U.S. persons, with no U.S. beneficial owners and no principal office in the United States</span>
+          </div>
+        </div>
+        <div class="elig-card-foot">
+          <p class="elig-fine">This is a simplified summary. The complete Regulation S definition of "non-U.S. person" is set forth in Rule 902(k) under the Securities Act of 1933. Investors should consult qualified legal counsel to confirm eligibility.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ QUOTE FEATURE ═══════════════════════════════════════ -->
+<section class="quote-feature">
+  <div class="quote-feature-inner">
+    <div class="qf-left reveal">
+      <div class="qf-mark">"</div>
+      <p class="qf-text">The movement of sophisticated international capital into U.S. private markets is not speculative — it reflects a fundamental recognition that the most compelling compounding opportunities in the world economy are in the U.S. lower-middle market, in sectors that are fragmented, essential, and invisible to foreign public market investors.</p>
+      <div class="qf-attr">Cebron Financial Group &nbsp;·&nbsp; Investment Thesis</div>
+    </div>
+
+    <!-- ╔══════════════════════════════════════════════════════════════╗
+         ║  IMAGE PLACEHOLDER — QUOTE / FEATURE SECTION               ║
+         ║  Recommended: A professional meeting or handshake across    ║
+         ║  cultures — two professionals, diverse backgrounds,         ║
+         ║  neutral boardroom or executive environment. Alternatively: ║
+         ║  a wide-angle photo of a U.S. industrial or infrastructure  ║
+         ║  site (pipeline, engineering facility, medical building)    ║
+         ║  to represent the real-economy assets CFG acquires.         ║
+         ║  If industrial: aerial or dramatic perspective preferred.   ║
+         ║  Color grade: desaturated, cool, institutional quality.     ║
+         ╚══════════════════════════════════════════════════════════════╝ -->
+    <div class="qf-img reveal d1">
+      <div class="img-placeholder quote-ph" style="position:absolute;inset:0;height:100%">
+        <span class="img-ph-icon">🤝</span>
+        <span class="img-ph-type">Professional Meeting · Cross-Cultural · Boardroom Setting</span>
+        <span class="img-ph-label">📷 IMAGE: Professional meeting, cross-cultural handshake, OR U.S. industrial/infrastructure facility</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ FAQ ═══════════════════════════════════════ -->
+<section class="faq" id="faq">
+  <div class="section-wrap">
+    <div class="faq-layout">
+      <div class="faq-sidebar reveal">
+        <div class="faq-sticky">
+          <h2 class="faq-sidebar-h">Common questions from <em>international investors.</em></h2>
+          <p class="faq-sidebar-body">These questions come from investors across Europe, the Gulf, Asia Pacific, and Latin America who are evaluating CFG for the first time. If your question isn't answered here, our investor relations team responds to all inquiries within one business day.</p>
+          <a href="https://cebroncapital.com" target="_blank" class="btn-gold">Ask a Question →</a>
+        </div>
+      </div>
+      <div class="faq-questions reveal d1">
+        <div class="faq-item">
+          <div class="faq-q">Do I need to be a U.S. citizen or resident to invest?</div>
+          <p class="faq-a">No. Cebron Capital's offerings are available to qualifying non-U.S. persons under Regulation S of the Securities Act of 1933. You do not need to be a U.S. citizen, U.S. permanent resident, or U.S. accredited investor. You must be located outside the United States and not acting on behalf of a U.S. person at the time of the investment.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">How does quarterly interest actually get paid to me outside the U.S.?</div>
+          <p class="faq-a">Interest payments are made via international wire transfer to your designated bank account on the schedule specified in the offering documents. You will provide your bank details — including SWIFT/BIC code and IBAN — during the subscription process. Standard international wire transfer fees may apply, depending on your bank. There is no restriction on receiving interest payments in foreign bank accounts.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What documents will I need to provide?</div>
+          <p class="faq-a">Standard KYC/AML documentation is required for all investors. For individuals: government-issued photo ID (passport preferred), proof of residential address (utility bill or bank statement dated within 90 days), and source of funds documentation. For entities: certificate of incorporation, beneficial ownership documentation, and organizational documents. The portal guides you through exactly what is needed for your investor type and jurisdiction.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Will I be subject to U.S. taxes on interest income?</div>
+          <p class="faq-a">U.S.-sourced interest income paid to non-U.S. persons is generally subject to U.S. withholding tax. The applicable rate depends on the type of income and whether a tax treaty exists between the U.S. and your country of residence. Many countries have tax treaties with the U.S. that reduce or eliminate withholding on portfolio interest. <strong>We strongly recommend obtaining qualified U.S. tax advice specific to your situation before investing.</strong> CFG does not provide tax advice.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Is this investment available in my country?</div>
+          <p class="faq-a">Regulation S provides the U.S. legal basis for the offering to non-U.S. persons — but it does not determine whether the investment is lawful under the laws of your home country. Some jurisdictions restrict or regulate the purchase of foreign private placements by their residents even when those placements are lawful in the country of origin. We recommend confirming local legal permissibility with a qualified attorney in your jurisdiction before proceeding. Investors from countries subject to comprehensive U.S. OFAC sanctions are not eligible to participate.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Can I invest through an offshore holding company or trust?</div>
+          <p class="faq-a">Generally yes, subject to the entity qualifying as a non-U.S. person under Regulation S, providing appropriate KYC/AML documentation, and the investment being lawful under applicable law. Offshore holding companies incorporated in the Cayman Islands, BVI, Guernsey, Jersey, and similar jurisdictions have routinely invested in U.S. Regulation S offerings. The specific documentation required for entity investors is outlined in the subscription process. Consult with legal counsel familiar with your entity structure.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What currency are the investments denominated in?</div>
+          <p class="faq-a">All Cebron Capital offerings are denominated in U.S. dollars (USD). Interest payments, principal return, and any profit participation payments are all made in USD. International investors bear the currency exchange risk of converting investment proceeds to and from USD. CFG does not offer hedging or currency conversion services — investors should manage FX exposure through their own banking or wealth management arrangements.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">What languages does investor relations support?</div>
+          <p class="faq-a">The official offering documents are in English. Investor relations support is available in English as the primary language of communication. Additional language support in <strong>Mandarin, Spanish, and Arabic</strong> is available on request for qualified investors from relevant regions. Please indicate your language preference when creating your account or contacting the investor relations team.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ CTA ═══════════════════════════════════════ -->
+<section class="cta">
+  <div class="cta-left reveal">
+    <div class="cta-left-eyebrow">International Investors &nbsp;·&nbsp; Cebron Capital, LLC</div>
+    <h2 class="cta-left-h">Ready to access U.S. private markets from <em>anywhere in the world?</em></h2>
+    <p class="cta-left-body">Create your Cebron Capital account in under five minutes. International verification is completed online — no U.S. travel required, no in-person meetings. Access offering documents immediately upon verification.</p>
+    <div class="cta-btns">
+      <a href="https://cebroncapital.com" target="_blank" class="btn-gold-lg">Create International Investor Account</a>
+      <a href="cfg-invest.html" class="btn-ghost">View All Investment Opportunities</a>
+    </div>
+  </div>
+
+  <!-- ╔══════════════════════════════════════════════════════════════╗
+       ║  IMAGE PLACEHOLDER — CTA SECTION (RIGHT PANEL)              ║
+       ║  Recommended: Premium atmospheric photo suggesting global    ║
+       ║  connectivity and capital — either a wide aerial of a        ║
+       ║  financial district at night with city lights, OR an         ║
+       ║  abstract long-exposure light trail photograph suggesting     ║
+       ║  movement and flow of capital. Dark, moody, premium.         ║
+       ║  Should be visually striking — this is the last impression.  ║
+       ║  Alternative: Close-up of a professional's hands working     ║
+       ║  at a desk with financial materials — dark, focused light.   ║
+       ╚══════════════════════════════════════════════════════════════╝ -->
+  <div class="cta-right">
+    <div class="img-placeholder cta-ph">
+      <span class="img-ph-icon">✨</span>
+      <span class="img-ph-type">Night Cityscape / Light Trails · Global Capital · Dark Atmospheric</span>
+      <span class="img-ph-label">📷 IMAGE: Nighttime aerial or light-trail abstract — global capital, dark/premium atmosphere</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ FOOTER ═══════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Cebron Financial Group</div>
+        <div class="footer-brand-sub">Inc. &nbsp;·&nbsp; Delaware</div>
+        <p class="footer-brand-desc">Conceives, designs, builds, and scales acquisition platforms in sectors where consolidation creates lasting value. Securities offered through Cebron Capital, LLC.</p>
+      </div>
+      <div>
+        <div class="footer-col-head">International Investors</div>
+        <ul class="footer-links">
+          <li><a href="#regs">Regulation S Framework</a></li>
+          <li><a href="#europe">Europe &amp; UK</a></li>
+          <li><a href="#gulf">Middle East &amp; Gulf</a></li>
+          <li><a href="#asia">Asia Pacific</a></li>
+          <li><a href="#latam">Latin America</a></li>
+          <li><a href="#faq">International FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Invest</div>
+        <ul class="footer-links">
+          <li><a href="cfg-invest.html">Investment Opportunities</a></li>
+          <li><a href="https://cebroncapital.com" target="_blank">Cebron Capital Portal ↗</a></li>
+          <li><a href="cfg-invest.html#categories">Fixed Income Notes</a></li>
+          <li><a href="cfg-invest.html#categories">Private Equity Access</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Private Markets</div>
+        <ul class="footer-links">
+          <li><a href="cfg-private-markets.html">Why Private Markets</a></li>
+          <li><a href="cfg-private-markets.html#compare">Public vs. Private</a></li>
+          <li><a href="cfg-private-markets.html#accredited">Investor Eligibility</a></li>
+          <li><a href="index.html#pma">Private Market Alpha</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Company</div>
+        <ul class="footer-links">
+          <li><a href="cfg-about.html">About CFG</a></li>
+          <li><a href="cfg-about.html#model">Investment Strategy</a></li>
+          <li><a href="#">Leadership</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-legal">© 2025 Cebron Financial Group, Inc. All rights reserved. Securities are offered through Cebron Capital, LLC, an affiliate of Cebron Financial Group, Inc., pursuant to Regulation D, Rule 506(c) and Regulation S of the Securities Act of 1933. These securities have not been registered under the Securities Act of 1933 or any state securities laws and may not be offered or sold in the United States or to U.S. persons absent registration or an applicable exemption therefrom. Investment involves significant risk including the potential loss of principal. Not FDIC insured. Not bank guaranteed. This website does not constitute an offer to sell or a solicitation to buy any securities in any jurisdiction where such offer or solicitation would be unlawful. This page is provided for informational purposes only. International investors are solely responsible for ensuring compliance with the laws of their home jurisdiction. Past performance is not indicative of future results. All investors should review all offering documents and consult with their own financial, legal, and tax advisors in their home jurisdiction prior to investing.</p>
+      <div class="footer-entity">Cebron Financial Group, Inc.<br>Delaware Corporation<br>© 2025</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver(e => {
+    e.forEach(i => { if (i.isIntersecting) { i.target.classList.add('visible'); obs.unobserve(i.target) } })
+  }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Nav light/dark on scroll
+  const nav = document.getElementById('mainnav');
+  const hero = document.querySelector('.hero');
+  const io = new IntersectionObserver(entries => {
+    nav.classList.toggle('dark', entries[0].isIntersecting);
+    nav.classList.toggle('light', !entries[0].isIntersecting);
+  }, { threshold: 0.05 });
+  io.observe(hero);
+
+  // Hamburger menu
+  const hamburger = document.getElementById('navHamburger');
+  const mobileMenu = document.getElementById('navMobile');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  });
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+  });
+  // Close mobile menu on outside click
+  document.addEventListener('click', e => {
+    if (!nav.contains(e.target)) {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+    }
+  });
+</script>
+</body>
+</html>

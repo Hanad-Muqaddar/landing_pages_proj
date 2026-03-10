@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investment Platforms — Cebron Financial Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --navy:#0C1C2E;--navy-deep:#070F1A;--navy-mid:#112236;
+  --gold:#A8822E;--white:#FFFFFF;--off:#F5F5F3;
+  --rule:#E2E2DE;--text:#0D0D0D;--body:#3A3A3A;--mid:#6B6B6B;
+  --cb:#D8D6D0;--cf:#F0EFED;
+  --amber:#C09030;
+}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:17px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:64px;display:flex;align-items:center;transition:all .3s}
+nav.dark{background:rgba(7,15,26,.95);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(12px)}
+nav.light{background:rgba(255,255,255,.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(12px)}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 48px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:.02em;transition:color .3s}
+nav.dark .nav-logo{color:var(--white)} nav.light .nav-logo{color:var(--navy)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;transition:color .2s}
+nav.dark .nav-links a{color:rgba(255,255,255,.72)} nav.dark .nav-links a:hover{color:var(--white)}
+nav.light .nav-links a{color:var(--mid)} nav.light .nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--gold);color:var(--white)!important;padding:8px 20px;font-size:13px;font-weight:600;transition:opacity .2s!important}
+nav.light .nav-cta{background:var(--navy)} .nav-cta:hover{opacity:.88!important}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:8px;background:none;border:none;width:36px;height:36px}
+.nav-hamburger span{display:block;width:22px;height:2px;border-radius:1px;transition:all .28s ease}
+nav.dark .nav-hamburger span{background:rgba(255,255,255,.85)} nav.light .nav-hamburger span{background:var(--navy)}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;z-index:290;flex-direction:column;overflow-y:auto}
+.nav-mobile.open{display:flex} .nav-mobile.dark-bg{background:#050d17} .nav-mobile.light-bg{background:#fff}
+.nav-mobile-links{display:flex;flex-direction:column;padding:8px 24px 16px;flex:1}
+.nav-mobile-link{display:block;font-size:20px;font-weight:700;letter-spacing:-.02em;padding:16px 0;border-bottom:1px solid}
+.nav-mobile.dark-bg .nav-mobile-link{color:rgba(255,255,255,.88);border-color:rgba(255,255,255,.08)}
+.nav-mobile.light-bg .nav-mobile-link{color:var(--navy);border-color:var(--rule)}
+.nav-mobile-cta{display:block;background:var(--gold);color:#fff;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:18px 24px;margin:20px 24px 40px;text-align:center}
+
+/* HERO */
+.hero{background:var(--navy-deep);padding:140px 0 0;position:relative;overflow:hidden}
+.hero-accent{position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(rgba(255,255,255,.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.8) 1px,transparent 1px);background-size:80px 80px}
+.hero-inner{max-width:1320px;margin:0 auto;padding:0 48px 96px;position:relative;z-index:2}
+.breadcrumb{display:flex;align-items:center;gap:10px;margin-bottom:40px}
+.breadcrumb a{font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);transition:color .2s}
+.breadcrumb a:hover{color:var(--gold)} .bc-sep{color:rgba(255,255,255,.2)}
+.bc-cur{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.hero-h1{font-size:clamp(48px,5.5vw,84px);font-weight:800;color:var(--white);line-height:1.02;letter-spacing:-.03em;max-width:900px;margin-bottom:24px}
+.hero-h1 span{color:var(--gold)}
+.hero-deck{font-size:19px;font-weight:400;line-height:1.65;color:rgba(255,255,255,.68);max-width:640px;margin-bottom:72px}
+
+/* STATUS STRIP */
+.status-strip{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid rgba(255,255,255,.08)}
+.ss-card{padding:28px 24px 32px 0;border-right:1px solid rgba(255,255,255,.08)}
+.ss-card:last-child{border-right:none}
+.ss-card+.ss-card{padding-left:24px}
+.ss-num{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:10px}
+.ss-name{font-size:19px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+.ss-name.open{color:var(--white)} .ss-name.closed{color:rgba(255,255,255,.32)}
+.ss-sector{font-size:11px;color:rgba(255,255,255,.35);margin-bottom:14px;line-height:1.4}
+.ss-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 10px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.ss-badge.open{background:rgba(168,130,46,.15);border:1px solid rgba(168,130,46,.4);color:var(--gold)}
+.ss-badge.expected{background:rgba(192,144,48,.1);border:1px solid rgba(192,144,48,.3);color:var(--amber)}
+.ss-dot{width:6px;height:6px;border-radius:50%}
+.ss-badge.open .ss-dot{background:var(--gold);box-shadow:0 0 6px rgba(168,130,46,.7)}
+.ss-badge.expected .ss-dot{background:var(--amber)}
+.ss-link{display:block;margin-top:12px;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(168,130,46,.5);transition:color .2s}
+.ss-card:hover .ss-link{color:var(--gold)}
+.ss-link.dim{color:rgba(255,255,255,.15)} .ss-card:hover .ss-link.dim{color:rgba(255,255,255,.35)}
+
+/* LOGO PLACEHOLDER */
+.logo-ph{display:flex;align-items:center;gap:14px;padding:16px 20px;border:1px dashed var(--rule);background:var(--off);margin-bottom:28px;width:fit-content}
+.logo-ph-box{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(168,130,46,.35);background:rgba(168,130,46,.08);flex-shrink:0}
+.logo-ph-box.dim{border-color:var(--cb);background:rgba(0,0,0,.04)}
+.logo-ph-box span{font-size:13px;font-weight:800;color:var(--gold);letter-spacing:-.01em}
+.logo-ph-box.dim span{color:var(--mid)}
+.logo-ph-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);line-height:1.4}
+
+/* SHARED */
+.wrap{max-width:1320px;margin:0 auto;padding:0 48px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.sec-h{font-size:clamp(36px,3.8vw,58px);font-weight:800;line-height:1.06;letter-spacing:-.03em}
+.sec-h em{font-style:normal;color:var(--gold)}
+
+/* ── CFG NOTES ── */
+.notes{background:var(--navy-deep);padding:120px 0}
+.notes-header{display:grid;grid-template-columns:1fr 440px;gap:80px;align-items:start;margin-bottom:72px}
+.notes-h{color:var(--white)}
+.notes-intro{font-size:17px;color:rgba(255,255,255,.65);line-height:1.7;padding-top:6px}
+.notes-layout{display:grid;grid-template-columns:1fr 440px;gap:56px;align-items:start}
+.notes-body{font-size:17px;color:rgba(255,255,255,.68);line-height:1.7;margin-bottom:20px}
+.notes-pull{border-left:3px solid var(--gold);padding-left:24px;margin:36px 0}
+.notes-pull p{font-size:20px;font-weight:600;color:rgba(255,255,255,.88);line-height:1.5}
+.nfeats{border-top:1px solid rgba(255,255,255,.1);margin-top:36px}
+.nfeat{display:flex;gap:16px;align-items:flex-start;padding:17px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.nfeat-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;margin-top:9px;flex-shrink:0}
+.nfeat p{font-size:15px;color:rgba(255,255,255,.65);line-height:1.65}
+.nfeat p strong{font-weight:600;color:rgba(255,255,255,.9)}
+
+/* PPR tiers */
+.ppr{margin-top:48px;background:rgba(168,130,46,.08);border:1px solid rgba(168,130,46,.2);padding:36px 40px}
+.ppr-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.ppr-label::before{content:'';display:block;width:12px;height:1px;background:var(--gold)}
+.ppr h3{font-size:19px;font-weight:700;color:var(--white);letter-spacing:-.01em;margin-bottom:10px}
+.ppr-desc{font-size:14px;color:rgba(255,255,255,.58);line-height:1.65;margin-bottom:20px}
+.ppr-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.ppr-tier{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);padding:20px}
+.ppr-pct{font-size:28px;font-weight:800;color:#D4AA52;letter-spacing:-.02em;line-height:1;margin-bottom:6px}
+.ppr-tier p{font-size:12px;color:rgba(255,255,255,.48);line-height:1.5}
+
+/* Term card */
+.term-card{border:2px solid var(--gold);overflow:hidden}
+.tc-head{background:rgba(168,130,46,.12);border-bottom:1px solid rgba(168,130,46,.3);padding:28px 36px}
+.tc-ey{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.tc-ey::before{content:'';display:block;width:12px;height:1px;background:var(--gold)}
+.tc-head h3{font-size:18px;font-weight:700;color:var(--white);letter-spacing:-.01em;line-height:1.3}
+.tc-rows{}
+.tc-row{display:flex;justify-content:space-between;align-items:flex-start;padding:13px 36px;border-bottom:1px solid rgba(255,255,255,.07);gap:16px}
+.tc-row:first-child{padding-top:16px}
+.tc-lbl{font-size:13px;color:rgba(255,255,255,.42);flex-shrink:0;max-width:155px;line-height:1.4}
+.tc-val{font-size:13px;font-weight:700;color:var(--white);text-align:right;line-height:1.4}
+.tc-val.gold{color:#D4AA52}
+.tc-val.lock{font-size:12px;font-weight:400;color:rgba(255,255,255,.28);display:flex;align-items:center;gap:5px;justify-content:flex-end}
+.tc-cta{background:var(--navy-mid);padding:28px 36px;border-top:1px solid rgba(255,255,255,.08)}
+.tc-cta p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.65;margin-bottom:18px}
+.btn-gold-blk{display:block;width:100%;background:var(--gold);color:var(--white);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:15px 24px;text-align:center;transition:opacity .2s;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-gold-blk:hover{opacity:.88}
+.tc-fine{font-size:12px;color:rgba(255,255,255,.22);margin-top:10px;text-align:center;line-height:1.5}
+
+/* ── OPEN PLATFORM ── */
+.plt-open{padding:120px 0;border-bottom:1px solid var(--rule)}
+.plt-open.alt{background:var(--off)}
+.plt-grid{display:grid;grid-template-columns:1fr 420px;gap:96px;align-items:start}
+.plt-status{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.plt-num{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+.badge-open{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(168,130,46,.1);border:1px solid rgba(168,130,46,.4);color:var(--gold)}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 7px rgba(168,130,46,.8);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 7px rgba(168,130,46,.8)}50%{box-shadow:0 0 3px rgba(168,130,46,.4)}}
+.plt-name{font-size:clamp(36px,4vw,60px);font-weight:800;color:var(--text);line-height:1.02;letter-spacing:-.03em;margin-bottom:10px}
+.plt-sector{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:26px}
+.plt-body{font-size:17px;color:var(--body);line-height:1.7;margin-bottom:20px}
+.plt-thesis{border-left:3px solid var(--gold);padding-left:24px;margin:34px 0}
+.plt-thesis-lbl{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.plt-thesis p{font-size:18px;font-weight:600;color:var(--text);line-height:1.5}
+.plt-feats{border-top:1px solid var(--rule);margin-top:36px}
+.plt-feat{display:flex;gap:16px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(--rule)}
+.plt-feat-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;margin-top:9px;flex-shrink:0}
+.plt-feat p{font-size:15px;color:var(--body);line-height:1.65}
+.plt-feat p strong{font-weight:600;color:var(--text)}
+
+/* equity panel */
+.eq-panel{border:2px solid var(--gold);overflow:hidden}
+.eq-head{background:var(--navy);padding:30px 36px;border-bottom:2px solid var(--gold)}
+.eq-ey{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.eq-ey::before{content:'';display:block;width:12px;height:1px;background:var(--gold)}
+.eq-head h3{font-size:18px;font-weight:700;color:var(--white);line-height:1.3;letter-spacing:-.01em}
+.eq-head p{font-size:13px;color:rgba(255,255,255,.4);margin-top:5px;line-height:1.5}
+.eq-rows{padding:0 36px}
+.eq-row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--rule)}
+.eq-row:first-child{border-top:1px solid var(--rule)}
+.eq-lbl{font-size:13px;color:var(--body)}
+.eq-val{font-size:13px;font-weight:700;color:var(--text)}
+.eq-val.gold{color:var(--gold)}
+.eq-val.lock{font-size:12px;font-weight:400;color:var(--mid);display:flex;align-items:center;gap:5px}
+.eq-info{background:var(--navy-deep);padding:22px 36px}
+.eq-info-lbl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.eq-info p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.65}
+.eq-cta{padding:26px 36px;background:var(--off);border-top:1px solid var(--rule)}
+.eq-cta p{font-size:14px;color:var(--body);line-height:1.6;margin-bottom:18px}
+.eq-fine{font-size:12px;color:var(--mid);margin-top:10px;text-align:center;line-height:1.5}
+
+/* ── CLOSED / EXPECTED PLATFORM ── */
+.plt-closed{padding:120px 0;border-bottom:1px solid var(--cb)}
+.plt-closed.alt{background:var(--white)}
+.plt-closed:not(.alt){background:var(--cf)}
+.plt-name-dim{font-size:clamp(36px,4vw,60px);font-weight:800;color:var(--mid);line-height:1.02;letter-spacing:-.03em;margin-bottom:10px}
+.plt-sector-dim{font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#B0ADA6;margin-bottom:26px}
+.plt-body-dim{font-size:17px;color:#7A7772;line-height:1.7;margin-bottom:20px}
+.plt-thesis-dim{border-left:3px solid var(--cb);padding-left:24px;margin:34px 0}
+.plt-thesis-lbl-dim{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#B0ADA6;margin-bottom:8px}
+.plt-thesis-dim p{font-size:18px;font-weight:600;color:var(--mid);line-height:1.5}
+.plt-feats-dim{border-top:1px solid var(--cb);margin-top:36px}
+.plt-feat-dim{display:flex;gap:16px;align-items:flex-start;padding:15px 0;border-bottom:1px solid var(--cb)}
+.plt-feat-dim-dot{width:5px;height:5px;background:var(--cb);border-radius:50%;margin-top:9px;flex-shrink:0}
+.plt-feat-dim p{font-size:15px;color:#7A7772;line-height:1.65}
+.plt-feat-dim p strong{font-weight:600;color:var(--mid)}
+.badge-expected{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(192,144,48,.08);border:1px solid rgba(192,144,48,.3);color:var(--amber)}
+.badge-expected-dot{width:6px;height:6px;border-radius:50%;background:var(--amber)}
+
+/* closed/expected panel */
+.cl-panel{border:1px solid var(--cb);overflow:hidden;background:var(--white)}
+.cl-head{background:var(--navy-deep);padding:28px 32px}
+.cl-ey{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.cl-ey::before{content:'';display:block;width:12px;height:1px;background:rgba(255,255,255,.18)}
+.cl-head h3{font-size:18px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:-.01em;line-height:1.3}
+.cl-head p{font-size:13px;color:rgba(255,255,255,.32);margin-top:5px;line-height:1.5}
+.cl-timeline{margin:22px 22px 0;padding:20px 24px;background:rgba(192,144,48,.06);border:1px solid rgba(192,144,48,.2)}
+.cl-timeline-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:6px}
+.cl-timeline p{font-size:13px;color:#9A9690;line-height:1.65}
+.cl-locked{margin:22px;padding:28px;background:var(--cf);border:1px dashed var(--cb)}
+.cl-lock-icon{font-size:18px;opacity:.38;display:block;margin-bottom:10px}
+.cl-locked h4{font-size:14px;font-weight:700;color:var(--mid);margin-bottom:7px}
+.cl-locked p{font-size:13px;color:#9A9690;line-height:1.65}
+.cl-form{padding:22px}
+.cl-form-lbl{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:12px}
+.cl-input-row{display:flex}
+.cl-input{flex:1;border:1px solid var(--rule);border-right:none;padding:12px 16px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text);background:var(--white);outline:none;transition:border-color .2s}
+.cl-input::placeholder{color:var(--mid)} .cl-input:focus{border-color:var(--gold)}
+.cl-btn{background:var(--navy);color:var(--white);border:none;padding:12px 18px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:background .2s}
+.cl-btn:hover{background:var(--navy-mid)}
+.cl-fine{font-size:12px;color:var(--mid);margin-top:7px;line-height:1.5}
+
+/* DIVIDER */
+.divider-wrap{padding:48px}
+.divider-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:24px}
+.divider-line{flex:1;height:1px;background:var(--cb)}
+.divider-txt{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);white-space:nowrap}
+
+/* NOTIFY STRIP */
+.notify{background:var(--navy-deep);padding:96px 0}
+.notify-inner{max-width:1320px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 480px;gap:80px;align-items:center}
+.notify-ey{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.notify-h{font-size:clamp(30px,3.2vw,48px);font-weight:800;color:var(--white);line-height:1.06;letter-spacing:-.03em;margin-bottom:14px}
+.notify-h em{font-style:normal;color:var(--gold)}
+.notify-body{font-size:17px;color:rgba(255,255,255,.65);line-height:1.65;max-width:420px}
+.notify-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:24px}
+.ng-item{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);padding:14px 16px;display:flex;align-items:center;gap:10px}
+.ng-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.ng-dot.open{background:var(--gold);box-shadow:0 0 5px rgba(168,130,46,.7)}
+.ng-dot.expected{background:var(--amber)}
+.ng-dot.closed{background:rgba(255,255,255,.2)}
+.ng-name{font-size:14px;font-weight:700;color:var(--white);margin-bottom:1px}
+.ng-status{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.03em}
+.ng-status.open{color:rgba(168,130,46,.9)}
+.ng-status.expected{color:rgba(192,144,48,.85)}
+.notify-row{display:flex}
+.notify-input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-right:none;padding:13px 16px;font-size:14px;font-family:'Inter',sans-serif;color:var(--white);outline:none;transition:border-color .2s}
+.notify-input::placeholder{color:rgba(255,255,255,.28)} .notify-input:focus{border-color:rgba(168,130,46,.6)}
+.notify-submit{background:var(--gold);border:none;padding:13px 22px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--white);cursor:pointer;font-family:'Inter',sans-serif;transition:opacity .2s;white-space:nowrap}
+.notify-submit:hover{opacity:.88}
+.notify-fine{font-size:13px;color:rgba(255,255,255,.28);margin-top:9px;line-height:1.55}
+
+/* CTA BAND */
+.cta{background:var(--gold);padding:96px 0}
+.cta-inner{max-width:1320px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr auto;gap:64px;align-items:center}
+.cta-h{font-size:clamp(30px,3.2vw,48px);font-weight:800;color:var(--white);line-height:1.1;letter-spacing:-.03em;margin-bottom:12px}
+.cta-body{font-size:17px;color:rgba(255,255,255,.8);line-height:1.65;max-width:520px}
+.cta-btns{display:flex;flex-direction:column;gap:12px;align-items:flex-end;flex-shrink:0}
+.btn-white{display:inline-block;background:var(--white);color:var(--navy);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:14px 32px;transition:opacity .2s;white-space:nowrap}
+.btn-white:hover{opacity:.9}
+.btn-ghost{display:inline-block;border:1px solid rgba(255,255,255,.45);color:rgba(255,255,255,.88);font-size:13px;font-weight:500;padding:13px 28px;white-space:nowrap;transition:all .2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,.8);color:var(--white)}
+
+/* FOOTER */
+footer{background:#04090F;padding:72px 48px 40px}
+.footer-inner{max-width:1320px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:300px repeat(4,1fr);gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:40px}
+.footer-brand-name{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
+.footer-brand-sub{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.footer-brand-desc{font-size:14px;line-height:1.7;color:rgba(255,255,255,.5)}
+.footer-col-head{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-bottom:18px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:11px}
+.footer-links a{font-size:14px;color:rgba(255,255,255,.62);transition:color .2s}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{display:flex;gap:48px;justify-content:space-between;align-items:flex-start}
+.footer-legal{font-size:12px;line-height:1.7;color:rgba(255,255,255,.32);max-width:800px}
+.footer-entity{font-size:12px;color:rgba(255,255,255,.32);text-align:right;white-space:nowrap;flex-shrink:0}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}
+
+/* RESPONSIVE */
+@media(max-width:1080px){
+  .nav-inner,.wrap,.notify-inner,.cta-inner{padding-left:32px!important;padding-right:32px!important}
+  .hero-inner{padding-left:32px;padding-right:32px}
+  .status-strip{grid-template-columns:1fr 1fr 1fr}
+  .ss-card:nth-child(3){border-right:none}
+  .ss-card:nth-child(n+4){border-top:1px solid rgba(255,255,255,.08)}
+  .ss-card:nth-child(4){padding-left:0}
+  .ss-link{display:none}
+  .notes-header,.notes-layout,.plt-grid,.notify-inner,.cta-inner{grid-template-columns:1fr!important;gap:40px!important}
+  .ppr-tiers{grid-template-columns:1fr 1fr 1fr}
+  .cta-btns{align-items:flex-start}
+  footer{padding:48px 32px 32px}
+  .footer-grid{grid-template-columns:1fr 1fr 1fr!important;gap:32px}
+  .footer-grid>div:first-child{grid-column:1/-1}
+  .divider-wrap{padding:40px 32px}
+}
+@media(max-width:768px){
+  .nav-inner{padding:0 20px}
+  .nav-links{display:none!important}
+  .nav-hamburger{display:flex!important}
+  .hero-inner{padding:88px 20px 60px}
+  .hero-h1{font-size:clamp(34px,9.5vw,52px)!important}
+  .hero-deck{font-size:16px;margin-bottom:40px}
+  .status-strip{grid-template-columns:1fr 1fr!important}
+  .ss-card:nth-child(odd){padding-left:0!important}
+  .ss-card:nth-child(even){border-right:none!important}
+  .ss-card:nth-child(n+3){border-top:1px solid rgba(255,255,255,.08)}
+  .ss-link{display:none}
+  .wrap{padding-left:20px!important;padding-right:20px!important}
+  .notes{padding:64px 0!important}
+  .notes-header,.notes-layout{grid-template-columns:1fr!important;gap:28px!important}
+  .ppr-tiers{grid-template-columns:1fr!important}
+  .ppr{padding:24px 20px}
+  .tc-row{flex-direction:column;gap:2px;padding:12px 20px}
+  .tc-val{text-align:left}
+  .tc-head,.tc-cta{padding-left:20px;padding-right:20px}
+  .plt-open,.plt-closed{padding:64px 0!important}
+  .plt-grid{grid-template-columns:1fr!important;gap:32px!important}
+  .plt-name,.plt-name-dim{font-size:clamp(32px,8.5vw,46px)!important}
+  .plt-body,.plt-body-dim{font-size:15px!important}
+  .plt-thesis p,.plt-thesis-dim p{font-size:16px}
+  .eq-rows,.eq-info,.eq-cta{padding-left:22px;padding-right:22px}
+  .eq-head{padding:22px}
+  .eq-row{flex-direction:column;align-items:flex-start;gap:2px;padding:11px 0}
+  .cl-head{padding:22px}
+  .cl-locked{margin:14px;padding:20px}
+  .cl-timeline{margin:14px 14px 0}
+  .cl-form{padding:18px}
+  .cl-input-row{flex-direction:column}
+  .cl-input{border-right:1px solid var(--rule)!important;width:100%}
+  .cl-btn{width:100%;text-align:center}
+  .notify,.cta{padding:64px 0!important}
+  .notify-inner,.cta-inner{padding-left:20px!important;padding-right:20px!important;grid-template-columns:1fr!important;gap:32px!important}
+  .cta-btns{align-items:stretch}
+  .btn-white,.btn-ghost{display:block;width:100%;text-align:center;box-sizing:border-box}
+  .notify-row{flex-direction:column}
+  .notify-input{border-right:1px solid rgba(255,255,255,.14)!important;width:100%}
+  .notify-submit{width:100%;text-align:center}
+  .notify-grid{grid-template-columns:1fr!important}
+  .divider-wrap{padding:32px 20px}
+  footer{padding:48px 20px 32px}
+  .footer-grid{grid-template-columns:1fr 1fr!important;gap:22px}
+  .footer-grid>div:first-child{grid-column:1/-1}
+  .footer-bottom{flex-direction:column;gap:14px}
+  .footer-entity{text-align:left;white-space:normal}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="dark" id="mainnav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Cebron Financial Group</a>
+    <ul class="nav-links">
+      <li><a href="cfg-private-markets.html">Private Markets</a></li>
+      <li><a href="cfg-about.html">About CFG</a></li>
+      <li><a href="index.html#pma">Private Market Alpha</a></li>
+      <li><a href="cfg-invest.html">Invest</a></li>
+      <li><a href="https://cebroncapital.com" target="_blank" class="nav-cta">Investor Portal</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-mobile dark-bg" id="navMobile">
+  <div class="nav-mobile-links">
+    <a href="index.html"        class="nav-mobile-link">Home</a>
+    <a href="cfg-private-markets.html" class="nav-mobile-link">Private Markets</a>
+    <a href="cfg-about.html"           class="nav-mobile-link">About CFG</a>
+    <a href="index.html#pma"    class="nav-mobile-link">Private Market Alpha</a>
+    <a href="cfg-invest.html"          class="nav-mobile-link">Invest</a>
+    <a href="cfg-international.html"   class="nav-mobile-link">International Investors</a>
+  </div>
+  <a href="https://cebroncapital.com" target="_blank" class="nav-mobile-cta">Investor Portal &#8594;</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-accent"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="bc-sep">/</span>
+      <a href="cfg-invest.html">Invest</a><span class="bc-sep">/</span>
+      <span class="bc-cur">Investment Platforms</span>
+    </div>
+    <div class="hero-eyebrow">Five Platforms &nbsp;&middot;&nbsp; Current Availability</div>
+    <h1 class="hero-h1">Where CFG is deploying<br>capital <span>right now.</span></h1>
+    <p class="hero-deck">Each acquisition platform opens to new investors on its own timeline &#8212; tied to active deal flow and integration capacity. All securities are offered directly by Cebron Financial Group, Inc.</p>
+
+    <div class="status-strip">
+      <div class="ss-card">
+        <div class="ss-num">Platform I</div>
+        <div class="ss-name open">SensQor</div>
+        <div class="ss-sector">Environmental Engineering &amp; Services</div>
+        <div class="ss-badge open"><span class="ss-dot"></span>Open &#8212; Equity</div>
+        <a href="#sensqor" class="ss-link">View Platform &#8595;</a>
+      </div>
+      <div class="ss-card">
+        <div class="ss-num">Platform II</div>
+        <div class="ss-name open">EntelMed</div>
+        <div class="ss-sector">Medical &amp; Healthcare Technology</div>
+        <div class="ss-badge open"><span class="ss-dot"></span>Open &#8212; Equity</div>
+        <a href="#entelmed" class="ss-link">View Platform &#8595;</a>
+      </div>
+      <div class="ss-card">
+        <div class="ss-num">Platform III</div>
+        <div class="ss-name closed">Cenovix</div>
+        <div class="ss-sector">Biotechnology &amp; Laboratory Services</div>
+        <div class="ss-badge expected"><span class="ss-dot"></span>Expected Open Q3 2026</div>
+        <a href="#cenovix" class="ss-link dim">View Platform &#8595;</a>
+      </div>
+      <div class="ss-card">
+        <div class="ss-num">Platform IV</div>
+        <div class="ss-name closed">Seqara</div>
+        <div class="ss-sector">Digital Security &amp; Cybersecurity</div>
+        <div class="ss-badge expected"><span class="ss-dot"></span>Expected Open Q3 2026</div>
+        <a href="#seqara" class="ss-link dim">View Platform &#8595;</a>
+      </div>
+      <div class="ss-card">
+        <div class="ss-num">Platform V</div>
+        <div class="ss-name closed">UIM Labs</div>
+        <div class="ss-sector">AI, Autonomy &amp; Advanced Technology</div>
+        <div class="ss-badge expected"><span class="ss-dot"></span>Expected Open Q3 2026</div>
+        <a href="#uimlabs" class="ss-link dim">View Platform &#8595;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CFG NOTES -->
+<section class="notes" id="cfg-notes">
+  <div class="wrap">
+    <div class="notes-header reveal">
+      <div>
+        <div class="eyebrow">Fixed Income &nbsp;&middot;&nbsp; All Platforms</div>
+        <h2 class="sec-h notes-h">CFG Senior Secured Notes.<br><em>10% fixed. Paid quarterly.</em></h2>
+      </div>
+      <p class="notes-intro">Alongside direct equity participation in individual platforms, Cebron Financial Group, Inc. offers accredited investors a fixed income instrument that provides current quarterly income from day one, a contractual maturity at 36 months, and a Profit Participation Right tied to platform EBITDA performance &#8212; combining the income reliability of private credit with the upside mechanics of acquisition compounding.</p>
+    </div>
+
+    <div class="notes-layout reveal d1">
+      <div>
+        <p class="notes-body">The CFG Senior Secured Note pays 10% per annum in quarterly cash distributions for a fixed 36-month term. Notes are issued directly by Cebron Financial Group, Inc. &#8212; the Delaware parent holding company &#8212; and are supported by the operating performance and fee income of CFG's portfolio of acquisition platforms and M&amp;A advisory activities.</p>
+        <p class="notes-body">An Early Call Option is available beginning at month 18: CFG may redeem all outstanding Notes at par plus accrued interest if defined platform performance thresholds are met, providing investors with an accelerated return of principal pathway.</p>
+        <div class="notes-pull">
+          <p>10% annual interest paid quarterly in cash &#8212; plus a one-time Profit Participation bonus of up to 20% of principal if CFG's platforms achieve defined EBITDA milestones within 30 months of issuance.</p>
+        </div>
+        <div class="nfeats">
+          <div class="nfeat"><div class="nfeat-dot"></div><p><strong>10% fixed annual interest</strong> &#8212; locked at origination for the full 36-month term. Not variable, not index-linked, not subject to Fed rate movements.</p></div>
+          <div class="nfeat"><div class="nfeat-dot"></div><p><strong>Quarterly cash distributions</strong> &#8212; interest paid directly to your registered account four times per year, not deferred to maturity.</p></div>
+          <div class="nfeat"><div class="nfeat-dot"></div><p><strong>36-month fixed maturity</strong> &#8212; full principal returned at maturity. You know from day one exactly when your capital comes back.</p></div>
+          <div class="nfeat"><div class="nfeat-dot"></div><p><strong>Profit Participation Right (PPR)</strong> &#8212; a contractual bonus of 5&#8211;20% of principal paid as a one-time distribution if CFG's platforms achieve defined EBITDA milestones within 30 months of the Note's issuance date.</p></div>
+          <div class="nfeat"><div class="nfeat-dot"></div><p><strong>Early Call Option at Month 18</strong> &#8212; CFG may redeem all Notes at par plus accrued interest beginning at month 18 if platform performance warrants early return of capital.</p></div>
+          <div class="nfeat"><div class="nfeat-dot"></div><p><strong>$50,000 minimum investment</strong> &#8212; offered to verified accredited investors under Reg D 506(c) and qualifying non-U.S. persons under Reg S. Total current offering size: $2,000,000.</p></div>
+        </div>
+
+        <div class="ppr">
+          <div class="ppr-label">Profit Participation Right &#8212; Bonus Structure</div>
+          <h3>EBITDA milestone bonus: 5% to 20% of principal</h3>
+          <p class="ppr-desc">The PPR pays a one-time bonus at the close of the 30-month measurement window based on aggregate EBITDA achieved across CFG's acquisition platforms. Specific thresholds for each tier are defined in the offering documents available to verified investors.</p>
+          <div class="ppr-tiers">
+            <div class="ppr-tier"><div class="ppr-pct">5%</div><p>Threshold milestone &#8212; base platform EBITDA target achieved within 30 months</p></div>
+            <div class="ppr-tier"><div class="ppr-pct">10%</div><p>Accelerated milestone &#8212; mid-tier EBITDA reflecting compounding across multiple acquisitions</p></div>
+            <div class="ppr-tier"><div class="ppr-pct">20%</div><p>Maximum milestone &#8212; full EBITDA target reflecting successful multi-platform execution at scale</p></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TERM CARD -->
+      <div class="term-card">
+        <div class="tc-head">
+          <div class="tc-ey">CFG Senior Secured Note &nbsp;&middot;&nbsp; Term Summary</div>
+          <h3>Fixed Income + Profit Participation Right</h3>
+        </div>
+        <div class="tc-rows">
+          <div class="tc-row"><span class="tc-lbl">Issuer</span><span class="tc-val">Cebron Financial Group, Inc.</span></div>
+          <div class="tc-row"><span class="tc-lbl">Instrument</span><span class="tc-val">Senior Unsecured Promissory Note + PPR</span></div>
+          <div class="tc-row"><span class="tc-lbl">Annual Interest</span><span class="tc-val gold">10.00% per annum</span></div>
+          <div class="tc-row"><span class="tc-lbl">Payment Schedule</span><span class="tc-val">Quarterly cash distributions</span></div>
+          <div class="tc-row"><span class="tc-lbl">Term to Maturity</span><span class="tc-val">36 months from issuance</span></div>
+          <div class="tc-row"><span class="tc-lbl">Early Call Option</span><span class="tc-val">At par &#8212; available Month 18</span></div>
+          <div class="tc-row"><span class="tc-lbl">PPR Bonus Range</span><span class="tc-val gold">5% &#8211; 20% of principal</span></div>
+          <div class="tc-row"><span class="tc-lbl">PPR Measurement</span><span class="tc-val">Within 30 months of issuance</span></div>
+          <div class="tc-row"><span class="tc-lbl">Offering Size</span><span class="tc-val">$2,000,000</span></div>
+          <div class="tc-row"><span class="tc-lbl">Minimum Investment</span><span class="tc-val gold">$50,000</span></div>
+          <div class="tc-row"><span class="tc-lbl">Offering Exemption</span><span class="tc-val">Reg D 506(c) / Reg S</span></div>
+          <div class="tc-row"><span class="tc-lbl">Eligibility</span><span class="tc-val">Accredited investors &amp; qualified non-U.S. persons</span></div>
+          <div class="tc-row"><span class="tc-lbl">Full Offering Docs</span><span class="tc-val lock">&#128274; Verified Investors Only</span></div>
+        </div>
+        <div class="tc-cta">
+          <p>Complete offering documents, subscription agreement, and PPR milestone definitions are available to verified investors through the Cebron Capital investor portal.</p>
+          <a href="https://cebroncapital.com" target="_blank" class="btn-gold-blk">Access Note Offering Documents &#8594;</a>
+          <p class="tc-fine">Offered by Cebron Financial Group, Inc. &nbsp;&middot;&nbsp; U.S. Reg D 506(c) &nbsp;&middot;&nbsp; International Reg S<br>Not an offer to sell. Offers made only via official offering memorandum.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SENSQOR — OPEN -->
+<section class="plt-open" id="sensqor">
+  <div class="wrap">
+    <div class="plt-grid reveal">
+      <div>
+        <div class="logo-ph">
+          <div class="logo-ph-box"><span>SQ</span></div>
+          <div class="logo-ph-label">SensQor<br>Logo Placeholder</div>
+        </div>
+        <div class="plt-status">
+          <span class="plt-num">Platform I</span>
+          <span class="badge-open"><span class="badge-dot"></span>Open &#8212; Equity Investment</span>
+        </div>
+        <h2 class="plt-name">SensQor</h2>
+        <div class="plt-sector">Environmental Engineering &amp; Geotechnical Services</div>
+        <p class="plt-body">SensQor is CFG's environmental and geotechnical engineering platform &#8212; acquiring founder-owned firms serving infrastructure owners, energy companies, and industrial clients across the United States. The environmental engineering sector is one of the most fragmented professional services markets in the country: thousands of independent firms, each below institutional acquisition radar, each generating defensible recurring revenue from compliance-driven and project-based work.</p>
+        <p class="plt-body">SensQor acquires at disciplined lower-middle-market multiples in a sector where consolidation is structurally early &#8212; the largest players control a small fraction of total market revenue, and the average acquisition target has no defined succession plan and no path to growth capital beyond its founding geography.</p>
+        <div class="plt-thesis">
+          <div class="plt-thesis-lbl">Investment Thesis</div>
+          <p>"Compliance-driven demand, geographic fragmentation, and founder succession dynamics create an extended acquisition runway at multiples that institutional capital cannot access at scale."</p>
+        </div>
+        <div class="plt-feats">
+          <div class="plt-feat"><div class="plt-feat-dot"></div><p><strong>Non-discretionary demand:</strong> Environmental compliance, site remediation, and geotechnical investigation are legally required &#8212; not discretionary spending that disappears in a downturn</p></div>
+          <div class="plt-feat"><div class="plt-feat-dot"></div><p><strong>Recurring client relationships:</strong> Infrastructure owners, utilities, and industrial operators return to trusted engineering firms for multi-year project pipelines with low competitive turnover</p></div>
+          <div class="plt-feat"><div class="plt-feat-dot"></div><p><strong>Fragmentation advantage:</strong> No dominant consolidator in the lower-middle market creates an extended acquisition runway at disciplined entry multiples</p></div>
+          <div class="plt-feat"><div class="plt-feat-dot"></div><p><strong>COS margin expansion:</strong> Founder-operator firms carry meaningful margin improvement opportunity through overhead rationalization, pricing discipline, and cross-platform procurement</p></div>
+        </div>
+      </div>
+
+      <div class="eq-panel reveal d1">
+        <div class="eq-head">
+          <div class="eq-ey">SensQor &nbsp;&middot;&nbsp; Platform I</div>
+          <h3>Equity investment open through Cebron Financial Group</h3>
+          <p>Direct equity participation in the SensQor acquisition platform</p>
+        </div>
+        <div class="eq-rows">
+          <div class="eq-row"><span class="eq-lbl">Platform Status</span><span class="eq-val gold">&#9679; Open</span></div>
+          <div class="eq-row"><span class="eq-lbl">Investment Type</span><span class="eq-val">Private Equity &#8212; Direct</span></div>
+          <div class="eq-row"><span class="eq-lbl">Sector</span><span class="eq-val">Environmental Engineering</span></div>
+          <div class="eq-row"><span class="eq-lbl">Issuer</span><span class="eq-val">Cebron Financial Group, Inc.</span></div>
+          <div class="eq-row"><span class="eq-lbl">Offering Exemption</span><span class="eq-val">Reg D 506(c) / Reg S</span></div>
+          <div class="eq-row"><span class="eq-lbl">Equity Terms &amp; Structure</span><span class="eq-val lock">&#128274; Verified Investors</span></div>
+          <div class="eq-row"><span class="eq-lbl">Minimum Investment</span><span class="eq-val lock">&#128274; Verified Investors</span></div>
+          <div class="eq-row"><span class="eq-lbl">Current Deal Pipeline</span><span class="eq-val lock">&#128274; Verified Investors</span></div>
+        </div>
+        <div class="eq-info">
+          <div class="eq-info-lbl">What Equity Participation Means</div>
+          <p>SensQor equity investors hold a direct economic interest in the platform's acquisition compounding model &#8212; participating in value creation as the platform acquires businesses, expands margins through the Cebron Operating System, and builds toward an institutional exit at a higher valuation multiple.</p>
+        </div>
+        <div class="eq-cta">
+          <p>Full equity structure, deal terms, platform details, and subscription documents are available after free accredited investor verification.</p>
+          <a href="https://cebroncapital.com" target="_blank" class="btn-gold-blk">Access SensQor Equity Terms &#8594;</a>
+          <p class="eq-fine">Offered by Cebron Financial Group, Inc. &nbsp;&middot;&nbsp; U.S. Reg D 506(c) &nbsp;&middot;&nbsp; International Reg S</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTELMED — OPEN -->
+<section class="plt-open alt" id="entelmed">
+  <div class="wrap">
+    <div class="plt-grid reveal">
+      <div class="eq-panel reveal" style="order:2">
+        <div class="eq-head">
+          <div class="eq-ey">EntelMed &nbsp;&middot;&nbsp; Platform II</div>
+          <h3>Equity investment open through Cebron Financial Group</h3>
+          <p>Direct equity participation in the EntelMed acquisition platform</p>
+        </div>
+        <div class="eq-rows">
+          <div class="eq-row"><span class="eq-lbl">Platform Status</span><span class="eq-val gold">&#9679; Open</span></div>
+          <div class="eq-row"><span class="eq-lbl">Investment Type</span><span class="eq-val">Private Equity &#8212; Direct</span></div>
+          <div class="eq-row"><span class="eq-lbl">Sector</span><span class="eq-val">Medical &amp; Healthcare Technology</span></div>
+          <div class="eq-row"><span class="eq-lbl">Issuer</span><span class="eq-val">Cebron Financial Group, Inc.</span></div>
+          <div class="eq-row"><span class="eq-lbl">Offering Exemption</span><span class="eq-val">Reg D 506(c) / Reg S</span></div>
+          <div class="eq-row"><span class="eq-lbl">Equity Terms &amp; Structure</span><span class="eq-val lock">&#128274; Verified Investors</span></div>
+          <div class="eq-row"><span class="eq-lbl">Minimum Investment</span><span class="eq-val lock">&#128274; Verified Investors</span></div>
+          <div class="eq-row"><span class="eq-lbl">Current Deal Pipeline</span><span class="eq-val lock">&#128274; Verified Investors</span></div>
+        </div>
+        <div class="eq-info">
+          <div class="eq-info-lbl">What Equity Participation Means</div>
+          <p>EntelMed equity investors hold a direct economic interest in the platform's acquisition program &#8212; participating in the compounding mechanics of acquiring orthopedic device and medical technology businesses, integrating them through the COS, and scaling toward institutional revaluation.</p>
+        </div>
+        <div class="eq-cta">
+          <p>Full equity structure, deal terms, platform details, and subscription documents are available after free accredited investor verification.</p>
+          <a href="https://cebroncapital.com" target="_blank" class="btn-gold-blk">Access EntelMed Equity Terms &#8594;</a>
+          <p class="eq-fine">Offered by Cebron Financial Group, Inc. &nbsp;&middot;&nbsp; U.S. Reg D 506(c) &nbsp;&middot;&nbsp; International Reg S</p>
+        </div>
+      </div>
+
+      <div style="order:1">
+        <div class="logo-ph">
+          <div class="logo-ph-box"><span>EM</span></div>
+          <div class="logo-ph-label">EntelMed<br>Logo Placeholder</div>
+        </div>
+        <div class="plt-status">
+          <span class="plt-num">Platform II</span>
+          <span class="badge-open"><span class="badge-dot"></span>Open &#8212; Equity Investment</span>
+        </div>
+        <h2 class="plt-name">EntelMed</h2>
+        <div class="plt-sector">Orthopedic Devices &amp; Medical Technology</div>
+        <p class="plt-body">EntelMed is CFG's medical and healthcare technology platform &#8212; acquiring manufacturers, distributors, and specialized service providers in the orthopedic device and surgical instrument market. This sector operates with structural characteristics that make it one of the most durable compounding environments in the U.S. lower-middle market: deep surgeon relationships built over years, high switching costs, long product approval cycles that protect incumbents, and a fragmentation profile barely touched by institutional consolidators.</p>
+        <p class="plt-body">EntelMed focuses below the threshold where large-cap medical device companies compete &#8212; specialized, founder-run businesses serving specific surgical specialties whose products and services command premium margins precisely because they are not commodities.</p>
+        <div class="plt-thesis">
+          <div class="plt-thesis-lbl">Investment Thesis</div>
+          <p>"Long surgeon relationships, regulatory barriers to substitution, and the absence of institutional consolidators below $50M revenue create sustainable acquisition multiples and significant post-acquisition margin opportunity."</p>
+        </div>
+        <div class="plt-feats">
+          <div class="plt-feat"><div class="plt-feat-dot"></div><p><strong>Surgeon relationship moats:</strong> Clinical relationships between device reps and surgeons are among the most durable competitive advantages in any industry &#8212; they do not reprice when a competitor lowers their price</p></div>
+          <div class="plt-feat"><div class="plt-feat-dot"></div><p><strong>Regulatory barriers:</strong> FDA 510(k) clearances, MDR compliance, and ISO certification protect incumbents from fast-follower competition across nearly every product category</p></div>
+          <div class="plt-feat"><div class="plt-feat-dot"></div><p><strong>Demographic tailwind:</strong> Orthopedic procedure volume correlates with demographics, not economic cycles &#8212; an aging U.S. population creates a structural long-term demand driver</p></div>
+          <div class="plt-feat"><div class="plt-feat-dot"></div><p><strong>Cross-selling within platform:</strong> A consolidated EntelMed can offer hospital and ASC clients a broader portfolio than any single acquired company &#8212; driving revenue synergies that compound with each acquisition</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION DIVIDER -->
+<div class="divider-wrap" style="background:var(--cf)">
+  <div class="divider-inner">
+    <div class="divider-line"></div>
+    <div class="divider-txt">Expected to Open Q3 2026 &#8212; Join the Waitlist for Priority Access</div>
+    <div class="divider-line"></div>
+  </div>
+</div>
+
+<!-- CENOVIX — EXPECTED Q3 2026 -->
+<section class="plt-closed" id="cenovix">
+  <div class="wrap">
+    <div class="plt-grid reveal">
+      <div>
+        <div class="logo-ph">
+          <div class="logo-ph-box dim"><span style="color:var(--mid)">CV</span></div>
+          <div class="logo-ph-label">Cenovix<br>Logo Placeholder</div>
+        </div>
+        <div class="plt-status">
+          <span class="plt-num">Platform III</span>
+          <span class="badge-expected"><span class="badge-expected-dot"></span>Expected Open Q3 2026</span>
+        </div>
+        <h2 class="plt-name-dim">Cenovix</h2>
+        <div class="plt-sector-dim">Biotechnology &amp; Laboratory Services</div>
+        <p class="plt-body-dim">Cenovix is CFG's biotechnology and laboratory services platform &#8212; consolidating specialized laboratory and biotech services businesses serving pharmaceutical companies, research institutions, and clinical trial operators. Cenovix is currently focused on integrating its most recent acquisitions through the Cebron Operating System and building the management infrastructure required to support the next acquisition phase.</p>
+        <p class="plt-body-dim">The platform is expected to open to new investors in Q3 2026 when current integration milestones are achieved. Investors on the waitlist will receive advance notice before any new round is announced publicly. Waitlist registration carries no investment obligation.</p>
+        <div class="plt-thesis-dim">
+          <div class="plt-thesis-lbl-dim">Investment Thesis</div>
+          <p>"Accreditation requirements, embedded client workflows, and the high cost of switching providers create client retention that protects post-acquisition cash flows better than most sectors."</p>
+        </div>
+        <div class="plt-feats-dim">
+          <div class="plt-feat-dim"><div class="plt-feat-dim-dot"></div><p><strong>Regulatory moats:</strong> CAP accreditation, CLIA certification, and GLP compliance protect incumbent laboratories from new entrants at nearly every market segment</p></div>
+          <div class="plt-feat-dim"><div class="plt-feat-dim-dot"></div><p><strong>Embedded workflows:</strong> Pharmaceutical and clinical trial clients integrate laboratory partners deeply &#8212; switching costs are measured in months of transition time, not price differentials</p></div>
+          <div class="plt-feat-dim"><div class="plt-feat-dim-dot"></div><p><strong>Long-duration relationships:</strong> Multi-year pharma development programs create revenue visibility well above the norms for lower-middle-market services businesses</p></div>
+          <div class="plt-feat-dim"><div class="plt-feat-dim-dot"></div><p><strong>Currently in integration phase:</strong> Cenovix is applying the COS across recent acquisitions &#8212; margin expansion before new deal activity is the pattern that precedes institutional revaluation</p></div>
+        </div>
+      </div>
+
+      <div class="cl-panel reveal d1">
+        <div class="cl-head">
+          <div class="cl-ey">Cenovix &nbsp;&middot;&nbsp; Platform III</div>
+          <h3>Expected Open &#8212; Q3 2026</h3>
+          <p>Currently in integration phase. Join the waitlist for priority access when Cenovix opens.</p>
+        </div>
+        <div class="cl-timeline">
+          <div class="cl-timeline-label">Expected Opening</div>
+          <p>Cenovix is targeting a Q3 2026 investor opening, subject to the completion of current integration milestones and platform readiness review. Waitlist members receive advance notice before any public announcement.</p>
+        </div>
+        <div class="cl-locked">
+          <span class="cl-lock-icon">&#128274;</span>
+          <h4>Investment Allocation Not Yet Open</h4>
+          <p>The platform is focused on integrating recent acquisitions and building the infrastructure for its next acquisition phase. Allocation will open when integration milestones are achieved and the platform is positioned for its next growth round.</p>
+        </div>
+        <div class="cl-form">
+          <div class="cl-form-lbl">Get Priority Notice When Cenovix Opens</div>
+          <div class="cl-input-row">
+            <input class="cl-input" type="email" placeholder="Enter your email address">
+            <button class="cl-btn">Notify Me</button>
+          </div>
+          <p class="cl-fine">No commitment. No spam. A single notification when Cenovix opens to investors. Verification will be required to invest.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEQARA — EXPECTED Q3 2026 -->
+<section class="plt-closed alt" id="seqara">
+  <div class="wrap">
+    <div class="plt-grid reveal">
+      <div class="cl-panel reveal" style="order:2">
+        <div class="cl-head">
+          <div class="cl-ey">Seqara &nbsp;&middot;&nbsp; Platform IV</div>
+          <h3>Expected Open &#8212; Q3 2026</h3>
+          <p>Early platform build phase. Join the waitlist for first-round access when Seqara opens.</p>
+        </div>
+        <div class="cl-timeline">
+          <div class="cl-timeline-label">Expected Opening</div>
+          <p>Seqara is targeting a Q3 2026 opening to investors, timed to the identification of its first acquisition target and finalization of the capital structure for that transaction. Waitlist members receive advance notice before any public announcement.</p>
+        </div>
+        <div class="cl-locked">
+          <span class="cl-lock-icon">&#128274;</span>
+          <h4>Investment Allocation Not Yet Open</h4>
+          <p>Seqara is in the early platform build phase &#8212; executive team assembly, thesis refinement, and initial deal pipeline development are underway. Waitlist members receive advance notice before any public announcement.</p>
+        </div>
+        <div class="cl-form">
+          <div class="cl-form-lbl">Get First Access When Seqara Opens</div>
+          <div class="cl-input-row">
+            <input class="cl-input" type="email" placeholder="Enter your email address">
+            <button class="cl-btn">Notify Me</button>
+          </div>
+          <p class="cl-fine">No commitment. No spam. First notification when Seqara opens. Verification will be required to invest.</p>
+        </div>
+      </div>
+
+      <div style="order:1">
+        <div class="logo-ph">
+          <div class="logo-ph-box dim"><span style="color:var(--mid)">SR</span></div>
+          <div class="logo-ph-label">Seqara<br>Logo Placeholder</div>
+        </div>
+        <div class="plt-status">
+          <span class="plt-num">Platform IV</span>
+          <span class="badge-expected"><span class="badge-expected-dot"></span>Expected Open Q3 2026</span>
+        </div>
+        <h2 class="plt-name-dim">Seqara</h2>
+        <div class="plt-sector-dim">Digital Security &amp; Cybersecurity</div>
+        <p class="plt-body-dim">Seqara is CFG's digital security and cybersecurity platform &#8212; designed to consolidate cybersecurity services, managed security operations, and digital risk management firms serving enterprise, government, and critical infrastructure clients. Seqara is currently in the platform build phase: the acquisition thesis is defined, the management team is being assembled, and the initial deal pipeline is in development.</p>
+        <p class="plt-body-dim">The cybersecurity services market is one of the most structurally compelling consolidation targets in the lower-middle market: non-discretionary demand driven by regulation and risk, a fragmented provider base of regional specialists, and an accelerating threat environment that structurally advantages providers with broader capabilities and scale.</p>
+        <div class="plt-thesis-dim">
+          <div class="plt-thesis-lbl-dim">Investment Thesis</div>
+          <p>"Regulatory mandates, accelerating threat complexity, and enterprise demand for integrated security coverage reward the platform consolidator that can deliver breadth and depth that regional specialists cannot."</p>
+        </div>
+        <div class="plt-feats-dim">
+          <div class="plt-feat-dim"><div class="plt-feat-dim-dot"></div><p><strong>Non-discretionary demand:</strong> Cybersecurity spend is driven by compliance requirements (CMMC, NIST, SOC 2, FedRAMP) and board-level risk mandates &#8212; not discretionary IT budgets</p></div>
+          <div class="plt-feat-dim"><div class="plt-feat-dim-dot"></div><p><strong>Certification and clearance barriers:</strong> CMMC compliance, federal clearance requirements, and SOC certifications protect experienced providers from fast-follower competition</p></div>
+          <div class="plt-feat-dim"><div class="plt-feat-dim-dot"></div><p><strong>Recurring revenue profile:</strong> Managed security services and retainer-based monitoring create predictable, multi-year revenue streams with high switching costs</p></div>
+          <div class="plt-feat-dim"><div class="plt-feat-dim-dot"></div><p><strong>Early-stage access:</strong> Waitlist investors have priority access to Seqara's first investment round at platform entry terms not available to later-stage participants</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UIM LABS — EXPECTED Q3 2026 -->
+<section class="plt-closed" id="uimlabs">
+  <div class="wrap">
+    <div class="plt-grid reveal">
+      <div>
+        <div class="logo-ph">
+          <div class="logo-ph-box dim"><span style="color:var(--mid)">UIM</span></div>
+          <div class="logo-ph-label">UIM Labs<br>Logo Placeholder</div>
+        </div>
+        <div class="plt-status">
+          <span class="plt-num">Platform V</span>
+          <span class="badge-expected"><span class="badge-expected-dot"></span>Expected Open Q3 2026</span>
+        </div>
+        <h2 class="plt-name-dim">UIM Labs</h2>
+        <div class="plt-sector-dim">AI, Autonomy &amp; Advanced Technology</div>
+        <p class="plt-body-dim">UIM Labs is CFG's AI, autonomy, and advanced technology platform &#8212; consolidating companies operating at the intersection of artificial intelligence, autonomous systems, and defense-adjacent technology. Headquartered in Irvine, California, UIM Labs brings together government and industry through strategic alliances focused on cyberspace operations, multi-domain AI deployment, and high-performance computing applications.</p>
+        <p class="plt-body-dim">UIM Labs products span vehicle-to-vehicle communication (V2V Communicator), industrial digitalization (SmartStream Connect), AIOps, DevOps, AI/ML, and autonomy solutions. The platform is in the early build phase and is expected to open to new investors in Q3 2026.</p>
+        <div class="plt-thesis-dim">
+          <div class="plt-thesis-lbl-dim">Investment Thesis</div>
+          <p>"Government-aligned AI and autonomy companies operating in multi-domain environments represent one of the most defensible positions in the technology sector &#8212; combining mission-critical demand with barriers to substitution that commercial AI companies cannot replicate."</p>
+        </div>
+        <div class="plt-feats-dim">
+          <div class="plt-feat-dim"><div class="plt-feat-dim-dot"></div><p><strong>Government and defense alignment:</strong> Seqara's Cyberspace Initiative creates strategic alliances between government and industry for cyberspace operations and defense technology &#8212; establishing durable institutional relationships</p></div>
+          <div class="plt-feat-dim"><div class="plt-feat-dim-dot"></div><p><strong>Multi-domain AI platform:</strong> AIOps, DevOps, AI/ML, and autonomous systems capabilities position UIM Labs across the full technology stack required for enterprise and defense clients</p></div>
+          <div class="plt-feat-dim"><div class="plt-feat-dim-dot"></div><p><strong>Industrial digitalization tailwind:</strong> SmartStream Connect targets the physical-to-software-defined industrial transformation &#8212; a multi-decade demand cycle across manufacturing, logistics, and infrastructure</p></div>
+          <div class="plt-feat-dim"><div class="plt-feat-dim-dot"></div><p><strong>Early-stage access:</strong> Waitlist investors have priority access to UIM Labs' first investment round at platform entry terms that reflect the platform's current stage &#8212; before institutional capital enters</p></div>
+        </div>
+      </div>
+
+      <div class="cl-panel reveal d1">
+        <div class="cl-head">
+          <div class="cl-ey">UIM Labs &nbsp;&middot;&nbsp; Platform V</div>
+          <h3>Expected Open &#8212; Q3 2026</h3>
+          <p>Early platform build phase. Join the waitlist for first-round access when UIM Labs opens.</p>
+        </div>
+        <div class="cl-timeline">
+          <div class="cl-timeline-label">Expected Opening</div>
+          <p>UIM Labs is targeting a Q3 2026 opening to investors, subject to first acquisition identification and capital structure finalization. Waitlist members receive advance notice before any public announcement.</p>
+        </div>
+        <div class="cl-locked">
+          <span class="cl-lock-icon">&#128274;</span>
+          <h4>Investment Allocation Not Yet Open</h4>
+          <p>UIM Labs is in the early platform build phase &#8212; strategic thesis refinement, management team assembly, and initial acquisition pipeline development are underway. Platform will open to investors when the first acquisition target is identified and the capital structure for that transaction is finalized.</p>
+        </div>
+        <div class="cl-form">
+          <div class="cl-form-lbl">Get First Access When UIM Labs Opens</div>
+          <div class="cl-input-row">
+            <input class="cl-input" type="email" placeholder="Enter your email address">
+            <button class="cl-btn">Notify Me</button>
+          </div>
+          <p class="cl-fine">No commitment. No spam. First notification when UIM Labs opens. Verification will be required to invest.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTIFY STRIP -->
+<section class="notify">
+  <div class="notify-inner">
+    <div class="reveal">
+      <div class="notify-ey">Platform Waitlist</div>
+      <h2 class="notify-h">Stay ahead of every<br><em>new opening.</em></h2>
+      <p class="notify-body">Register once to receive advance notice when any CFG platform opens to investors &#8212; including Cenovix, Seqara, and UIM Labs targeting Q3 2026, the CFG Notes reaching a new tranche, or a future platform entirely. Priority notification before any public announcement.</p>
+    </div>
+    <div class="reveal d1">
+      <div class="notify-grid">
+        <div class="ng-item"><span class="ng-dot open"></span><div><div class="ng-name">SensQor</div><div class="ng-status open">Equity Open Now</div></div></div>
+        <div class="ng-item"><span class="ng-dot open"></span><div><div class="ng-name">EntelMed</div><div class="ng-status open">Equity Open Now</div></div></div>
+        <div class="ng-item"><span class="ng-dot open"></span><div><div class="ng-name">CFG Notes</div><div class="ng-status open">Now Accepting</div></div></div>
+        <div class="ng-item"><span class="ng-dot expected"></span><div><div class="ng-name">Cenovix</div><div class="ng-status expected">Expected Q3 2026</div></div></div>
+        <div class="ng-item"><span class="ng-dot expected"></span><div><div class="ng-name">Seqara</div><div class="ng-status expected">Expected Q3 2026</div></div></div>
+        <div class="ng-item"><span class="ng-dot expected"></span><div><div class="ng-name">UIM Labs</div><div class="ng-status expected">Expected Q3 2026</div></div></div>
+      </div>
+      <div class="notify-row">
+        <input class="notify-input" type="email" placeholder="Your email address">
+        <button class="notify-submit">Join Waitlist</button>
+      </div>
+      <p class="notify-fine">No commitment. No spam. Verification required to invest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta">
+  <div class="cta-inner">
+    <div class="reveal">
+      <h2 class="cta-h">Three ways to invest with CFG right now.</h2>
+      <p class="cta-body">SensQor equity, EntelMed equity, and CFG Senior Secured Notes are all currently open to verified investors. Create your account, complete free verification, and access full offering documents for each open opportunity.</p>
+    </div>
+    <div class="cta-btns reveal d1">
+      <a href="https://cebroncapital.com" target="_blank" class="btn-white">Create Investor Account &#8594;</a>
+      <a href="cfg-invest.html" class="btn-ghost">View All Investment Options</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Cebron Financial Group</div>
+        <div class="footer-brand-sub">Inc. &nbsp;&middot;&nbsp; Delaware</div>
+        <p class="footer-brand-desc">Conceives, designs, builds, and scales acquisition platforms in sectors where consolidation creates lasting value. Securities offered directly by Cebron Financial Group, Inc.</p>
+      </div>
+      <div>
+        <div class="footer-col-head">Platforms</div>
+        <ul class="footer-links">
+          <li><a href="#sensqor">SensQor &#8212; Equity Open</a></li>
+          <li><a href="#entelmed">EntelMed &#8212; Equity Open</a></li>
+          <li><a href="#cenovix">Cenovix &#8212; Exp. Q3 2026</a></li>
+          <li><a href="#seqara">Seqara &#8212; Exp. Q3 2026</a></li>
+          <li><a href="#uimlabs">UIM Labs &#8212; Exp. Q3 2026</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Fixed Income</div>
+        <ul class="footer-links">
+          <li><a href="#cfg-notes">CFG Senior Notes</a></li>
+          <li><a href="#cfg-notes">10% p.a. Quarterly</a></li>
+          <li><a href="#cfg-notes">Profit Participation Right</a></li>
+          <li><a href="https://cebroncapital.com" target="_blank">Access Terms &#8599;</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Invest</div>
+        <ul class="footer-links">
+          <li><a href="cfg-invest.html">Investment Overview</a></li>
+          <li><a href="cfg-international.html">International Investors</a></li>
+          <li><a href="cfg-private-markets.html#accredited">Accreditation</a></li>
+          <li><a href="https://cebroncapital.com" target="_blank">Investor Portal &#8599;</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Company</div>
+        <ul class="footer-links">
+          <li><a href="cfg-about.html">About CFG</a></li>
+          <li><a href="cfg-about.html#model">The CFG Model</a></li>
+          <li><a href="cfg-private-markets.html">Private Markets</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-legal">&#169; 2025 Cebron Financial Group, Inc. All rights reserved. All securities described on this page are offered directly by Cebron Financial Group, Inc., a Delaware corporation, pursuant to Regulation D, Rule 506(c) and Regulation S of the Securities Act of 1933. These securities have not been registered under the Securities Act or any state securities laws. The CFG Senior Secured Note is an unsecured obligation of Cebron Financial Group, Inc. &#8212; not a bank deposit, not FDIC insured, not guaranteed by any government agency or third party. Investment involves significant risk including the potential loss of all principal. Profit Participation Right payouts are contingent on EBITDA milestone achievement and are not guaranteed. Platform opening timelines are estimates and are subject to change. This page does not constitute an offer to sell or a solicitation to buy any security. Any such offer is made only through the official offering memorandum available to verified investors. All investors should consult with their own financial, legal, and tax advisors prior to investing. Past performance is not indicative of future results.</p>
+      <div class="footer-entity">Cebron Financial Group, Inc.<br>Delaware Corporation<br>&#169; 2025</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(e => {
+  e.forEach(i => { if(i.isIntersecting){i.target.classList.add('visible');obs.unobserve(i.target)} })
+},{threshold:.05,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+const nav = document.getElementById('mainnav');
+const heroEl = document.querySelector('.hero');
+new IntersectionObserver(entries=>{
+  nav.className = entries[0].isIntersecting ? 'dark' : 'light';
+},{threshold:.05}).observe(heroEl);
+
+(function(){
+  var ham=document.getElementById('navHamburger'),mob=document.getElementById('navMobile'),navEl=document.getElementById('mainnav');
+  if(!ham||!mob)return;
+  function syncBg(){mob.className='nav-mobile'+(mob.classList.contains('open')?' open':'')+(navEl.classList.contains('light')?' light-bg':' dark-bg');}
+  ham.addEventListener('click',function(){var o=ham.classList.toggle('open');mob.classList.toggle('open',o);document.body.style.overflow=o?'hidden':'';syncBg();});
+  mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');mob.classList.remove('open');document.body.style.overflow='';}));
+  new MutationObserver(syncBg).observe(navEl,{attributes:true,attributeFilter:['class']});
+})();
+
+document.querySelectorAll('.cl-btn,.notify-submit').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var row=this.closest('.cl-input-row,.notify-row'),input=row&&row.querySelector('input');
+    if(input&&input.value&&input.value.includes('@')){
+      row.innerHTML='<p style="font-size:14px;font-weight:600;color:var(--gold);padding:12px 0">&#10003; You\'re on the list. We\'ll notify you before the next opening.</p>';
+    }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cebron Financial Group — Private Market Investing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --navy:#0C1C2E;
+  --navy-deep:#070F1A;
+  --navy-mid:#112236;
+  --gold:#A8822E;
+  --gold-light:#C09A3A;
+  --white:#FFFFFF;
+  --off:#F5F5F3;
+  --rule:#E2E2DE;
+  --text:#0D0D0D;
+  --body:#3A3A3A;
+  --mid:#6B6B6B;
+}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:17px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:64px;display:flex;align-items:center;transition:all 0.3s}
+nav.dark{background:rgba(7,15,26,0.95);border-bottom:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(12px)}
+nav.light{background:rgba(255,255,255,0.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(12px)}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 48px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:0.02em;transition:color 0.3s}
+nav.dark .nav-logo{color:var(--white)}
+nav.light .nav-logo{color:var(--navy)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;letter-spacing:0.01em;transition:color 0.2s}
+nav.dark .nav-links a{color:rgba(255,255,255,0.72)}
+nav.dark .nav-links a:hover{color:var(--white)}
+nav.light .nav-links a{color:var(--mid)}
+nav.light .nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--gold);color:var(--white)!important;padding:8px 20px;font-size:13px;font-weight:600;letter-spacing:0.01em;transition:background 0.2s!important}
+nav.light .nav-cta{background:var(--navy);color:var(--white)!important}
+.nav-cta:hover{opacity:0.88!important}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;background:var(--navy-deep);display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(145deg,#0a1828 0%,#060e18 50%,#0c1c2e 100%)}
+.hero-grid-lines{position:absolute;inset:0;opacity:0.04;background-image:linear-gradient(rgba(255,255,255,0.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.8) 1px,transparent 1px);background-size:80px 80px}
+.hero-accent{position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.hero-content{position:relative;z-index:2;max-width:1320px;margin:0 auto;padding:0 48px;padding-top:140px;padding-bottom:100px;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:48px;opacity:0;animation:fadeup 0.7s ease 0.1s forwards}
+.hero-tag-dot{width:6px;height:6px;background:var(--gold);border-radius:50%}
+.hero-tag-text{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold)}
+.hero-h1{font-size:clamp(56px,6.5vw,96px);font-weight:800;line-height:1.02;color:var(--white);letter-spacing:-0.03em;max-width:1000px;margin-bottom:32px;opacity:0;animation:fadeup 0.9s ease 0.2s forwards}
+.hero-h1 span{color:var(--gold)}
+.hero-deck{font-size:19px;font-weight:400;line-height:1.65;color:rgba(255,255,255,0.72);max-width:600px;margin-bottom:52px;opacity:0;animation:fadeup 0.9s ease 0.35s forwards}
+.hero-actions{display:flex;align-items:center;gap:16px;opacity:0;animation:fadeup 0.9s ease 0.48s forwards}
+.btn-primary{background:var(--gold);color:var(--white);font-size:14px;font-weight:600;padding:14px 32px;letter-spacing:0.01em;transition:opacity 0.2s;display:inline-block}
+.btn-primary:hover{opacity:0.88}
+.btn-outline{border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.88);font-size:14px;font-weight:500;padding:13px 28px;letter-spacing:0.01em;transition:all 0.2s;display:inline-block}
+.btn-outline:hover{border-color:rgba(255,255,255,0.72);color:var(--white)}
+
+/* Stats bar */
+.hero-stats{position:relative;z-index:2;border-top:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03)}
+.hero-stats-inner{max-width:1320px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:repeat(3,1fr)}
+.hs-item{padding:36px 0 36px;border-right:1px solid rgba(255,255,255,0.08)}
+.hs-item:last-child{border-right:none}
+.hs-item+.hs-item{padding-left:48px}
+.hs-num{font-size:54px;font-weight:800;color:var(--white);line-height:1;letter-spacing:-0.03em;margin-bottom:8px}
+.hs-num sup{font-size:28px;vertical-align:super}
+.hs-desc{font-size:14px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.5;max-width:260px;margin-bottom:4px}
+.hs-src{font-size:12px;font-weight:400;color:rgba(255,255,255,0.35)}
+
+/* ─── THE SHIFT ─── */
+.shift{background:var(--white);padding:120px 0}
+.shift-inner{max-width:1320px;margin:0 auto;padding:0 48px}
+.section-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.shift-header{border-bottom:1px solid var(--rule);padding-bottom:80px;margin-bottom:80px}
+.shift-headline{font-size:clamp(40px,4.2vw,64px);font-weight:800;line-height:1.06;color:var(--text);letter-spacing:-0.03em;max-width:720px;margin-bottom:0}
+.shift-headline em{font-style:normal;color:var(--gold)}
+.shift-cols{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.shift-lead{font-size:20px;font-weight:500;line-height:1.55;color:var(--text);margin-bottom:24px}
+.shift-body{font-size:17px;font-weight:400;line-height:1.7;color:var(--body);margin-bottom:20px}
+.shift-quote{margin-top:40px;border-left:3px solid var(--gold);padding-left:24px}
+.shift-quote-text{font-size:22px;font-weight:500;line-height:1.45;color:var(--text);font-style:italic}
+.shift-quote-attr{font-size:13px;font-weight:500;color:var(--mid);margin-top:12px;letter-spacing:0.02em}
+
+/* Three column insights */
+.shift-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:3px solid var(--text)}
+.sg-item{padding:48px 48px 48px 0;border-right:1px solid var(--rule)}
+.sg-item+.sg-item{padding-left:48px}
+.sg-item:last-child{border-right:none}
+.sg-number{font-size:13px;font-weight:700;letter-spacing:0.12em;color:var(--gold);margin-bottom:20px}
+.sg-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:16px;line-height:1.25;letter-spacing:-0.02em}
+.sg-body{font-size:15px;font-weight:400;line-height:1.7;color:var(--body)}
+
+/* ─── PUBLIC VS PRIVATE ─── */
+.compare{background:var(--navy-deep);padding:120px 0}
+.compare-inner{max-width:1320px;margin:0 auto;padding:0 48px}
+.compare-header{margin-bottom:64px}
+.compare-headline{font-size:clamp(40px,4.2vw,64px);font-weight:800;line-height:1.06;color:var(--white);letter-spacing:-0.03em;max-width:720px;margin-bottom:20px}
+.compare-headline em{font-style:normal;color:var(--gold)}
+.compare-sub{font-size:18px;font-weight:400;color:rgba(255,255,255,0.72);line-height:1.6;max-width:640px}
+.compare-table{width:100%;border-collapse:collapse}
+.compare-table thead tr{border-bottom:1px solid rgba(255,255,255,0.15)}
+.compare-table th{padding:0 0 24px;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-align:left}
+.compare-table th:first-child{color:rgba(255,255,255,0.4);width:240px}
+.th-pub{color:rgba(255,255,255,0.55)}
+.th-prv{color:var(--gold)}
+.compare-table td{padding:24px 0;border-bottom:1px solid rgba(255,255,255,0.07);vertical-align:top}
+.compare-table td:first-child{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.45);padding-right:40px}
+.col-pub{font-size:16px;font-weight:400;color:rgba(255,255,255,0.58);padding-right:56px;line-height:1.6}
+.col-prv{font-size:16px;font-weight:400;color:rgba(255,255,255,0.92);line-height:1.6}
+.col-prv strong{font-weight:600;color:var(--white)}
+.arrow{color:var(--gold);margin-right:8px}
+
+/* ─── WHY NOW ─── */
+.whynow{background:var(--off);padding:120px 0}
+.whynow-inner{max-width:1320px;margin:0 auto;padding:0 48px}
+.whynow-header{display:grid;grid-template-columns:480px 1fr;gap:96px;align-items:start;margin-bottom:72px}
+.whynow-headline{font-size:clamp(40px,4.2vw,64px);font-weight:800;line-height:1.06;color:var(--text);letter-spacing:-0.03em}
+.whynow-headline em{font-style:normal;color:var(--gold)}
+.whynow-intro{font-size:18px;font-weight:400;line-height:1.7;color:var(--body);padding-top:8px}
+.drivers{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
+.driver{background:var(--white);padding:52px 48px 56px;position:relative;overflow:hidden;transition:background 0.25s}
+.driver:hover{background:#FAFAF8}
+.driver-n{font-size:80px;font-weight:800;color:rgba(12,28,46,0.05);position:absolute;top:24px;right:32px;line-height:1;letter-spacing:-0.04em;pointer-events:none;user-select:none}
+.driver-title{font-size:21px;font-weight:700;color:var(--text);margin-bottom:16px;line-height:1.2;letter-spacing:-0.02em;max-width:360px}
+.driver-body{font-size:16px;font-weight:400;line-height:1.7;color:var(--body)}
+
+/* ─── WHAT CFG DOES ─── */
+.cfg{background:var(--white);padding:120px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.cfg-inner{max-width:1320px;margin:0 auto;padding:0 48px}
+.cfg-header{display:grid;grid-template-columns:560px 1fr;gap:80px;align-items:start;margin-bottom:80px}
+.cfg-headline{font-size:clamp(40px,4.2vw,64px);font-weight:800;line-height:1.06;color:var(--text);letter-spacing:-0.03em}
+.cfg-headline em{font-style:normal;color:var(--gold)}
+.cfg-intro{font-size:18px;font-weight:400;line-height:1.7;color:var(--body);padding-top:8px}
+.cfg-steps{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--rule)}
+.cfg-step{padding:44px 36px 48px;border-right:1px solid var(--rule);position:relative;transition:background 0.2s}
+.cfg-step:last-child{border-right:none}
+.cfg-step:hover{background:var(--off)}
+.cfg-step-progress{height:2px;background:var(--rule);margin-bottom:40px;position:relative;overflow:hidden}
+.cfg-step-progress::after{content:'';position:absolute;left:0;top:0;height:100%;background:var(--gold)}
+.cfg-step:nth-child(1) .cfg-step-progress::after{width:25%}
+.cfg-step:nth-child(2) .cfg-step-progress::after{width:50%}
+.cfg-step:nth-child(3) .cfg-step-progress::after{width:75%}
+.cfg-step:nth-child(4) .cfg-step-progress::after{width:100%}
+.cfg-step-n{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.cfg-step-title{font-size:19px;font-weight:700;color:var(--text);margin-bottom:16px;line-height:1.2;letter-spacing:-0.02em}
+.cfg-step-body{font-size:14px;font-weight:400;line-height:1.7;color:var(--body)}
+
+/* ─── PRIVATE MARKET ALPHA ─── */
+.pma{background:var(--navy-deep);padding:120px 0}
+.pma-inner{max-width:1320px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 520px;gap:96px;align-items:start}
+.pma-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.pma-headline{font-size:clamp(40px,4vw,60px);font-weight:800;line-height:1.06;color:var(--white);letter-spacing:-0.03em;margin-bottom:28px}
+.pma-headline em{font-style:normal;color:var(--gold)}
+.pma-body{font-size:18px;font-weight:400;line-height:1.65;color:rgba(255,255,255,0.78);margin-bottom:52px;max-width:520px}
+.pma-list{border-top:1px solid rgba(255,255,255,0.1)}
+.pma-item{display:flex;align-items:flex-start;gap:20px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.08)}
+.pma-item-n{font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--gold);min-width:28px;padding-top:2px}
+.pma-item-text{font-size:16px;font-weight:400;color:rgba(255,255,255,0.85);line-height:1.6}
+.pma-item-text strong{font-weight:600;color:var(--white)}
+
+/* Newsletter card */
+.pma-card{background:var(--white)}
+.pma-card-head{background:var(--navy-mid);padding:36px 40px 32px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.pma-card-label{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.pma-card-label::before{content:'';display:block;width:16px;height:1px;background:var(--gold)}
+.pma-card-title{font-size:19px;font-weight:700;color:var(--white);line-height:1.3;margin-bottom:10px;letter-spacing:-0.01em}
+.pma-card-meta{font-size:13px;font-weight:400;color:rgba(255,255,255,0.55)}
+.pma-card-body{padding:32px 40px 0;background:var(--white)}
+.pma-toc-label{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);margin-bottom:16px}
+.pma-toc-item{display:flex;gap:16px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--rule)}
+.pma-toc-item:last-child{border-bottom:none}
+.pma-toc-cat{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);min-width:68px;padding-top:2px;flex-shrink:0}
+.pma-toc-title{font-size:14px;font-weight:400;color:var(--text);line-height:1.5}
+.pma-card-foot{padding:28px 40px;border-top:1px solid var(--rule);background:var(--off)}
+.pma-form{display:flex}
+.pma-input{flex:1;border:1px solid var(--rule);border-right:none;padding:12px 16px;font-size:14px;font-weight:400;font-family:'Inter',sans-serif;color:var(--text);background:var(--white);outline:none;transition:border-color 0.2s}
+.pma-input::placeholder{color:var(--mid)}
+.pma-input:focus{border-color:var(--gold)}
+.pma-submit{background:var(--navy);color:var(--white);border:none;padding:12px 24px;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif;transition:background 0.2s;white-space:nowrap}
+.pma-submit:hover{background:var(--navy-mid)}
+.pma-form-note{font-size:13px;font-weight:400;color:var(--mid);margin-top:10px;line-height:1.55}
+
+/* ─── CTA ─── */
+.cta{display:grid;grid-template-columns:1fr 1fr}
+.cta-left{background:var(--gold);padding:96px 80px 96px 48px;display:flex;flex-direction:column;justify-content:center}
+.cta-left-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:20px}
+.cta-left-headline{font-size:clamp(32px,3vw,46px);font-weight:800;color:var(--white);line-height:1.1;letter-spacing:-0.03em;margin-bottom:20px}
+.cta-left-body{font-size:17px;font-weight:400;color:rgba(255,255,255,0.82);line-height:1.65;margin-bottom:44px;max-width:420px}
+.cta-left-actions{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.btn-white{display:inline-block;background:var(--white);color:var(--navy);font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:14px 32px;transition:opacity 0.2s}
+.btn-white:hover{opacity:0.9}
+.btn-ghost-white{display:inline-block;border:1px solid rgba(255,255,255,0.45);color:rgba(255,255,255,0.88);font-size:13px;font-weight:500;padding:13px 28px;transition:all 0.2s}
+.btn-ghost-white:hover{border-color:rgba(255,255,255,0.8);color:var(--white)}
+.cta-right{background:var(--navy);padding:96px 48px 96px 80px;display:flex;flex-direction:column;justify-content:center}
+.cta-right-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:20px}
+.cta-right-headline{font-size:clamp(28px,2.6vw,40px);font-weight:800;color:var(--white);line-height:1.1;letter-spacing:-0.03em;margin-bottom:16px}
+.cta-right-body{font-size:17px;font-weight:400;color:rgba(255,255,255,0.75);line-height:1.65;margin-bottom:40px;max-width:420px}
+.inline-form{display:flex;max-width:440px}
+.inline-input{flex:1;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-right:none;padding:13px 16px;font-size:14px;font-weight:400;color:var(--white);font-family:'Inter',sans-serif;outline:none;transition:border-color 0.2s}
+.inline-input::placeholder{color:rgba(255,255,255,0.38)}
+.inline-input:focus{border-color:rgba(168,130,46,0.65)}
+.inline-submit{background:var(--gold);border:none;padding:13px 22px;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--white);cursor:pointer;font-family:'Inter',sans-serif;transition:opacity 0.2s;white-space:nowrap}
+.inline-submit:hover{opacity:0.88}
+.cta-right-note{font-size:13px;font-weight:400;color:rgba(255,255,255,0.45);margin-top:12px;line-height:1.55;max-width:420px}
+
+/* ─── FOOTER ─── */
+footer{background:#04090F;padding:72px 48px 40px}
+.footer-inner{max-width:1320px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:300px repeat(4,1fr);gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:40px}
+.footer-brand-name{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
+.footer-brand-sub{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.footer-brand-desc{font-size:14px;font-weight:400;line-height:1.7;color:rgba(255,255,255,0.5)}
+.footer-col-head{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:20px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
+.footer-links a{font-size:14px;font-weight:400;color:rgba(255,255,255,0.62);transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{display:flex;gap:48px;justify-content:space-between;align-items:flex-start}
+.footer-legal{font-size:12px;font-weight:400;line-height:1.7;color:rgba(255,255,255,0.35);max-width:800px}
+.footer-entity{font-size:12px;font-weight:400;color:rgba(255,255,255,0.35);text-align:right;white-space:nowrap;flex-shrink:0}
+
+/* ANIMATIONS */
+@keyframes fadeup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="dark" id="mainnav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Cebron Financial Group</a>
+    <ul class="nav-links">
+      <li><a href="cfg-private-markets.html">Private Markets</a></li>
+      <li><a href="cfg-about.html">About CFG</a></li>
+      <li><a href="#pma">Private Market Alpha</a></li>
+      <li><a href="cfg-invest.html">Invest</a></li>
+      <li><a href="https://cebroncapital.com" target="_blank" class="nav-cta">Investor Portal</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-accent"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      <span class="hero-tag-text">Private Market Investing &nbsp;·&nbsp; Now Open to Accredited Investors</span>
+    </div>
+
+    <h1 class="hero-h1">
+      Private markets.<br>
+      <span>The asset class that<br>outgrew Wall Street.</span>
+    </h1>
+
+    <p class="hero-deck">
+      For decades, the most sophisticated investors in the world — endowments, sovereign wealth funds, pension funds — quietly built their wealth outside the stock market. Cebron Financial Group brings that access to accredited individual investors.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#shift" class="btn-primary">Why Private Markets</a>
+      <a href="cfg-invest.html" class="btn-outline">View Investment Opportunities</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stats-inner">
+      <div class="hs-item">
+        <div class="hs-num">$13<sup>T</sup></div>
+        <div class="hs-desc">Global private market assets under management as of 2024</div>
+        <div class="hs-src">McKinsey Global Private Markets Review 2024</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num">86%</div>
+        <div class="hs-desc">Of U.S. companies with revenues above $100M that are privately held</div>
+        <div class="hs-src">U.S. Census Bureau / PitchBook</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num">2×</div>
+        <div class="hs-desc">The rate at which private market AUM has grown versus public markets over the past decade</div>
+        <div class="hs-src">Preqin Global Report 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SHIFT -->
+<section class="shift" id="shift">
+  <div class="shift-inner">
+
+    <div class="shift-header reveal">
+      <div class="section-eyebrow">The Investor Shift</div>
+      <h2 class="shift-headline">Sophisticated investors are moving<br>beyond the stock market. <em>Here is why.</em></h2>
+    </div>
+
+    <div class="shift-cols reveal">
+      <div>
+        <p class="shift-lead">The public stock market represents a fraction of the real economy. Of all U.S. companies generating meaningful revenue, the vast majority are privately held — invisible to investors who limit themselves to listed equities.</p>
+        <p class="shift-body">The number of publicly listed U.S. companies has declined by nearly half since its peak in 1996. Companies are staying private longer, growing larger in private hands, and delivering value to private investors long before any IPO. The investors who recognized this shift earliest — Yale's endowment, CalPERS, sovereign wealth funds — have consistently allocated the majority of their portfolios to private markets.</p>
+        <div class="shift-quote">
+          <div class="shift-quote-text">"The era of passive index investing generating adequate real returns is over. The next decade belongs to private markets."</div>
+          <div class="shift-quote-attr">David Swensen &nbsp;·&nbsp; Former CIO, Yale Endowment</div>
+        </div>
+      </div>
+      <div>
+        <p class="shift-body">For decades, accessing those companies required institutional scale. That is changing. Regulatory frameworks that once restricted private investments to pension funds and sovereign wealth funds have expanded access to the roughly 24 million accredited individuals in the United States.</p>
+        <p class="shift-body">What you own in a diversified public equity portfolio is a slice of fewer than 4,000 companies — the publicly traded minority. What you are missing is access to the operating economy: the environmental engineering firms, the healthcare services businesses, the laboratory networks, the industrial inspection companies. These are the businesses that compound value quietly, out of sight of the stock market, available now to accredited investors through structured private market vehicles.</p>
+      </div>
+    </div>
+
+    <div class="shift-grid reveal d1">
+      <div class="sg-item">
+        <div class="sg-number">01</div>
+        <div class="sg-title">The Public Market Has Shrunk</div>
+        <p class="sg-body">There were approximately 8,000 publicly listed U.S. companies in 1996. Today there are fewer than 4,000. Companies are choosing to remain private longer — accessing capital through private markets while avoiding the quarterly earnings pressure and regulatory burden of public markets. The best companies now spend their highest-growth years in private hands.</p>
+      </div>
+      <div class="sg-item">
+        <div class="sg-number">02</div>
+        <div class="sg-title">Volatility Is Not Risk Tolerance — It Is Risk</div>
+        <p class="sg-body">Listed equities are subject to market-wide sentiment, algorithmic trading, geopolitical headlines, and Federal Reserve commentary — forces entirely disconnected from the underlying business. Private market investments are valued on fundamentals: revenue, EBITDA, cash flow, and strategic position. For investors with appropriate time horizons, removing that noise is a feature, not a limitation.</p>
+      </div>
+      <div class="sg-item">
+        <div class="sg-number">03</div>
+        <div class="sg-title">The Diversification You Think You Have</div>
+        <p class="sg-body">A portfolio of listed equities — even across sectors and geographies — moves together in periods of market stress. The correlations that investors rely on for diversification collapse precisely when diversification is most needed. Private market assets — acquisition platforms, direct lending, real assets — behave differently because they are valued differently and operated differently. True diversification requires private exposure.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PUBLIC VS PRIVATE -->
+<section class="compare" id="compare">
+  <div class="compare-inner">
+    <div class="compare-header reveal">
+      <div class="section-eyebrow" style="color:var(--gold)">Public vs. Private</div>
+      <h2 class="compare-headline">What public markets offer.<br><em>What private markets provide.</em></h2>
+      <p class="compare-sub">This is not an argument against public markets. It is an argument for understanding what each does — and ensuring your portfolio reflects that understanding.</p>
+    </div>
+
+    <table class="compare-table reveal">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="th-pub">Public Market Investing</th>
+          <th class="th-prv">Private Market Investing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Universe of companies</td>
+          <td class="col-pub">~3,700 listed U.S. companies, heavily weighted toward large-cap tech and financials</td>
+          <td class="col-prv"><span class="arrow">→</span><strong>Millions of private businesses</strong> — the vast majority of the real economy, including high-growth and mission-critical sectors invisible to public investors</td>
+        </tr>
+        <tr>
+          <td>Valuation basis</td>
+          <td class="col-pub">Daily market price driven by sentiment, algorithmic flows, and macro factors often disconnected from business fundamentals</td>
+          <td class="col-prv"><span class="arrow">→</span><strong>Fundamental value</strong> — revenue, EBITDA, cash flow, and strategic positioning. Businesses are valued as businesses, not as tickers.</td>
+        </tr>
+        <tr>
+          <td>Correlation in downturns</td>
+          <td class="col-pub">High correlation across asset classes during stress events — diversification benefits collapse when most needed</td>
+          <td class="col-prv"><span class="arrow">→</span><strong>Lower correlation</strong> to public market volatility — private assets do not reprice daily based on headlines or Fed statements</td>
+        </tr>
+        <tr>
+          <td>Investor influence</td>
+          <td class="col-pub">Minority shareholders have no meaningful influence over strategy, operations, or capital allocation decisions</td>
+          <td class="col-prv"><span class="arrow">→</span><strong>Active ownership</strong> — private investors influence operating decisions, management quality, and value creation strategy directly</td>
+        </tr>
+        <tr>
+          <td>Access to growth stages</td>
+          <td class="col-pub">By IPO, most of a company's highest-growth phase is complete. Public investors buy in after institutional investors have already captured peak value creation.</td>
+          <td class="col-prv"><span class="arrow">→</span><strong>Earlier in the value creation cycle</strong> — private investors access companies during the compounding phase, before institutional revaluation at scale</td>
+        </tr>
+        <tr>
+          <td>Who has historically used it</td>
+          <td class="col-pub">Retail investors, 401(k) participants, passive index funds</td>
+          <td class="col-prv"><span class="arrow">→</span><strong>Endowments, sovereign wealth funds, pension funds, family offices</strong> — the most sophisticated allocators in the world</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- WHY NOW -->
+<section class="whynow" id="whynow">
+  <div class="whynow-inner">
+    <div class="whynow-header reveal">
+      <div>
+        <div class="section-eyebrow">Why Now</div>
+        <h2 class="whynow-headline">Four forces driving the shift to <em>private markets.</em></h2>
+      </div>
+      <p class="whynow-intro">The movement of sophisticated capital from public to private markets is not a trend. It is a structural reallocation driven by fundamental changes in how the economy is organized, how companies access capital, and how wealth is created. These forces are accelerating — not reversing.</p>
+    </div>
+
+    <div class="drivers reveal d1">
+      <div class="driver">
+        <div class="driver-n">1</div>
+        <div class="driver-title">Companies Are Staying Private Longer</div>
+        <p class="driver-body">The average age of a company at IPO has risen from 4 years in 1999 to over 11 years today. Companies no longer need public markets for capital — private credit, growth equity, and institutional private equity provide everything a growing company requires. The result: the most valuable years of a company's growth cycle now occur in private hands, inaccessible to public market investors.</p>
+      </div>
+      <div class="driver">
+        <div class="driver-n">2</div>
+        <div class="driver-title">Regulatory Access Is Expanding</div>
+        <p class="driver-body">Regulation D Rule 506(c) and related SEC frameworks have progressively expanded the ability of private companies to offer investment access to accredited individuals. What was once available only to institutional investors and ultra-high-net-worth family offices is now legally accessible to the roughly 24 million accredited investors in the United States — a fundamental structural change in who can participate.</p>
+      </div>
+      <div class="driver">
+        <div class="driver-n">3</div>
+        <div class="driver-title">The Fragmented Economy Is a Private Market Opportunity</div>
+        <p class="driver-body">The most compelling private market opportunities are not in venture-stage technology — they are in the fragmented, mature service industries that form the backbone of the U.S. economy. Environmental engineering. Healthcare services. Industrial inspection. Laboratory services. These are businesses generating real EBITDA, serving essential markets, and trading at acquisition multiples that make compounding returns achievable through disciplined consolidation.</p>
+      </div>
+      <div class="driver">
+        <div class="driver-n">4</div>
+        <div class="driver-title">Interest Rates Changed the Calculus</div>
+        <p class="driver-body">A decade of near-zero interest rates made almost every asset look attractive on a relative basis. As rates normalized, the differentiation between asset classes has re-emerged. Investors who once accepted marginal public market returns without scrutiny are now asking harder questions about risk, income, and portfolio construction — and finding that private market instruments offer a genuinely different profile worth understanding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT CFG DOES -->
+<section class="cfg" id="cfg">
+  <div class="cfg-inner">
+    <div class="cfg-header reveal">
+      <div>
+        <div class="section-eyebrow">Cebron Financial Group</div>
+        <h2 class="cfg-headline">How CFG puts private<br>market strategy <em>to work.</em></h2>
+      </div>
+      <p class="cfg-intro">Cebron Financial Group conceives, designs, builds, and scales acquisition platforms in sectors where consolidation creates lasting value. We give accredited investors structured access to that strategy through Cebron Capital, LLC — with current income and upside participation in the platforms we build.</p>
+    </div>
+
+    <div class="cfg-steps reveal d1">
+      <div class="cfg-step">
+        <div class="cfg-step-progress"></div>
+        <div class="cfg-step-n">Step 01</div>
+        <div class="cfg-step-title">We Identify the Opportunity</div>
+        <p class="cfg-step-body">We identify fragmented, mission-critical industries where dozens of founder-owned businesses operate independently — each too small for institutional attention, but collectively representing a large and defensible market. We design an acquisition platform around the consolidation thesis before a single deal is made.</p>
+      </div>
+      <div class="cfg-step">
+        <div class="cfg-step-progress"></div>
+        <div class="cfg-step-n">Step 02</div>
+        <div class="cfg-step-title">We Build the Platform</div>
+        <p class="cfg-step-body">Each acquisition platform — SensQor, Cenovix, EntelMed, Seqara — has a dedicated executive team, M&amp;A team, and corporate development function. Your investment through Cebron Capital funds the operating infrastructure that makes each platform's acquisition program possible.</p>
+      </div>
+      <div class="cfg-step">
+        <div class="cfg-step-progress"></div>
+        <div class="cfg-step-n">Step 03</div>
+        <div class="cfg-step-title">We Acquire and Integrate</div>
+        <p class="cfg-step-body">Each platform acquires founder-owned businesses in its sector at disciplined entry valuations. The Cebron Operating System is deployed at every acquisition to standardize operations, expand margins, and build a cohesive platform from fragmented independent parts.</p>
+      </div>
+      <div class="cfg-step">
+        <div class="cfg-step-progress"></div>
+        <div class="cfg-step-n">Step 04</div>
+        <div class="cfg-step-title">We Scale Toward a Liquidity Event</div>
+        <p class="cfg-step-body">As each platform demonstrates compounding acquisitions and expanding margins, it attracts institutional co-investment, strategic interest, and ultimately a public market event or strategic sale — the point at which the value created through the entire process is realized. CFG, and investors who participated alongside CFG, benefit from that realization.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVATE MARKET ALPHA -->
+<section class="pma" id="pma">
+  <div class="pma-inner">
+    <div class="reveal">
+      <div class="pma-eyebrow">Private Market Alpha</div>
+      <h2 class="pma-headline">The private market education<br>that <em>changes how you invest.</em></h2>
+      <p class="pma-body">Most individual investors understand public markets fluently and private markets not at all. Private Market Alpha exists to close that gap — providing the education, analysis, and insight that accredited investors need to make informed decisions about private market participation.</p>
+      <div class="pma-list">
+        <div class="pma-item">
+          <span class="pma-item-n">I</span>
+          <span class="pma-item-text"><strong>Private market fundamentals</strong> — how acquisition compounding, direct lending, and private credit work, explained without jargon</span>
+        </div>
+        <div class="pma-item">
+          <span class="pma-item-n">II</span>
+          <span class="pma-item-text"><strong>Industry analysis</strong> — deep dives into the fragmented industries where consolidation creates the most durable value</span>
+        </div>
+        <div class="pma-item">
+          <span class="pma-item-n">III</span>
+          <span class="pma-item-text"><strong>Deal structure literacy</strong> — understanding notes, SPVs, carried interest, and profit participation before you invest</span>
+        </div>
+        <div class="pma-item">
+          <span class="pma-item-n">IV</span>
+          <span class="pma-item-text"><strong>CFG platform updates</strong> — exclusive progress reports on CFG's four acquisition platforms</span>
+        </div>
+        <div class="pma-item">
+          <span class="pma-item-n">V</span>
+          <span class="pma-item-text"><strong>Early access</strong> — subscribers receive notification of new Cebron Capital investment opportunities before general release</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d1">
+      <div class="pma-card">
+        <div class="pma-card-head">
+          <div class="pma-card-label">Private Market Alpha &nbsp;·&nbsp; Flagship Issue</div>
+          <div class="pma-card-title">Why the Smartest Institutional Investors Stopped Relying on the Stock Market — and What They Did Instead</div>
+          <div class="pma-card-meta">For accredited investors &nbsp;·&nbsp; Published by Cebron Financial Group</div>
+        </div>
+        <div class="pma-card-body">
+          <div class="pma-toc-label">In This Issue</div>
+          <div class="pma-toc-item">
+            <span class="pma-toc-cat">Feature</span>
+            <span class="pma-toc-title">The Yale Model: how an endowment transformed portfolio construction and left Wall Street behind</span>
+          </div>
+          <div class="pma-toc-item">
+            <span class="pma-toc-cat">Education</span>
+            <span class="pma-toc-title">Acquisition compounding explained: buying fragmented businesses and building institutional platforms</span>
+          </div>
+          <div class="pma-toc-item">
+            <span class="pma-toc-cat">Analysis</span>
+            <span class="pma-toc-title">The fragmented economy: why $13 trillion in private market AUM is still just the beginning</span>
+          </div>
+          <div class="pma-toc-item">
+            <span class="pma-toc-cat">Access</span>
+            <span class="pma-toc-title">Regulation D 506(c): the legal framework that opened private markets to accredited individuals</span>
+          </div>
+        </div>
+        <div class="pma-card-foot">
+          <div class="pma-form">
+            <input class="pma-input" type="email" placeholder="Enter your email address">
+            <button class="pma-submit">Subscribe Free</button>
+          </div>
+          <p class="pma-form-note">Free for accredited investors. No spam. Unsubscribe anytime. Subscribers may receive information about Cebron Capital investment opportunities under Reg D 506(c).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SPLIT -->
+<section class="cta" id="invest">
+  <div class="cta-left reveal">
+    <div class="cta-left-eyebrow">Accredited Investors &nbsp;·&nbsp; Cebron Capital, LLC</div>
+    <h2 class="cta-left-headline">Are you ready to invest in private markets?</h2>
+    <p class="cta-left-body">Current investment opportunities are available exclusively through the Cebron Capital investor portal. Create your account, complete accredited investor verification, and access offering documents at your own pace.</p>
+    <div class="cta-left-actions">
+      <a href="cfg-invest.html" class="btn-white">View Investment Opportunities</a>
+      <a href="#compare" class="btn-ghost-white">Learn About Private Markets</a>
+    </div>
+  </div>
+  <div class="cta-right reveal d1">
+    <div class="cta-right-eyebrow">Private Market Alpha &nbsp;·&nbsp; Free Newsletter</div>
+    <h2 class="cta-right-headline">Not ready to invest? Start with education.</h2>
+    <p class="cta-right-body">Subscribe to Private Market Alpha — the free newsletter for accredited investors who want to understand private markets before they participate in them.</p>
+    <div class="inline-form">
+      <input class="inline-input" type="email" placeholder="Your email address">
+      <button class="inline-submit">Subscribe</button>
+    </div>
+    <p class="cta-right-note">Free. No spam. Unsubscribe anytime. Subscribers may receive information about Cebron Capital investment opportunities pursuant to Regulation D Rule 506(c).</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Cebron Financial Group</div>
+        <div class="footer-brand-sub">Inc. &nbsp;·&nbsp; Delaware</div>
+        <p class="footer-brand-desc">Conceives, designs, builds, and scales acquisition platforms in sectors where consolidation creates lasting value. Securities offered through Cebron Capital, LLC.</p>
+      </div>
+      <div>
+        <div class="footer-col-head">Private Markets</div>
+        <ul class="footer-links">
+          <li><a href="cfg-private-markets.html">Why Private Markets</a></li>
+          <li><a href="cfg-private-markets.html#compare">Public vs. Private</a></li>
+          <li><a href="cfg-private-markets.html#drivers">Why Now</a></li>
+          <li><a href="#pma">Private Market Alpha</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Invest</div>
+        <ul class="footer-links">
+          <li><a href="https://cebroncapital.com" target="_blank">Cebron Capital Portal ↗</a></li>
+          <li><a href="#">Current Offerings</a></li>
+          <li><a href="#">Offering Documents</a></li>
+          <li><a href="#">Investor FAQ</a></li>
+          <li><a href="#">Accreditation</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Platforms</div>
+        <ul class="footer-links">
+          <li><a href="#">SensQor</a></li>
+          <li><a href="#">Cenovix</a></li>
+          <li><a href="#">EntelMed</a></li>
+          <li><a href="#">Seqara</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Company</div>
+        <ul class="footer-links">
+          <li><a href="cfg-about.html">About CFG</a></li>
+          <li><a href="cfg-about.html#model">Investment Strategy</a></li>
+          <li><a href="#">Leadership</a></li>
+          <li><a href="#">Press &amp; Media</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-legal">© 2025 Cebron Financial Group, Inc. All rights reserved. Securities are offered through Cebron Capital, LLC, an affiliate of Cebron Financial Group, Inc., pursuant to Regulation D, Rule 506(c) of the Securities Act of 1933. These securities have not been registered under the Securities Act of 1933 or any state securities laws. Investment involves significant risk including the potential loss of principal. Not FDIC insured. Not bank guaranteed. This website does not constitute an offer to sell or a solicitation to buy any securities. Any such offer is made only through the official offering memorandum available through the Cebron Capital investor portal. Past performance is not indicative of future results. All investors should review all offering documents and consult with their own financial, legal, and tax advisors prior to investing.</p>
+      <div class="footer-entity">Cebron Financial Group, Inc.<br>Delaware Corporation<br>© 2025</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const obs = new IntersectionObserver(e => {
+    e.forEach(i => { if (i.isIntersecting) { i.target.classList.add('visible'); obs.unobserve(i.target) } })
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Nav color swap
+  const nav = document.getElementById('mainnav');
+  const hero = document.querySelector('.hero');
+  const io = new IntersectionObserver(entries => {
+    nav.className = entries[0].isIntersecting ? 'dark' : 'light';
+  }, { threshold: 0.05 });
+  io.observe(hero);
+</script>
+</body>
+</html>

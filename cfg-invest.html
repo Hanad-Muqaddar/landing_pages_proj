@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invest — Cebron Financial Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --navy:#0C1C2E;
+  --navy-deep:#070F1A;
+  --navy-mid:#112236;
+  --gold:#A8822E;
+  --white:#FFFFFF;
+  --off:#F5F5F3;
+  --rule:#E2E2DE;
+  --text:#0D0D0D;
+  --body:#3A3A3A;
+  --mid:#6B6B6B;
+}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;font-size:17px;line-height:1.6}
+a{text-decoration:none;color:inherit}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:64px;display:flex;align-items:center;transition:all 0.3s}
+nav.dark{background:rgba(7,15,26,0.95);border-bottom:1px solid rgba(255,255,255,0.08);backdrop-filter:blur(12px)}
+nav.light{background:rgba(255,255,255,0.97);border-bottom:1px solid var(--rule);backdrop-filter:blur(12px)}
+.nav-inner{max-width:1320px;margin:0 auto;padding:0 48px;width:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:15px;font-weight:700;letter-spacing:0.02em;transition:color 0.3s}
+nav.dark .nav-logo{color:var(--white)}
+nav.light .nav-logo{color:var(--navy)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;transition:color 0.2s}
+nav.dark .nav-links a{color:rgba(255,255,255,0.72)}
+nav.dark .nav-links a:hover{color:var(--white)}
+nav.light .nav-links a{color:var(--mid)}
+nav.light .nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--gold);color:var(--white)!important;padding:8px 20px;font-size:13px;font-weight:600;transition:opacity 0.2s!important}
+nav.light .nav-cta{background:var(--navy)}
+.nav-cta:hover{opacity:0.88!important}
+
+/* HERO */
+.hero{background:var(--navy-deep);min-height:90vh;padding:140px 0 0;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+.hero-accent{position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.hero-grid{position:absolute;inset:0;opacity:0.04;background-image:linear-gradient(rgba(255,255,255,0.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.8) 1px,transparent 1px);background-size:80px 80px}
+.hero-glow{position:absolute;bottom:0;right:0;width:700px;height:700px;background:radial-gradient(ellipse at bottom right,rgba(168,130,46,0.08) 0%,transparent 60%);pointer-events:none}
+.hero-main{max-width:1320px;margin:0 auto;padding:0 48px;width:100%;display:grid;grid-template-columns:1fr 420px;gap:96px;align-items:end;position:relative;z-index:2;padding-bottom:96px}
+.breadcrumb{display:flex;align-items:center;gap:10px;margin-bottom:40px}
+.breadcrumb a{font-size:12px;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);transition:color 0.2s}
+.breadcrumb a:hover{color:var(--gold)}
+.bc-sep{color:rgba(255,255,255,0.2)}
+.bc-cur{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold)}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+.hero-h1{font-size:clamp(52px,5.5vw,82px);font-weight:800;color:var(--white);line-height:1.02;letter-spacing:-0.03em;margin-bottom:28px}
+.hero-h1 span{color:var(--gold)}
+.hero-deck{font-size:18px;font-weight:400;color:rgba(255,255,255,0.68);line-height:1.65;max-width:580px;margin-bottom:48px}
+.hero-btns{display:flex;align-items:center;gap:16px}
+.btn-gold-hero{display:inline-block;background:var(--gold);color:var(--white);font-size:14px;font-weight:600;padding:14px 36px;transition:opacity 0.2s}
+.btn-gold-hero:hover{opacity:0.88}
+.btn-ghost-hero{display:inline-block;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.82);font-size:14px;font-weight:500;padding:13px 28px;transition:all 0.2s}
+.btn-ghost-hero:hover{border-color:rgba(255,255,255,0.7);color:var(--white)}
+
+/* Hero panel */
+.hero-panel{background:rgba(255,255,255,0.04);border:1px solid rgba(168,130,46,0.25);padding:40px}
+.hp-label{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:8px}
+.hp-label::before{content:'';display:block;width:14px;height:1px;background:var(--gold)}
+.hp-rows{}
+.hp-row{display:grid;grid-template-columns:1fr auto;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.07)}
+.hp-row:first-child{border-top:1px solid rgba(255,255,255,0.07)}
+.hp-row-label{font-size:14px;font-weight:400;color:rgba(255,255,255,0.5)}
+.hp-row-val{font-size:15px;font-weight:700;color:var(--white)}
+.hp-row-val.gold{color:#D4AA52}
+.hp-row-val.locked{font-size:13px;font-weight:400;color:rgba(255,255,255,0.32);display:flex;align-items:center;gap:6px}
+.hp-cta{display:block;text-align:center;margin-top:24px;background:rgba(168,130,46,0.15);border:1px solid rgba(168,130,46,0.35);color:#D4AA52;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px;transition:all 0.2s}
+.hp-cta:hover{background:rgba(168,130,46,0.25);border-color:var(--gold)}
+.hp-fine{font-size:12px;font-weight:400;color:rgba(255,255,255,0.25);margin-top:12px;text-align:center;line-height:1.6}
+
+/* CATEGORIES */
+.categories{background:var(--white);padding:120px 0;border-bottom:1px solid var(--rule)}
+.section-wrap{max-width:1320px;margin:0 auto;padding:0 48px}
+.section-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.categories-header{text-align:center;max-width:680px;margin:0 auto 72px}
+.cat-h{font-size:clamp(36px,3.8vw,58px);font-weight:800;color:var(--text);line-height:1.06;letter-spacing:-0.03em;margin-bottom:18px}
+.cat-h em{font-style:normal;color:var(--gold)}
+.cat-sub{font-size:17px;font-weight:400;color:var(--body);line-height:1.7}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.cat-card{padding:64px 56px;position:relative;overflow:hidden}
+.cat-card.fi{background:var(--navy)}
+.cat-card.pe{background:var(--off);border:1px solid var(--rule)}
+.cat-tag{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.cat-tag::before{content:'';display:block;width:16px;height:1px;background:var(--gold)}
+.cat-h2{font-size:clamp(30px,3vw,44px);font-weight:800;line-height:1.06;letter-spacing:-0.03em;margin-bottom:18px}
+.cat-card.fi .cat-h2{color:var(--white)}
+.cat-card.fi .cat-h2 em{font-style:normal;color:#D4AA52}
+.cat-card.pe .cat-h2{color:var(--text)}
+.cat-card.pe .cat-h2 em{font-style:normal;color:var(--gold)}
+.cat-body{font-size:16px;font-weight:400;line-height:1.7;margin-bottom:28px}
+.cat-card.fi .cat-body{color:rgba(255,255,255,0.68)}
+.cat-card.pe .cat-body{color:var(--body)}
+.cat-features{margin-bottom:36px}
+.cat-feature{display:flex;gap:16px;align-items:flex-start;padding:13px 0}
+.cat-card.fi .cat-feature{border-bottom:1px solid rgba(255,255,255,0.07)}
+.cat-card.fi .cat-feature:first-child{border-top:1px solid rgba(255,255,255,0.07)}
+.cat-card.pe .cat-feature{border-bottom:1px solid var(--rule)}
+.cat-card.pe .cat-feature:first-child{border-top:1px solid var(--rule)}
+.cat-dot{width:5px;height:5px;background:var(--gold);border-radius:50%;margin-top:9px;flex-shrink:0}
+.cat-feat-text{font-size:15px;font-weight:400;line-height:1.65}
+.cat-card.fi .cat-feat-text{color:rgba(255,255,255,0.68)}
+.cat-card.pe .cat-feat-text{color:var(--body)}
+.cat-card.fi .cat-feat-text strong{font-weight:600;color:rgba(255,255,255,0.9)}
+.cat-card.pe .cat-feat-text strong{font-weight:600;color:var(--text)}
+.cat-locked{display:flex;align-items:flex-start;gap:14px;padding:20px 22px;margin-bottom:36px}
+.cat-card.fi .cat-locked{background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.12)}
+.cat-card.pe .cat-locked{background:rgba(168,130,46,0.05);border:1px dashed rgba(168,130,46,0.25)}
+.cat-lock-icon{font-size:16px;opacity:0.5;flex-shrink:0;margin-top:2px}
+.cat-lock-text{font-size:14px;font-weight:400;line-height:1.65}
+.cat-card.fi .cat-lock-text{color:rgba(255,255,255,0.42)}
+.cat-card.pe .cat-lock-text{color:var(--mid)}
+.cat-card.fi .cat-lock-text strong{font-weight:600;color:rgba(255,255,255,0.65)}
+.cat-card.pe .cat-lock-text strong{font-weight:600;color:var(--body)}
+.btn-gold-cat{display:inline-block;background:var(--gold);color:var(--white);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 32px;transition:opacity 0.2s}
+.btn-gold-cat:hover{opacity:0.88}
+.btn-navy-cat{display:inline-block;background:var(--navy);color:var(--white);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 32px;transition:opacity 0.2s}
+.btn-navy-cat:hover{opacity:0.88}
+
+/* SECTORS */
+.sectors{background:var(--navy-deep);padding:120px 0}
+.sectors-header{display:grid;grid-template-columns:520px 1fr;gap:80px;align-items:start;margin-bottom:72px}
+.sectors-h{font-size:clamp(36px,3.8vw,58px);font-weight:800;color:var(--white);line-height:1.06;letter-spacing:-0.03em}
+.sectors-h em{font-style:normal;color:var(--gold)}
+.sectors-intro{font-size:17px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.7;padding-top:8px}
+.sectors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.sector-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:44px 32px 48px;transition:background 0.25s,border-color 0.25s}
+.sector-card:hover{background:rgba(255,255,255,0.07);border-color:rgba(168,130,46,0.22)}
+.sector-icon{font-size:24px;margin-bottom:20px;display:block;opacity:0.7}
+.sector-type{font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.sector-name{font-size:19px;font-weight:700;color:var(--white);margin-bottom:14px;line-height:1.2;letter-spacing:-0.01em}
+.sector-body{font-size:14px;font-weight:400;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:20px}
+.sector-why{font-size:13px;font-weight:400;color:rgba(255,255,255,0.4);line-height:1.65;padding-top:16px;border-top:1px solid rgba(255,255,255,0.07)}
+.sector-why strong{font-weight:600;color:rgba(255,255,255,0.62)}
+.sectors-note{margin-top:52px;background:rgba(168,130,46,0.07);border:1px solid rgba(168,130,46,0.18);padding:36px 52px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.sectors-note-text{font-size:16px;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.7}
+.sectors-note-text strong{font-weight:600;color:rgba(255,255,255,0.9)}
+.btn-gold-sm{display:inline-block;background:var(--gold);color:var(--white);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;padding:14px 28px;white-space:nowrap;flex-shrink:0;transition:opacity 0.2s}
+.btn-gold-sm:hover{opacity:0.88}
+
+/* WHY CFG */
+.why{background:var(--off);padding:120px 0;border-top:1px solid var(--rule)}
+.why-header{text-align:center;max-width:680px;margin:0 auto 72px}
+.why-h{font-size:clamp(36px,3.8vw,58px);font-weight:800;color:var(--text);line-height:1.06;letter-spacing:-0.03em;margin-bottom:18px}
+.why-h em{font-style:normal;color:var(--gold)}
+.why-sub{font-size:17px;font-weight:400;color:var(--body);line-height:1.7}
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule);background:var(--white)}
+.why-item{padding:48px 40px;border-right:1px solid var(--rule);transition:background 0.2s}
+.why-item:last-child{border-right:none}
+.why-item:hover{background:var(--off)}
+.why-num{font-size:72px;font-weight:800;color:rgba(168,130,46,0.1);line-height:1;margin-bottom:20px;letter-spacing:-0.04em}
+.why-title{font-size:20px;font-weight:700;color:var(--text);margin-bottom:14px;line-height:1.2;letter-spacing:-0.02em}
+.why-body{font-size:15px;font-weight:400;color:var(--body);line-height:1.7}
+
+/* ELIGIBILITY */
+.elig{background:var(--navy);padding:96px 0}
+.elig-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.elig-block{padding:56px 52px}
+.elig-block.us{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)}
+.elig-block.intl{background:rgba(168,130,46,0.07);border:1px solid rgba(168,130,46,0.15)}
+.elig-eyebrow{font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.elig-h{font-size:24px;font-weight:800;color:var(--white);margin-bottom:14px;line-height:1.2;letter-spacing:-0.02em}
+.elig-body{font-size:15px;font-weight:400;color:rgba(255,255,255,0.62);line-height:1.7;margin-bottom:28px}
+.elig-tags{display:flex;flex-wrap:wrap;gap:8px}
+.elig-tag{font-size:13px;font-weight:500;padding:7px 15px;border:1px solid rgba(255,255,255,0.14);color:rgba(255,255,255,0.62)}
+
+/* SIGNUP */
+.signup{background:var(--gold);padding:120px 0}
+.signup-layout{max-width:1320px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr 440px;gap:96px;align-items:center}
+.signup-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:20px}
+.signup-h{font-size:clamp(36px,3.8vw,58px);font-weight:800;color:var(--white);line-height:1.06;letter-spacing:-0.03em;margin-bottom:20px}
+.signup-body{font-size:17px;font-weight:400;color:rgba(255,255,255,0.8);line-height:1.65;max-width:480px}
+.signup-form{background:var(--navy);padding:48px 44px}
+.sf-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.sf-h{font-size:22px;font-weight:800;color:var(--white);letter-spacing:-0.02em;margin-bottom:6px}
+.sf-sub{font-size:14px;font-weight:400;color:rgba(255,255,255,0.45);margin-bottom:28px;line-height:1.6}
+.sf-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.sf-field label{font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);letter-spacing:0.08em;text-transform:uppercase}
+.sf-field input,.sf-field select{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--white);font-family:'Inter',sans-serif;font-size:14px;font-weight:400;padding:12px 16px;outline:none;transition:border-color 0.2s;-webkit-appearance:none}
+.sf-field input::placeholder{color:rgba(255,255,255,0.3)}
+.sf-field input:focus,.sf-field select:focus{border-color:rgba(168,130,46,0.6)}
+.sf-field select option{background:var(--navy);color:var(--white)}
+.sf-submit{display:block;width:100%;margin-top:20px;background:var(--gold);color:var(--white);font-family:'Inter',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:15px 24px;border:none;cursor:pointer;transition:opacity 0.2s}
+.sf-submit:hover{opacity:0.88}
+.sf-fine{font-size:12px;font-weight:400;color:rgba(255,255,255,0.3);margin-top:14px;line-height:1.6;text-align:center}
+
+/* FOOTER */
+footer{background:#04090F;padding:72px 48px 40px}
+.footer-inner{max-width:1320px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:300px repeat(4,1fr);gap:48px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:40px}
+.footer-brand-name{font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
+.footer-brand-sub{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.footer-brand-desc{font-size:14px;font-weight:400;line-height:1.7;color:rgba(255,255,255,0.5)}
+.footer-col-head{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:20px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
+.footer-links a{font-size:14px;font-weight:400;color:rgba(255,255,255,0.62);transition:color 0.2s}
+.footer-links a:hover{color:var(--white)}
+.footer-bottom{display:flex;gap:48px;justify-content:space-between;align-items:flex-start}
+.footer-legal{font-size:12px;font-weight:400;line-height:1.7;color:rgba(255,255,255,0.35);max-width:800px}
+.footer-entity{font-size:12px;font-weight:400;color:rgba(255,255,255,0.35);text-align:right;white-space:nowrap;flex-shrink:0}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}
+</style>
+</head>
+<body>
+
+<nav class="dark" id="mainnav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Cebron Financial Group</a>
+    <ul class="nav-links">
+      <li><a href="cfg-private-markets.html">Private Markets</a></li>
+      <li><a href="cfg-about.html">About CFG</a></li>
+      <li><a href="index.html#pma">Private Market Alpha</a></li>
+      <li><a href="cfg-invest.html" style="color:white;font-weight:700">Invest</a></li>
+      <li><a href="https://cebroncapital.com" target="_blank" class="nav-cta">Investor Portal</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-accent"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-main">
+    <div>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-cur">Investment Opportunities</span>
+      </div>
+      <div class="hero-eyebrow">Cebron Capital &nbsp;·&nbsp; Private Market Access</div>
+      <h1 class="hero-h1">Two ways to invest in the<br>private market <span>opportunity.</span></h1>
+      <p class="hero-deck">Cebron Capital offers accredited investors two distinct entry points — a structured fixed income instrument delivering consistent quarterly yield, and direct private equity exposure across four high-conviction sectors. Specific deal terms and current availability are disclosed after investor verification.</p>
+      <div class="hero-btns">
+        <a href="#signup" class="btn-gold-hero">Create Investor Account</a>
+        <a href="#categories" class="btn-ghost-hero">Explore Investment Types</a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-panel">
+        <div class="hp-label">What You Unlock at Verification</div>
+        <div class="hp-rows">
+          <div class="hp-row"><span class="hp-row-label">Fixed Income Rate (indicative)</span><span class="hp-row-val gold">~10% p.a.</span></div>
+          <div class="hp-row"><span class="hp-row-label">Payment Schedule</span><span class="hp-row-val">Quarterly</span></div>
+          <div class="hp-row"><span class="hp-row-label">Performance Upside</span><span class="hp-row-val">Available</span></div>
+          <div class="hp-row"><span class="hp-row-label">Private Equity Sectors</span><span class="hp-row-val">4 Platforms</span></div>
+          <div class="hp-row"><span class="hp-row-label">Offering Terms &amp; Minimums</span><span class="hp-row-val locked">🔒 Verified Investors</span></div>
+          <div class="hp-row"><span class="hp-row-label">Current Deal Availability</span><span class="hp-row-val locked">🔒 Verified Investors</span></div>
+          <div class="hp-row"><span class="hp-row-label">Platform &amp; Company Details</span><span class="hp-row-val locked">🔒 Verified Investors</span></div>
+        </div>
+        <a href="#signup" class="hp-cta">Verify &amp; Access Full Terms →</a>
+        <p class="hp-fine">U.S. Accredited Investors · Reg D 506(c)<br>International Investors · Reg S</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TWO CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="section-wrap">
+    <div class="categories-header reveal">
+      <div class="section-eyebrow" style="text-align:center">Two Distinct Opportunities</div>
+      <h2 class="cat-h">Fixed income or <em>equity growth</em> — or both.</h2>
+      <p class="cat-sub">Depending on your investment objectives, risk tolerance, and time horizon, Cebron Capital's offering suite provides entry points for income-focused and growth-oriented investors alike.</p>
+    </div>
+    <div class="cat-grid reveal d1">
+      <div class="cat-card fi">
+        <div class="cat-tag">Cebron Fixed Income Notes</div>
+        <h2 class="cat-h2">Private market yield.<br><em>Paid quarterly.</em></h2>
+        <p class="cat-body">Cebron Fixed Income Notes are structured private market debt instruments that pay a fixed annual interest rate — currently targeting approximately 10% per annum — in quarterly cash payments directly to the investor. They are designed for investors who want direct access to private market returns in the form of predictable, regular income rather than waiting years for an exit event to realize value.</p>
+        <p class="cat-body" style="color:rgba(255,255,255,0.45)">Unlike a savings account or Treasury instrument, the Cebron Note is a private market obligation whose rate reflects the illiquidity premium — the additional yield available to investors willing to commit capital for a defined term outside the daily liquidity of public markets.</p>
+        <div class="cat-features">
+          <div class="cat-feature"><div class="cat-dot"></div><span class="cat-feat-text"><strong>Fixed rate, not variable.</strong> The interest rate is locked at origination for the full term — no index fluctuations, no Fed surprises.</span></div>
+          <div class="cat-feature"><div class="cat-dot"></div><span class="cat-feat-text"><strong>Quarterly cash income.</strong> Interest is deposited to your registered bank account four times per year — not deferred to maturity.</span></div>
+          <div class="cat-feature"><div class="cat-dot"></div><span class="cat-feat-text"><strong>Performance upside right.</strong> A contractual bonus right attached to the Note entitles holders to an additional one-time payment if CFG's platforms achieve defined performance milestones — equity-like upside without equity risk.</span></div>
+          <div class="cat-feature"><div class="cat-dot"></div><span class="cat-feat-text"><strong>Defined maturity.</strong> The Note has a fixed maturity date at which your full principal is returned — you know from day one exactly when your capital comes back.</span></div>
+        </div>
+        <div class="cat-locked">
+          <span class="cat-lock-icon">🔒</span>
+          <span class="cat-lock-text"><strong>Specific terms — including minimum investment, total offering size, term length, maturity schedule, and performance milestone thresholds</strong> — are available exclusively to verified investors through the Cebron Capital portal.</span>
+        </div>
+        <a href="#signup" class="btn-gold-cat">Access Fixed Income Terms</a>
+      </div>
+
+      <div class="cat-card pe">
+        <div class="cat-tag">Cebron Private Equity Access</div>
+        <h2 class="cat-h2">Sector-focused<br><em>acquisition compounding.</em></h2>
+        <p class="cat-body">Cebron Capital's private equity offering provides accredited investors direct economic exposure to CFG's acquisition platform strategy across four sectors — the disciplined compounding of founder-owned businesses acquired at lower-middle-market entry multiples, integrated through the Cebron Operating System, and scaled toward institutional exit valuations.</p>
+        <p class="cat-body">This is not a blind-pool fund. There is no fixed vintage cycle and no forced exit deadline. CFG originates each platform around a specific sector consolidation thesis, builds the operating infrastructure, acquires businesses at disciplined multiples, and compounds through operational improvement — holding until the right moment for an institutional event.</p>
+        <div class="cat-features">
+          <div class="cat-feature"><div class="cat-dot"></div><span class="cat-feat-text"><strong>Four sector platforms.</strong> Medical &amp; healthcare technology, biotechnology &amp; laboratory services, environmental engineering &amp; services, and digital security — each built and operated independently through a standardized framework.</span></div>
+          <div class="cat-feature"><div class="cat-dot"></div><span class="cat-feat-text"><strong>Permanent capital model.</strong> No fund lifecycle, no forced exits. CFG holds platforms until the optimal moment for an institutional sale or public market event — aligning with long-horizon investors, not constraining them.</span></div>
+          <div class="cat-feature"><div class="cat-dot"></div><span class="cat-feat-text"><strong>Multiple expansion mechanics.</strong> Acquiring at lower middle-market multiples and building toward institutional valuations creates the arbitrage that drives acquisition compounding returns at scale.</span></div>
+          <div class="cat-feature"><div class="cat-dot"></div><span class="cat-feat-text"><strong>Co-investment structure.</strong> Qualified investors may invest directly alongside CFG in specific platform acquisitions — into specific, identified businesses in sectors they understand, not a blind pool managed by committee.</span></div>
+        </div>
+        <div class="cat-locked">
+          <span class="cat-lock-icon">🔒</span>
+          <span class="cat-lock-text"><strong>Specific platform names, current acquisition targets, available co-investment opportunities, equity terms, and deal structures</strong> are disclosed exclusively to verified investors through the Cebron Capital portal.</span>
+        </div>
+        <a href="#signup" class="btn-navy-cat">Access Private Equity Terms</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="sectors" id="sectors">
+  <div class="section-wrap">
+    <div class="sectors-header reveal">
+      <div>
+        <div class="section-eyebrow" style="color:var(--gold)">Sector Focus</div>
+        <h2 class="sectors-h">Four sectors. Selected for fragmentation <em>and durability.</em></h2>
+      </div>
+      <p class="sectors-intro">Each CFG platform operates in a sector chosen for two characteristics: enough fragmentation to sustain an extended acquisition runway at disciplined entry multiples, and demand drivers durable enough to protect cash flows regardless of broader economic conditions. Platform names and operating companies are disclosed to verified investors.</p>
+    </div>
+    <div class="sectors-grid reveal d1">
+      <div class="sector-card">
+        <span class="sector-icon">⚕️</span>
+        <div class="sector-type">Platform I</div>
+        <div class="sector-name">Medical &amp; Healthcare Technology</div>
+        <p class="sector-body">Acquiring and consolidating specialized medical technology and healthcare service businesses serving hospital systems, surgical practices, and healthcare networks across the U.S. lower-middle market.</p>
+        <div class="sector-why"><strong>Why it compounds:</strong> Long clinical relationships, regulatory barriers to new entrants, and non-cyclical demand create defensible competitive positions that sustain margins through integration and at scale.</div>
+      </div>
+      <div class="sector-card">
+        <span class="sector-icon">🔬</span>
+        <div class="sector-type">Platform II</div>
+        <div class="sector-name">Biotechnology &amp; Laboratory Services</div>
+        <p class="sector-body">Consolidating specialized laboratory and biotech services businesses serving pharmaceutical companies, research institutions, and clinical trial operators in regulated, credentialed environments.</p>
+        <div class="sector-why"><strong>Why it compounds:</strong> Accreditation requirements, embedded client workflows, and the high cost of switching providers create client retention rates that protect post-acquisition cash flows better than most sectors.</div>
+      </div>
+      <div class="sector-card">
+        <span class="sector-icon">🌿</span>
+        <div class="sector-type">Platform III</div>
+        <div class="sector-name">Environmental Engineering &amp; Services</div>
+        <p class="sector-body">Acquiring founder-owned environmental engineering and geotechnical services firms serving infrastructure owners, energy companies, and industrial clients. A highly fragmented sector with recurring, compliance-driven revenue.</p>
+        <div class="sector-why"><strong>Why it compounds:</strong> Regulatory compliance creates non-discretionary demand. Geographic fragmentation provides an extended acquisition runway at disciplined multiples well into the consolidation cycle.</div>
+      </div>
+      <div class="sector-card">
+        <span class="sector-icon">🔐</span>
+        <div class="sector-type">Platform IV</div>
+        <div class="sector-name">Digital Security &amp; Technology</div>
+        <p class="sector-body">Building a platform in technology-enabled inspection, security, and monitoring services for industrial, infrastructure, and enterprise clients where safety and compliance mandates drive non-discretionary service demand.</p>
+        <div class="sector-why"><strong>Why it compounds:</strong> Safety mandates are non-negotiable. Fragmentation and the premium placed on certification depth and coverage reward the platform consolidator that can serve clients at scale.</div>
+      </div>
+    </div>
+    <div class="sectors-note reveal d2">
+      <p class="sectors-note-text">Specific company names, current acquisition targets, and operating entities within each sector are <strong>available to verified investors only</strong>. Create your account to access full platform details and current deal availability.</p>
+      <a href="#signup" class="btn-gold-sm">Access Platform Details →</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CFG -->
+<section class="why">
+  <div class="section-wrap">
+    <div class="why-header reveal">
+      <div class="section-eyebrow" style="text-align:center">Why Invest Through CFG</div>
+      <h2 class="why-h">Three structural advantages that <em>distinguish</em> this model.</h2>
+      <p class="why-sub">Most private market options available to individual investors are blind-pool funds managed by others on someone else's timeline. CFG offers a structurally different approach.</p>
+    </div>
+    <div class="why-grid reveal d1">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div class="why-title">Permanent Capital — No Exit Deadline</div>
+        <p class="why-body">Traditional private equity funds operate on a 10-year lifecycle with a mandatory exit. CFG holds platforms permanently — deploying capital at the optimal acquisition moment, integrating through the Cebron Operating System, and exiting only when the strategic value is fully realized. Your investment is not constrained to someone else's fund calendar.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div class="why-title">Operational Compounding — Not Leverage</div>
+        <p class="why-body">CFG does not generate returns through financial engineering or excessive leverage. The Cebron Operating System is deployed at every acquisition to improve margins, strengthen management, optimize cost structures, and build cross-platform value. Returns are earned through operational improvement — a more durable and repeatable source of value creation.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div class="why-title">Individual Investor Access — Institutional Quality</div>
+        <p class="why-body">Acquisition platform compounding has historically been accessible only to institutions through funds with multi-million minimums, multi-year blind commitments, and no current income. CFG structures its offerings to provide the same strategy to accredited individuals and family offices — including a current income option that traditional PE cannot provide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELIGIBILITY -->
+<section class="elig">
+  <div class="section-wrap">
+    <div class="elig-grid reveal">
+      <div class="elig-block us">
+        <div class="elig-eyebrow">U.S. Investors &nbsp;·&nbsp; Regulation D 506(c)</div>
+        <h3 class="elig-h">Accredited Investor Qualification</h3>
+        <p class="elig-body">Available to U.S. investors who qualify as accredited investors under SEC Rule 501(a). Verification is completed through the Cebron Capital investor portal — a fully online process typically completed within 24–48 hours. No in-person meetings required.</p>
+        <div class="elig-tags">
+          <span class="elig-tag">$200K+ Individual Income</span>
+          <span class="elig-tag">$300K+ Joint Income</span>
+          <span class="elig-tag">$1M+ Net Worth</span>
+          <span class="elig-tag">Series 7 / 65 / 82</span>
+          <span class="elig-tag">$5M+ Entity Assets</span>
+          <span class="elig-tag">Family Office $5M+ AUM</span>
+        </div>
+      </div>
+      <div class="elig-block intl reveal d1">
+        <div class="elig-eyebrow">International Investors &nbsp;·&nbsp; Regulation S</div>
+        <h3 class="elig-h">Non-U.S. Person Qualification</h3>
+        <p class="elig-body">Available to qualifying non-U.S. persons under Regulation S of the Securities Act. No U.S. accredited investor standard is required for international participants. Investors from Europe, the Gulf region, Asia Pacific, and Latin America are welcome to create a Cebron Capital account.</p>
+        <div class="elig-tags">
+          <span class="elig-tag">Europe &amp; UK</span>
+          <span class="elig-tag">Middle East &amp; Gulf</span>
+          <span class="elig-tag">Asia Pacific</span>
+          <span class="elig-tag">Latin America</span>
+          <span class="elig-tag">Non-U.S. Entities</span>
+          <span class="elig-tag">International Family Offices</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGN UP -->
+<section class="signup" id="signup">
+  <div class="signup-layout">
+    <div class="reveal">
+      <div class="signup-eyebrow">Create Your Investor Account</div>
+      <h2 class="signup-h">Access the full offering.<br>It starts here.</h2>
+      <p class="signup-body">Specific deal terms, platform names, current availability, minimum investment amounts, and all offering documents are available exclusively to verified investors. Create your account to begin — it takes less than five minutes. Specific opportunities are presented after verification is complete.</p>
+    </div>
+    <div class="signup-form reveal d1">
+      <div class="sf-eyebrow">Investor Registration</div>
+      <div class="sf-h">Get Access to Current Offerings</div>
+      <div class="sf-sub">Create your Cebron Capital account to begin verification and access full offering documents.</div>
+      <div class="sf-field">
+        <label>Full Name</label>
+        <input type="text" placeholder="Your full legal name">
+      </div>
+      <div class="sf-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="sf-field">
+        <label>Investor Type</label>
+        <select>
+          <option value="" disabled selected>Select investor type</option>
+          <option>U.S. Accredited Individual Investor</option>
+          <option>U.S. Family Office or Trust</option>
+          <option>U.S. Registered Investment Advisor</option>
+          <option>International (Non-U.S.) Individual</option>
+          <option>International (Non-U.S.) Entity or Family Office</option>
+        </select>
+      </div>
+      <div class="sf-field">
+        <label>Primary Interest</label>
+        <select>
+          <option value="" disabled selected>What are you most interested in?</option>
+          <option>Cebron Fixed Income Notes (~10% p.a. quarterly)</option>
+          <option>Private Equity / Sector Platform Access</option>
+          <option>Both — Income and Equity Exposure</option>
+        </select>
+      </div>
+      <button class="sf-submit" onclick="window.location.href='https://cebroncapital.com'">Create Account &amp; Begin Verification →</button>
+      <p class="sf-fine">By submitting, you confirm you are or believe you may qualify as a verified investor. This does not constitute a commitment to invest or an offer to sell securities.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Cebron Financial Group</div>
+        <div class="footer-brand-sub">Inc. &nbsp;·&nbsp; Delaware</div>
+        <p class="footer-brand-desc">Conceives, designs, builds, and scales acquisition platforms in sectors where consolidation creates lasting value. Securities offered through Cebron Capital, LLC.</p>
+      </div>
+      <div>
+        <div class="footer-col-head">Invest</div>
+        <ul class="footer-links">
+          <li><a href="#categories">Fixed Income Notes</a></li>
+          <li><a href="#categories">Private Equity Access</a></li>
+          <li><a href="#sectors">Sector Focus</a></li>
+          <li><a href="https://cebroncapital.com" target="_blank">Investor Portal ↗</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Private Markets</div>
+        <ul class="footer-links">
+          <li><a href="cfg-private-markets.html">Why Private Markets</a></li>
+          <li><a href="cfg-private-markets.html#family">Family Wealth</a></li>
+          <li><a href="cfg-private-markets.html#global">Global Access</a></li>
+          <li><a href="index.html#pma">Private Market Alpha</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Company</div>
+        <ul class="footer-links">
+          <li><a href="cfg-about.html">About CFG</a></li>
+          <li><a href="cfg-about.html#model">The CFG Model</a></li>
+          <li><a href="cfg-about.html#platforms">Our Platforms</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-head">Eligibility</div>
+        <ul class="footer-links">
+          <li><a href="cfg-private-markets.html#accredited">U.S. Accredited Investor</a></li>
+          <li><a href="cfg-private-markets.html#global">International (Reg S)</a></li>
+          <li><a href="cfg-private-markets.html#family">Family Offices</a></li>
+          <li><a href="#">Verification Process</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-legal">© 2025 Cebron Financial Group, Inc. All rights reserved. Securities are offered through Cebron Capital, LLC, an affiliate of Cebron Financial Group, Inc., pursuant to Regulation D, Rule 506(c) and Regulation S of the Securities Act of 1933. These securities have not been registered under the Securities Act of 1933 or any state securities laws. Investment involves significant risk including the potential loss of principal. Not FDIC insured. Not bank guaranteed. This page does not constitute an offer to sell or solicitation to buy any securities. Any offer is made only through the official offering memorandum available to verified investors. All investors should consult with their own financial, legal, and tax advisors prior to investing.</p>
+      <div class="footer-entity">Cebron Financial Group, Inc.<br>Delaware Corporation<br>© 2025</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(e => {
+    e.forEach(i => { if (i.isIntersecting) { i.target.classList.add('visible'); obs.unobserve(i.target) } })
+  }, { threshold: 0.06, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  const nav = document.getElementById('mainnav');
+  window.addEventListener('scroll', () => { nav.className = window.scrollY > 80 ? 'light' : 'dark' });
+</script>
+</body>
+</html>
